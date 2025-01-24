@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxc3p7gpgpbdx"]
+
+[ext_resource type="Script" uid="uid://dacjagjs8kpk2" path="res://jump_strength_indicator.gd" id="1_kksma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37mey"]
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_y411k"]
+size = Vector3(0.1, 0.05, 0.01)
+
+[node name="JumpStrengthIndicator" type="Node3D"]
+script = ExtResource("1_kksma")
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_37mey")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_y411k")
+
+[node name="Arrow2" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.06, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_37mey")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_y411k")
+
+[node name="Arrow3" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.12, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_37mey")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_y411k")
+
+[node name="Arrow4" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.18, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_37mey")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_y411k")

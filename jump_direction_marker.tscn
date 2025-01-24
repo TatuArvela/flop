@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b47r3in2sppv6"]
+[gd_scene load_steps=9 format=3 uid="uid://b47r3in2sppv6"]
+
+[ext_resource type="PackedScene" uid="uid://dxc3p7gpgpbdx" path="res://jump_strength_indicator.tscn" id="1_3qcq8"]
+[ext_resource type="Script" uid="uid://crcxec4gllnlh" path="res://jump_direction_marker.gd" id="1_agqjr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37mey"]
 shading_mode = 0
 albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_y411k"]
-size = Vector3(0.1, 0.1, 0.01)
 
 [sub_resource type="TorusMesh" id="TorusMesh_y411k"]
 inner_radius = 0.3
@@ -15,6 +15,7 @@ ring_segments = 3
 
 [sub_resource type="Animation" id="Animation_3qcq8"]
 length = 0.001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,14 +31,43 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Arrow:position")
+tracks/1/path = NodePath("Arrows:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.388, 0, 0)]
+"values": [Vector3(0.35, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Arrows:strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_agqjr"]
+resource_name = "charge"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arrows:strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_37mey"]
@@ -60,32 +90,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Arrow:position")
+tracks/1/path = NodePath("Arrows:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.388, 0, 0), Vector3(0.45, 0, 0), Vector3(0.388, 0, 0)]
+"values": [Vector3(0.35, 0, 0), Vector3(0.385, 0, 0), Vector3(0.35, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3qcq8"]
 _data = {
 &"RESET": SubResource("Animation_3qcq8"),
+&"charge": SubResource("Animation_agqjr"),
 &"idle": SubResource("Animation_37mey")
 }
 
 [node name="JumpDirectionMarker" type="Node3D"]
 physics_interpolation_mode = 2
+script = ExtResource("1_agqjr")
 
-[node name="Arrow" type="MeshInstance3D" parent="."]
-physics_interpolation_mode = 2
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.388, 0, 0)
-material_override = SubResource("StandardMaterial3D_37mey")
-cast_shadow = 0
-mesh = SubResource("PrismMesh_y411k")
-skeleton = NodePath("../Ring")
+[node name="Arrows" parent="." instance=ExtResource("1_3qcq8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
+arrow_size_increase = 0.2
 
 [node name="Ring" type="MeshInstance3D" parent="."]
 physics_interpolation_mode = 2
@@ -94,6 +123,7 @@ cast_shadow = 0
 mesh = SubResource("TorusMesh_y411k")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_3qcq8")
 }

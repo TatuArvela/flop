@@ -1,13 +1,12 @@
 extends RigidBody3D
 
-
 @export var jump_direction_y = 2.5
-@export var jump_strength = 2.5
+@export var jump_force = 2.5
 @export var direction_marker_y = 0.0
 @export var turn_rate = 10.0
 
 @onready var body: Node3D = get_node("%Body")
-@onready var direction_marker: Node3D = get_node("%JumpDirectionMarker")
+@onready var direction_marker: JumpDirectionMarker = get_node("%JumpDirectionMarker")
 
 var direction: Vector2 = Vector2.RIGHT
 var target_direction: Vector2 = Vector2.RIGHT
@@ -32,6 +31,16 @@ func _physics_process(delta: float) -> void:
 	direction_marker.global_rotation = Vector3.ZERO
 	direction_marker.global_rotation_degrees.y = rad_to_deg(new_angle)
 
-	if input_dir.length_squared() > 0 && Input.is_action_just_released("ui_accept"):
+	if input_dir.length_squared() > 0 && Input.is_action_just_pressed("ui_accept"):		
+		direction_marker.start_charge()
+
+	if input_dir.length_squared() > 0 && Input.is_action_just_released("ui_accept"):		
+		var strength_percentage = direction_marker.stop_charge()
+		var min_strength = 0.5
+		var max_strength = 1.0
+		var strength = lerp(min_strength, max_strength, strength_percentage)
+
+		print("Strength: %s" % strength)
+
 		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
-		self.apply_impulse(jump_force_direction * jump_strength)
+		self.apply_impulse(jump_force_direction * jump_force * strength)
