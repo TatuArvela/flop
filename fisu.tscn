@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu.gd" id="1_y411k"]
+[ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://jump_direction_marker.tscn" id="2_gty11"]
 
 [sub_resource type="Gradient" id="Gradient_4274j"]
 
@@ -39,16 +40,6 @@ size = Vector3(0.1, 0.1, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y411k"]
 size = Vector3(0.017, 0.035, 0.06)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y411k"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_y411k"]
-inner_radius = 0.3
-outer_radius = 0.325
-
-[sub_resource type="PrismMesh" id="PrismMesh_y411k"]
-size = Vector3(0.1, 0.1, 0.025)
 
 [node name="Fisu" type="Node3D"]
 
@@ -165,12 +156,5 @@ skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö3"]
 shape = SubResource("BoxShape3D_y411k")
 
-[node name="JumpDirectionMarker" type="MeshInstance3D" parent="."]
+[node name="JumpDirectionMarker" parent="." instance=ExtResource("2_gty11")]
 unique_name_in_owner = true
-material_override = SubResource("StandardMaterial3D_y411k")
-mesh = SubResource("TorusMesh_y411k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="JumpDirectionMarker"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.388387)
-material_override = SubResource("StandardMaterial3D_y411k")
-mesh = SubResource("PrismMesh_y411k")
