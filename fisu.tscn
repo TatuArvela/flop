@@ -1,0 +1,176 @@
+[gd_scene load_steps=17 format=3 uid="uid://cxcfsh1y3h63f"]
+
+[ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu.gd" id="1_y411k"]
+
+[sub_resource type="Gradient" id="Gradient_4274j"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_etga3"]
+gradient = SubResource("Gradient_4274j")
+fill_from = Vector2(1, 0.31245)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75oda"]
+albedo_color = Color(0.12549, 0.792157, 0.752941, 1)
+albedo_texture = SubResource("GradientTexture2D_etga3")
+
+[sub_resource type="PrismMesh" id="PrismMesh_tg84s"]
+size = Vector3(0.1, 0.075, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
+size = Vector3(0.017, 0.0810767, 0.06)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75oda"]
+size = Vector3(0.03, 0.1, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gty11"]
+size = Vector3(0.03, 0.1, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_etga3"]
+size = Vector3(0.02, 0.075, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8ajn"]
+size = Vector3(0.017, 0.035, 0.06)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y411k"]
+size = Vector3(0.017, 0.035, 0.06)
+
+[sub_resource type="PrismMesh" id="PrismMesh_gty11"]
+size = Vector3(0.1, 0.1, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y411k"]
+size = Vector3(0.017, 0.035, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y411k"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_y411k"]
+inner_radius = 0.3
+outer_radius = 0.325
+
+[sub_resource type="PrismMesh" id="PrismMesh_y411k"]
+size = Vector3(0.1, 0.1, 0.025)
+
+[node name="Fisu" type="Node3D"]
+
+[node name="Pää" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.185)
+mass = 0.25
+can_sleep = false
+continuous_cd = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Pää"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_75oda")
+mesh = SubResource("PrismMesh_tg84s")
+skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot/ConeTwistJoint3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pää"]
+shape = SubResource("BoxShape3D_qp756")
+
+[node name="PääBody" type="HingeJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, -0.145761)
+node_a = NodePath("../Pää")
+node_b = NodePath("../Body")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="Body" type="RigidBody3D" parent="."]
+unique_name_in_owner = true
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.75
+can_sleep = false
+continuous_cd = true
+script = ExtResource("1_y411k")
+jump_strength = 1.0
+direction_marker_y = 0.125
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+material_override = SubResource("StandardMaterial3D_75oda")
+mesh = SubResource("BoxMesh_75oda")
+skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("BoxShape3D_gty11")
+
+[node name="Body1Pyrstö1" type="HingeJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.0546358)
+node_a = NodePath("../Body")
+node_b = NodePath("../Pyrstö1")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="Pyrstö1" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.077826)
+mass = 0.25
+can_sleep = false
+continuous_cd = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Pyrstö1"]
+material_override = SubResource("StandardMaterial3D_75oda")
+mesh = SubResource("BoxMesh_etga3")
+skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot/ConeTwistJoint3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö1"]
+shape = SubResource("BoxShape3D_q8ajn")
+
+[node name="Pyrstö1Pyrstö2" type="HingeJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.100782)
+node_a = NodePath("../Pyrstö1")
+node_b = NodePath("../Pyrstö2")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="Pyrstö2" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.129261)
+mass = 0.075
+can_sleep = false
+continuous_cd = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Pyrstö2"]
+material_override = SubResource("StandardMaterial3D_75oda")
+mesh = SubResource("BoxMesh_y411k")
+skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot/ConeTwistJoint3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö2"]
+shape = SubResource("BoxShape3D_q8ajn")
+
+[node name="Pyrstö2Pyrstö3" type="HingeJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.157209)
+node_a = NodePath("../Pyrstö2")
+node_b = NodePath("../Pyrstö3")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="Pyrstö3" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.185688)
+mass = 0.1
+can_sleep = false
+continuous_cd = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Pyrstö3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, -0.00955796)
+material_override = SubResource("StandardMaterial3D_75oda")
+mesh = SubResource("PrismMesh_gty11")
+skeleton = NodePath("../../../root/@EditorNode@21310/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot/ConeTwistJoint3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö3"]
+shape = SubResource("BoxShape3D_y411k")
+
+[node name="JumpDirectionMarker" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+material_override = SubResource("StandardMaterial3D_y411k")
+mesh = SubResource("TorusMesh_y411k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="JumpDirectionMarker"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.388387)
+material_override = SubResource("StandardMaterial3D_y411k")
+mesh = SubResource("PrismMesh_y411k")

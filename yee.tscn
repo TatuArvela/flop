@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4n0qxokxewf2"]
+
+[ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu.tscn" id="1_etga3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4274j"]
+size = Vector3(1, 0.2, 2)
+subdivide_width = 2
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etga3"]
+size = Vector3(1, 0.2, 2)
+
+[node name="SceneRoot" type="Node3D"]
+
+[node name="Lattia" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia"]
+mesh = SubResource("BoxMesh_4274j")
+skeleton = NodePath("../../root/@EditorNode@22333/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/SceneRoot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia"]
+shape = SubResource("BoxShape3D_etga3")
+
+[node name="Fisu" parent="." instance=ExtResource("1_etga3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212672, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.347754, 0.587559, -0.730645, -1.49012e-08, 0.779283, 0.626672, 0.937586, -0.217928, 0.270999, -1.00395, 0.939589, 0.320472)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.792471, -0.521265, 0.31666, 0, 0.519191, 0.854658, -0.60991, -0.677292, 0.411444, 0.402517, 2.94438, 0.748134)
+light_energy = 4.0
+light_indirect_energy = 4.0
+shadow_enabled = true
+directional_shadow_split_1 = 0.01
+directional_shadow_split_2 = 0.02
+directional_shadow_split_3 = 0.05
