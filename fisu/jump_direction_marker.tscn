@@ -13,7 +13,7 @@ albedo_color = Color(0, 1, 0, 1)
 [sub_resource type="TorusMesh" id="TorusMesh_y411k"]
 inner_radius = 0.3
 outer_radius = 0.325
-rings = 16
+rings = 32
 ring_segments = 3
 
 [sub_resource type="Animation" id="Animation_3qcq8"]
