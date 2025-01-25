@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=9 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu.tscn" id="1_etga3"]
+[ext_resource type="Texture2D" uid="uid://bswemx0mnxect" path="res://conc.png" id="1_q8ajn"]
 [ext_resource type="Script" uid="uid://d0t0ngkwg1qt1" path="res://camera_follw.gd" id="2_75oda"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yos14"]
+albedo_texture = ExtResource("1_q8ajn")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
+material = SubResource("StandardMaterial3D_yos14")
 size = Vector3(10, 0.2, 10)
 subdivide_width = 2
 subdivide_depth = 4
@@ -78,8 +85,6 @@ transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.792471, -0.521265, 0.31666, 0, 0.519191, 0.854658, -0.60991, -0.677292, 0.411444, 0.402517, 2.94438, 0.748134)
-light_energy = 4.0
-light_indirect_energy = 4.0
 shadow_enabled = true
 directional_shadow_split_1 = 0.01
 directional_shadow_split_2 = 0.02
