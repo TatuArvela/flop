@@ -8,6 +8,7 @@ extends Node3D
 	get_node("Arrow3"),
 	get_node("Arrow4"),
 ]
+@onready var animations: AnimationPlayer = get_node("%Animations")
 
 @export var arrow_size_increase = 0.1
 @export var arrow_spacing = 0.01
@@ -18,6 +19,10 @@ extends Node3D
 	set(value):
 		strength = value
 		refresh()
+		
+var is_charging: bool:
+	get:
+		return animations.current_animation == "charge"
 
 func refresh() -> void:
 	var strength_per_arrow = 1.0 / max(1, arrows.size())
@@ -37,3 +42,13 @@ func refresh() -> void:
 
 func _ready() -> void:
 	strength = 0
+
+func start_charge() -> void:
+	animations.play("charge")
+	
+func stop_charge() -> float:
+	var charge_amount = strength
+	strength = 0.0
+	animations.play("idle")
+
+	return charge_amount

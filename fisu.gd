@@ -13,14 +13,16 @@ var target_direction: Vector2 = Vector2.RIGHT
 
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	direction_marker.visible = true if input_dir.length_squared() > 0 else false
+	var is_direction_input_active = input_dir.length_squared() > 0
+
+	direction_marker.visible = is_direction_input_active || direction_marker.is_charging
 	direction_marker.global_position.x = body.global_position.x
 	direction_marker.global_position.z = body.global_position.z
 
 	var modified_distance_y = max(0, body.global_position.y) * 0.1
 	direction_marker.global_position.y = direction_marker_y + modified_distance_y
 
-	if input_dir.length_squared() > 0:
+	if is_direction_input_active:
 		target_direction = input_dir.normalized()
 
 	var old_angle = direction.angle_to(Vector2.RIGHT)
@@ -31,16 +33,14 @@ func _physics_process(delta: float) -> void:
 	direction_marker.global_rotation = Vector3.ZERO
 	direction_marker.global_rotation_degrees.y = rad_to_deg(new_angle)
 
-	if input_dir.length_squared() > 0 && Input.is_action_just_pressed("ui_accept"):		
+	if Input.is_action_just_pressed("ui_accept"):
 		direction_marker.start_charge()
 
-	if input_dir.length_squared() > 0 && Input.is_action_just_released("ui_accept"):		
+	if direction_marker.is_charging && Input.is_action_just_released("ui_accept"):		
 		var strength_percentage = direction_marker.stop_charge()
 		var min_strength = 0.5
 		var max_strength = 1.0
 		var strength = lerp(min_strength, max_strength, strength_percentage)
-
-		print("Strength: %s" % strength)
 
 		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
 		self.apply_impulse(jump_force_direction * jump_force * strength)
