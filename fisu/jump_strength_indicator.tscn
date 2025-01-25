@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxc3p7gpgpbdx"]
 
-[ext_resource type="Script" uid="uid://dacjagjs8kpk2" path="res://jump_strength_indicator.gd" id="1_kksma"]
+[ext_resource type="Script" uid="uid://dacjagjs8kpk2" path="res://fisu/jump_strength_indicator.gd" id="1_kksma"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37mey"]
 render_priority = 1

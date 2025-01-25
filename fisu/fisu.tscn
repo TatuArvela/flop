@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://bxrw26fn14eg4" path="res://fisu_root.gd" id="1_tg84s"]
-[ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu.gd" id="1_y411k"]
-[ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fish_physics_material.tres" id="2_7nxjr"]
-[ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://jump_direction_marker.tscn" id="2_gty11"]
-[ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu_pala.fbx" id="2_qp756"]
+[ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu/fisu.gd" id="1_y411k"]
+[ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fisu/fish_physics_material.tres" id="2_7nxjr"]
+[ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://fisu/jump_direction_marker.tscn" id="2_gty11"]
+[ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="2_qp756"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
 size = Vector3(0.025, 0.067, 0.05)
@@ -96,7 +96,6 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_1" type="RigidBody3D" parent="."]
-unique_name_in_owner = true
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
 mass = 0.75
@@ -437,6 +436,9 @@ visible = false
 [node name="fin_1" parent="body_6/fisu_pala" index="10"]
 visible = false
 
+[node name="fin_2" parent="body_6/fisu_pala" index="11"]
+visible = false
+
 [node name="fin_3" parent="body_6/fisu_pala" index="12"]
 visible = false
 
@@ -572,7 +574,6 @@ transform = Transform3D(1, 0, 0, 0, 0.972178, -0.234243, 0, 0.234243, 0.972178, 
 shape = SubResource("BoxShape3D_qhqxp")
 
 [node name="JumpDirectionMarker" parent="." instance=ExtResource("2_gty11")]
-unique_name_in_owner = true
 
 [editable path="head/fisu_pala"]
 [editable path="body_1/fisu_pala"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b47r3in2sppv6"]
 
-[ext_resource type="PackedScene" uid="uid://dxc3p7gpgpbdx" path="res://jump_strength_indicator.tscn" id="1_3qcq8"]
-[ext_resource type="Script" uid="uid://crcxec4gllnlh" path="res://jump_direction_marker.gd" id="1_agqjr"]
+[ext_resource type="PackedScene" uid="uid://dxc3p7gpgpbdx" path="res://fisu/jump_strength_indicator.tscn" id="1_3qcq8"]
+[ext_resource type="Script" uid="uid://crcxec4gllnlh" path="res://fisu/jump_direction_marker.gd" id="1_agqjr"]
 [ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_j8hx4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37mey"]

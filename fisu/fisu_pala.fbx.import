@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://3s63lt01o6v1"
-path="res://.godot/imported/fisu_pala.fbx-ccd3cfbf3cce8f5f01f1464de070c522.scn"
+path="res://.godot/imported/fisu_pala.fbx-9aa7f9debc8d64825005f10adea09a83.scn"
 
 [deps]
 
-source_file="res://fisu_pala.fbx"
-dest_files=["res://.godot/imported/fisu_pala.fbx-ccd3cfbf3cce8f5f01f1464de070c522.scn"]
+source_file="res://fisu/fisu_pala.fbx"
+dest_files=["res://.godot/imported/fisu_pala.fbx-9aa7f9debc8d64825005f10adea09a83.scn"]
 
 [params]
 
