@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bj8eb2b7wnul0" path="res://conveyor_belt/conveyor_belt_model.tscn" id="3_0ig0k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4ohy"]
-friction = 100.0
+friction = 10.0
 rough = true
 absorbent = true
 

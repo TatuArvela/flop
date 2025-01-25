@@ -1,4 +1,9 @@
-[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://ckuoh7g0uph66"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://ckuoh7g0uph66"]
+
+[ext_resource type="Texture2D" uid="uid://cga2kifrgmple" path="res://conveyor_belt/belt.png" id="1_3sy1u"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_llnxb"]
+texture = ExtResource("1_3sy1u")
 
 [sub_resource type="Gradient" id="Gradient_optnv"]
 offsets = PackedFloat32Array(0, 0.532258, 1)
@@ -22,13 +27,11 @@ operator = 4
 operator = 3
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_6xuiu"]
-constant = 2.0
+constant = 0.91
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_optnv"]
 output_port_for_preview = 0
 default_input_values = [1, Vector2(0, -1), 2, Vector2(0, 0)]
-
-[sub_resource type="VisualShaderNodeRotationByAxis" id="VisualShaderNodeRotationByAxis_epp0p"]
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_36muu"]
 op_type = 0
@@ -37,7 +40,7 @@ op_type = 0
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_frg_2;
+uniform sampler2D tex_frg_10;
 
 
 
@@ -47,7 +50,7 @@ void fragment() {
 
 
 // FloatConstant:6
-	float n_out6p0 = 2.000000;
+	float n_out6p0 = 0.910000;
 
 
 // FloatOp:5
@@ -69,17 +72,17 @@ void fragment() {
 	vec2 n_out7p0 = n_out9p0 * n_in7p1 + UV;
 
 
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out7p0);
+// Texture2D:10
+	vec4 n_out10p0 = texture(tex_frg_10, n_out7p0);
 
 
 // Output:0
-	ALBEDO = vec3(n_out2p0.xyz);
+	ALBEDO = vec3(n_out10p0.xyz);
 
 
 }
 "
-graph_offset = Vector2(-308.066, -212.75)
+graph_offset = Vector2(-572.16, -141.12)
 nodes/fragment/0/position = Vector2(1160, -80)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_epp0p")
 nodes/fragment/2/position = Vector2(640, -200)
@@ -93,8 +96,8 @@ nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_6xuiu")
 nodes/fragment/6/position = Vector2(-1540, 280)
 nodes/fragment/7/node = SubResource("VisualShaderNodeUVFunc_optnv")
 nodes/fragment/7/position = Vector2(140, -220)
-nodes/fragment/8/node = SubResource("VisualShaderNodeRotationByAxis_epp0p")
-nodes/fragment/8/position = Vector2(-460, -460)
 nodes/fragment/9/node = SubResource("VisualShaderNodeVectorCompose_36muu")
 nodes/fragment/9/position = Vector2(-260, -20)
-nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 6, 0, 5, 1, 2, 0, 0, 0, 7, 0, 2, 0, 5, 0, 4, 0, 9, 0, 7, 2, 4, 0, 9, 1)
+nodes/fragment/10/node = SubResource("VisualShaderNodeTexture_llnxb")
+nodes/fragment/10/position = Vector2(600, 440)
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 6, 0, 5, 1, 5, 0, 4, 0, 9, 0, 7, 2, 10, 0, 0, 0, 7, 0, 10, 0, 4, 0, 9, 1)
