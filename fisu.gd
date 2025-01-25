@@ -11,11 +11,23 @@ extends RigidBody3D
 var direction: Vector2 = Vector2.RIGHT
 var target_direction: Vector2 = Vector2.RIGHT
 
+var is_grounded: bool = false
+
+var is_charging: bool:
+	get:
+		return direction_marker.is_charging
+
+const GROUNDED_CHECK_DISTANCE: float = 0.01
+
 func _physics_process(delta: float) -> void:
+	# HACK: might do wacky things near walls lmao
+	if self.test_move(global_transform, Vector3.DOWN * GROUNDED_CHECK_DISTANCE):
+		is_grounded = true
+	
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var is_direction_input_active = input_dir.length_squared() > 0
 
-	direction_marker.visible = is_direction_input_active || direction_marker.is_charging
+	direction_marker.visible = is_grounded && (is_direction_input_active || direction_marker.is_charging)
 	direction_marker.global_position.x = body.global_position.x
 	direction_marker.global_position.z = body.global_position.z
 
@@ -33,10 +45,10 @@ func _physics_process(delta: float) -> void:
 	direction_marker.global_rotation = Vector3.ZERO
 	direction_marker.global_rotation_degrees.y = rad_to_deg(new_angle)
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if is_grounded && !is_charging && Input.is_action_pressed("ui_accept"):
 		direction_marker.start_charge()
 
-	if direction_marker.is_charging && Input.is_action_just_released("ui_accept"):		
+	if is_charging && Input.is_action_just_released("ui_accept"):
 		var strength_percentage = direction_marker.stop_charge()
 		var min_strength = 0.5
 		var max_strength = 1.0
@@ -44,3 +56,4 @@ func _physics_process(delta: float) -> void:
 
 		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
 		self.apply_impulse(jump_force_direction * jump_force * strength)
+		is_grounded = false
