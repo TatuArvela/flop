@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://de4xs2m1tc6et"]
+
+[ext_resource type="PackedScene" uid="uid://de1b6p0loepvg" path="res://hazards/grabby_hand.tscn" id="1_kcac7"]
+
+[node name="Handsies" type="Node3D"]
+
+[node name="Hand" parent="." instance=ExtResource("1_kcac7")]
+transform = Transform3D(0.99933, 0, -0.0366096, 0, 1, 0, 0.0366096, 0, 0.99933, -0.0232855, 0.1, -0.150666)
+
+[node name="Hand2" parent="." instance=ExtResource("1_kcac7")]
+transform = Transform3D(0.99933, 8.73642e-08, 0.0366096, -8.74228e-08, 1, 0, 0.0366096, 3.20051e-09, -0.99933, -0.0280253, 0.1, 0.117465)
