@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://digrug7hfrugd"]
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bgimnitvleo3t" path="res://conveyor_belt.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bgimnitvleo3t" path="res://conveyor_belt/conveyor_belt.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node3D"]
 
@@ -16,10 +16,13 @@ directional_shadow_split_3 = 0.05
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.122823, 0.326144, 0.95697)
 
 [node name="Conveyor Belt" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.00685909, 0, 0.999976, 0, 1, 0, -0.999976, 0, 0.00685909, -0.026132, 0, 0.837123)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 0, 0, 1)
 
 [node name="Conveyor Belt2" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-0.0528761, 0, 0.998601, 0, 1, 0, -0.998601, 0, -0.0528761, -0.0258934, -3.57628e-07, -0.100947)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Conveyor Belt3" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.999351, 0, 0.0360159, 0, 1, 0, -0.0360159, 0, 0.999351, -0.0180759, -1.19209e-07, -1.08514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Conveyor Belt4" parent="." instance=ExtResource("2_h2yge")]
+transform = Transform3D(0.923879, -0.382683, 0, 0.382683, 0.923879, 0, 0, 0, 1, 1, 0.2, -1)

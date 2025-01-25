@@ -1,20 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgimnitvleo3t"]
+[gd_scene load_steps=5 format=3 uid="uid://bgimnitvleo3t"]
 
-[ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor_belt_surface.tres" id="1_a4ohy"]
-[ext_resource type="Script" uid="uid://bufi31rdp6epu" path="res://conveyor_belt.gd" id="1_r4k1w"]
+[ext_resource type="Script" uid="uid://bufi31rdp6epu" path="res://conveyor_belt/conveyor_belt.gd" id="1_r4k1w"]
+[ext_resource type="PackedScene" uid="uid://bj8eb2b7wnul0" path="res://conveyor_belt/conveyor_belt_model.tscn" id="3_0ig0k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4ohy"]
 friction = 100.0
+rough = true
+absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
-size = Vector3(1, 0.2, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4k1w"]
-render_priority = 0
-shader = ExtResource("1_a4ohy")
-
-[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
-material = SubResource("ShaderMaterial_r4k1w")
 size = Vector3(1, 0.2, 1)
 
 [node name="Conveyor Belt" type="StaticBody3D"]
@@ -24,11 +18,10 @@ script = ExtResource("1_r4k1w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1bvp3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_lquwl")
-
 [node name="Start" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
 [node name="End" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="conveyor_belt" parent="." instance=ExtResource("3_0ig0k")]

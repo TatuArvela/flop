@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj8eb2b7wnul0"]
+
+[ext_resource type="PackedScene" uid="uid://ctcgi7rdwhpi0" path="res://conveyor_belt/conveyor_belt.fbx" id="1_duovm"]
+[ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor_belt/conveyor_belt_surface.tres" id="2_yisnb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbefo"]
+render_priority = 0
+shader = ExtResource("2_yisnb")
+
+[sub_resource type="Gradient" id="Gradient_ein0p"]
+colors = PackedColorArray(0, 0, 0, 1, 0.351563, 0.351563, 0.351563, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_thu8y"]
+gradient = SubResource("Gradient_ein0p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uppm"]
+albedo_texture = SubResource("GradientTexture1D_thu8y")
+
+[sub_resource type="Gradient" id="Gradient_kljiv"]
+offsets = PackedFloat32Array(0.00519031, 1)
+colors = PackedColorArray(0.066755, 0.066755, 0.066755, 1, 0.127736, 0.127736, 0.127736, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7wj3n"]
+gradient = SubResource("Gradient_kljiv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dww8l"]
+albedo_texture = SubResource("GradientTexture1D_7wj3n")
+
+[node name="conveyor_belt" instance=ExtResource("1_duovm")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_gbefo")
+surface_material_override/1 = SubResource("StandardMaterial3D_6uppm")
+surface_material_override/2 = SubResource("StandardMaterial3D_dww8l")
