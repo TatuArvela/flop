@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bswemx0mnxect"
-path.s3tc="res://.godot/imported/conc.png-1178bd3090aa3dd3732d29d63179d5ef.s3tc.ctex"
+uid="uid://p55o6itgbxjm"
+path.s3tc="res://.godot/imported/laattaa.jpg-a807f1b869b29e97707c2583b7cc032c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://conc.png"
-dest_files=["res://.godot/imported/conc.png-1178bd3090aa3dd3732d29d63179d5ef.s3tc.ctex"]
+source_file="res://laattaa.jpg"
+dest_files=["res://.godot/imported/laattaa.jpg-a807f1b869b29e97707c2583b7cc032c.s3tc.ctex"]
 
 [params]
 

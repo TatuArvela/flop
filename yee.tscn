@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4n0qxokxewf2"]
 
-[ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://conc.tres" id="1_yos14"]
+[ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
 [ext_resource type="PackedScene" uid="uid://de1b6p0loepvg" path="res://hazards/grabby_hand.tscn" id="3_q8ajn"]
 [ext_resource type="PackedScene" uid="uid://d04y3ma01o7vy" path="res://hazards/guillotine.tscn" id="4_yos14"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bgimnitvleo3t" path="res://conveyor_belt/conveyor_belt.tscn" id="2_h2yge"]
-[ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://conc.tres" id="3_h2yge"]
+[ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="3_h2yge"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 material = ExtResource("3_h2yge")
@@ -65,6 +65,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.00283
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92394, -0.734633, 0.397955)
 
 [node name="Mesh" type="MeshInstance3D" parent="Lattia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00399446, -5.96046e-08, -0.00030899)
 mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia"]
