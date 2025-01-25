@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=3 uid="uid://d04y3ma01o7vy"]
+
+[ext_resource type="Script" uid="uid://cjddg4p10yhjt" path="res://hazards/guillotine.gd" id="1_674r6"]
+[ext_resource type="PackedScene" uid="uid://cg75ugmcdo3c" path="res://hazards/Guilliotine.fbx" id="3_674r6"]
+[ext_resource type="Script" uid="uid://dmwvxy0etulo0" path="res://hazards/hurtbox.gd" id="3_p4nrr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfobm"]
+size = Vector3(0.5, 0.364746, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_674r6"]
+size = Vector3(0.392, 0.228, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jnwo"]
+size = Vector3(0.35, 0.269, 0.0573633)
+
+[sub_resource type="Animation" id="Animation_674r6"]
+resource_name = "drop"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guilliotine/body/blade:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0.00847212, 1.15945, 0.0199715), Vector3(0.00834229, 0.91375, 0.0199793), Vector3(0.00834229, 0.91375, 0.0199793), Vector3(0.008, 0.266, 0.02), Vector3(0.008, 0.266, 0.02)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hurt"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pfobm"]
+resource_name = "recover"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guilliotine/body/blade:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.008, 0.266, 0.02), Vector3(0.00804721, 0.355345, 0.0199972), Vector3(0.00804721, 0.355345, 0.0199972), Vector3(0.00847212, 1.15945, 0.0199715)]
+}
+
+[sub_resource type="Animation" id="Animation_p4nrr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guilliotine/body/blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00847212, 1.15945, 0.0199715)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guilliotine/body/blade/AnimatableBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jnwo"]
+_data = {
+&"RESET": SubResource("Animation_p4nrr"),
+&"drop": SubResource("Animation_674r6"),
+&"recover": SubResource("Animation_pfobm")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4nrr"]
+size = Vector3(0.05, 1, 0.05)
+
+[node name="Guillotine" type="Node3D" node_paths=PackedStringArray("activation_timer", "hurtbox")]
+script = ExtResource("1_674r6")
+activation_timer = NodePath("Timer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="GrabTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="GrabTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.067627, 0)
+shape = SubResource("BoxShape3D_pfobm")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Hurtbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0678406, 0, 0)
+script = ExtResource("3_p4nrr")
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0640076, 0.115668, -0.00190429)
+shape = SubResource("BoxShape3D_674r6")
+debug_color = Color(0.941176, 0.180392, 0.419608, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.239955, 0)
+light_color = Color(1, 0, 0, 1)
+light_cull_mask = 4294967293
+spot_range = 0.294618
+spot_angle = 34.0741
+
+[node name="Guilliotine" parent="." instance=ExtResource("3_674r6")]
+
+[node name="body" parent="Guilliotine" index="0"]
+layers = 2
+
+[node name="blade" parent="Guilliotine/body" index="0"]
+layers = 2
+
+[node name="AnimatableBody3D" type="StaticBody3D" parent="Guilliotine/body/blade" index="0"]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Guilliotine/body/blade/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0909119, -0.0186816)
+shape = SubResource("BoxShape3D_4jnwo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4jnwo")
+}
+
+[node name="Tolppa" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218262, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tolppa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00885171, 0.501139, 0)
+shape = SubResource("BoxShape3D_p4nrr")
+
+[node name="Tolppa2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201099, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tolppa2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00885171, 0.501139, 0)
+shape = SubResource("BoxShape3D_p4nrr")
+
+[connection signal="setup" from="." to="." method="_on_setup"]
+
+[editable path="Guilliotine"]

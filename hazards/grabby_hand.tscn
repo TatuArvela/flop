@@ -117,8 +117,10 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqoaj"]
 size = Vector3(0.35, 0.35, 0.35)
 
-[node name="Hand" type="Node3D"]
+[node name="Hand" type="Node3D" node_paths=PackedStringArray("activation_timer", "hurtbox")]
 script = ExtResource("1_xqoaj")
+activation_timer = NodePath("Timer")
+hurtbox = NodePath("Hurtbox")
 
 [node name="HanskaPivot" type="Node3D" parent="."]
 
@@ -238,5 +240,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1
 light_color = Color(1, 0, 0, 1)
 light_cull_mask = 4294967293
 spot_range = 0.3
+
+[connection signal="setup" from="." to="." method="_on_setup"]
 
 [editable path="HanskaPivot/hanska"]
