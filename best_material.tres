@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://derrjpli8oscp"]
+
+[ext_resource type="Texture2D" uid="uid://cg0yyrxfe4ll0" path="res://kalatehdas_Gradient_Pallete.jpg" id="1_jlu6f"]
+
+[resource]
+albedo_texture = ExtResource("1_jlu6f")
