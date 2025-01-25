@@ -6,6 +6,9 @@ extends RigidBody3D
 @export var turn_rate = 10.0
 @export var jump_camera_shake = 0.05
 
+@export var visual_offset = deg_to_rad(-45)
+@export var physics_offset = deg_to_rad(45)
+
 @onready var body: RigidBody3D = get_node("%body_1")
 @onready var direction_marker: JumpDirectionMarker = get_node("%JumpDirectionMarker")
 
@@ -19,6 +22,10 @@ var is_charging: bool:
 		return direction_marker.is_charging
 
 const GROUNDED_CHECK_DISTANCE: float = 0.025
+
+func _ready() -> void:
+	target_direction = Vector2.UP
+	direction = Vector2.UP
 
 func _physics_process(delta: float) -> void:
 	# HACK: might do wacky things near walls lmao
@@ -49,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	direction = Vector2.from_angle(-new_angle)
 
 	direction_marker.global_rotation = Vector3.ZERO
-	direction_marker.global_rotation_degrees.y = rad_to_deg(new_angle)
+	direction_marker.global_rotation_degrees.y = rad_to_deg(new_angle + visual_offset)
 
 	if is_grounded && !is_charging && Input.is_action_pressed("ui_accept"):
 		direction_marker.start_charge()
@@ -64,6 +71,8 @@ func _physics_process(delta: float) -> void:
 		var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
 		camera_shake.shake(jump_camera_shake * strength)
 
-		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
+		var jump_direction = direction.rotated(physics_offset)
+
+		var jump_force_direction = Vector3(jump_direction.x, jump_direction_y, jump_direction.y)
 		self.apply_impulse(jump_force_direction * jump_force * strength)
 		is_grounded = false
