@@ -1,156 +1,585 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://bxrw26fn14eg4" path="res://fisu_root.gd" id="1_tg84s"]
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu.gd" id="1_y411k"]
+[ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fish_physics_material.tres" id="2_7nxjr"]
 [ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://jump_direction_marker.tscn" id="2_gty11"]
-
-[sub_resource type="Gradient" id="Gradient_4274j"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_etga3"]
-gradient = SubResource("Gradient_4274j")
-fill_from = Vector2(1, 0.31245)
-fill_to = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75oda"]
-albedo_color = Color(0.12549, 0.792157, 0.752941, 1)
-albedo_texture = SubResource("GradientTexture2D_etga3")
-
-[sub_resource type="PrismMesh" id="PrismMesh_tg84s"]
-size = Vector3(0.1, 0.075, 0.025)
+[ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu_pala.fbx" id="2_qp756"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
-size = Vector3(0.017, 0.0810767, 0.06)
+size = Vector3(0.025, 0.067, 0.05)
 
-[sub_resource type="BoxMesh" id="BoxMesh_75oda"]
-size = Vector3(0.03, 0.1, 0.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nxjr"]
+size = Vector3(0.04, 0.0728027, 0.0333008)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gty11"]
-size = Vector3(0.03, 0.1, 0.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_yp8ww"]
+size = Vector3(0.05, 0.079, 0.035)
 
-[sub_resource type="BoxMesh" id="BoxMesh_etga3"]
-size = Vector3(0.02, 0.075, 0.05)
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqxsl"]
+size = Vector3(0.045, 0.082, 0.042)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q8ajn"]
-size = Vector3(0.017, 0.035, 0.06)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2sqyr"]
+size = Vector3(0.04, 0.0737976, 0.0436874)
 
-[sub_resource type="BoxMesh" id="BoxMesh_y411k"]
-size = Vector3(0.017, 0.035, 0.06)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rquku"]
+size = Vector3(0.03, 0.059, 0.037)
 
-[sub_resource type="PrismMesh" id="PrismMesh_gty11"]
-size = Vector3(0.1, 0.1, 0.01)
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw03h"]
+size = Vector3(0.02, 0.047, 0.023)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y411k"]
-size = Vector3(0.017, 0.035, 0.06)
+[sub_resource type="BoxShape3D" id="BoxShape3D_57kv6"]
+size = Vector3(0.015, 0.04, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhqxp"]
+size = Vector3(0.015, 0.052, 0.044)
 
 [node name="Fisu" type="Node3D"]
 script = ExtResource("1_tg84s")
 
-[node name="Pää" type="RigidBody3D" parent="."]
+[node name="head" type="RigidBody3D" parent="."]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.185)
 mass = 0.25
+physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
 
-[node name="Mesh" type="MeshInstance3D" parent="Pää"]
-transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_75oda")
-mesh = SubResource("PrismMesh_tg84s")
+[node name="fisu_pala" parent="head" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.17)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pää"]
+[node name="body_8" parent="head/fisu_pala" index="0"]
+visible = false
+
+[node name="body_1" parent="head/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="head/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="head/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="head/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="head/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="head/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="head/fisu_pala" index="8"]
+visible = false
+
+[node name="fin_1" parent="head/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="head/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="head/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="head/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape" type="CollisionShape3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 0.994286, -0.10675, 0, 0.10675, 0.994286, 0, 0.00347811, 0.00472304)
 shape = SubResource("BoxShape3D_qp756")
 
-[node name="PääBody" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, -0.145761)
-node_a = NodePath("../Pää")
-node_b = NodePath("../Body")
+[node name="Hinge1" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.057808, 0.998328, 0, -0.998328, 0.057808, 0, 0, -0.155)
+node_a = NodePath("../head")
+node_b = NodePath("../body_1")
 angular_limit/enable = true
 angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
-[node name="Body" type="RigidBody3D" parent="."]
+[node name="body_1" type="RigidBody3D" parent="."]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
 mass = 0.75
+physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
 script = ExtResource("1_y411k")
 direction_marker_y = 0.125
 
-[node name="Mesh" type="MeshInstance3D" parent="Body"]
-material_override = SubResource("StandardMaterial3D_75oda")
-mesh = SubResource("BoxMesh_75oda")
+[node name="fisu_pala" parent="body_1" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
-shape = SubResource("BoxShape3D_gty11")
+[node name="body_8" parent="body_1/fisu_pala" index="0"]
+visible = false
 
-[node name="Body1Pyrstö1" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.0546358)
-node_a = NodePath("../Body")
-node_b = NodePath("../Pyrstö1")
+[node name="eyes" parent="body_1/fisu_pala" index="1"]
+visible = false
+
+[node name="body_2" parent="body_1/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_1/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_1/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_1/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_1/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_1/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_1/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_1/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="body_1/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="body_1/fisu_pala" index="12"]
+visible = false
+
+[node name="Shape2" type="CollisionShape3D" parent="body_1"]
+transform = Transform3D(1, 0, 0, 0, 0.999707, -0.0242228, 0, 0.0242228, 0.999707, 0, -0.00307393, -0.094442)
+shape = SubResource("BoxShape3D_7nxjr")
+
+[node name="Hinge2" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00244348, 0.999997, 0, -0.999997, 0.00244348, 0, 0, -0.121401)
+node_a = NodePath("../body_1")
+node_b = NodePath("../body_2")
 angular_limit/enable = true
 angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
-[node name="Pyrstö1" type="RigidBody3D" parent="."]
+[node name="body_2" type="RigidBody3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.077826)
-mass = 0.25
-can_sleep = false
-continuous_cd = true
-
-[node name="Mesh" type="MeshInstance3D" parent="Pyrstö1"]
-material_override = SubResource("StandardMaterial3D_75oda")
-mesh = SubResource("BoxMesh_etga3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö1"]
-shape = SubResource("BoxShape3D_q8ajn")
-
-[node name="Pyrstö1Pyrstö2" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.100782)
-node_a = NodePath("../Pyrstö1")
-node_b = NodePath("../Pyrstö2")
-angular_limit/enable = true
-angular_limit/upper = 1.309
-angular_limit/lower = -1.309
-
-[node name="Pyrstö2" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.129261)
-mass = 0.075
-can_sleep = false
-continuous_cd = true
-
-[node name="Mesh" type="MeshInstance3D" parent="Pyrstö2"]
-material_override = SubResource("StandardMaterial3D_75oda")
-mesh = SubResource("BoxMesh_y411k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö2"]
-shape = SubResource("BoxShape3D_q8ajn")
-
-[node name="Pyrstö2Pyrstö3" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0.157209)
-node_a = NodePath("../Pyrstö2")
-node_b = NodePath("../Pyrstö3")
-angular_limit/enable = true
-angular_limit/upper = 1.309
-angular_limit/lower = -1.309
-
-[node name="Pyrstö3" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.185688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
 mass = 0.1
+physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
 
-[node name="Mesh" type="MeshInstance3D" parent="Pyrstö3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, -0.00955796)
-material_override = SubResource("StandardMaterial3D_75oda")
-mesh = SubResource("PrismMesh_gty11")
+[node name="fisu_pala" parent="body_2" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyrstö3"]
-shape = SubResource("BoxShape3D_y411k")
+[node name="body_8" parent="body_2/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_2/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_2/fisu_pala" index="2"]
+visible = false
+
+[node name="body_3" parent="body_2/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_2/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_2/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_2/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_2/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_2/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_2/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="body_2/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="body_2/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_2/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape3" type="CollisionShape3D" parent="body_2"]
+transform = Transform3D(1, 0, 0, 0, 0.99862, 0.0525103, 0, -0.0525103, 0.99862, 0, -0.000128356, -0.0596955)
+shape = SubResource("BoxShape3D_yp8ww")
+
+[node name="Hinge3" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.134021, 0.990978, 0, -0.990978, -0.134021, 0, 0, -0.0851143)
+node_a = NodePath("../body_2")
+node_b = NodePath("../body_3")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_3" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.1
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_3" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="body_8" parent="body_3/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_3/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_3/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_3/fisu_pala" index="3"]
+visible = false
+
+[node name="body_4" parent="body_3/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_3/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_3/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_3/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_3/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_3/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="body_3/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_4" parent="body_3/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape4" type="CollisionShape3D" parent="body_3"]
+transform = Transform3D(1, 0, 0, 0, 0.994388, 0.105795, 0, -0.105795, 0.994388, 0, 0.00216651, -0.0198207)
+shape = SubResource("BoxShape3D_tqxsl")
+
+[node name="Hinge4" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.00594072, -0.0452133)
+node_a = NodePath("../body_3")
+node_b = NodePath("../body_4")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_4" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.1
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_4" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="body_8" parent="body_4/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_4/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_4/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_4/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_4/fisu_pala" index="4"]
+visible = false
+
+[node name="body_5" parent="body_4/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_4/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_4/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_4/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_2" parent="body_4/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="body_4/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_4/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape5" type="CollisionShape3D" parent="body_4"]
+transform = Transform3D(1, 0, 0, 0, 0.998954, 0.0457291, 0, -0.0457291, 0.998954, 0, 0.00861937, 0.0210519)
+shape = SubResource("BoxShape3D_2sqyr")
+
+[node name="Hinge5" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0128578, -0.000656649)
+node_a = NodePath("../body_4")
+node_b = NodePath("../body_5")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_5" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.1
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_5" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="body_8" parent="body_5/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_5/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_5/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_5/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_5/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_5/fisu_pala" index="5"]
+visible = false
+
+[node name="body_6" parent="body_5/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_5/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_5/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_5/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_3" parent="body_5/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_5/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape6" type="CollisionShape3D" parent="body_5"]
+transform = Transform3D(1, 0, 0, 0, 0.999539, 0.0303466, 0, -0.0303466, 0.999539, 0, 0.0154436, 0.0623748)
+shape = SubResource("BoxShape3D_rquku")
+
+[node name="Hinge6" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0201814, 0.0371336)
+node_a = NodePath("../body_5")
+node_b = NodePath("../body_6")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_6" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.1
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_6" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="body_8" parent="body_6/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_6/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_6/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_6/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_6/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_6/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_6/fisu_pala" index="6"]
+visible = false
+
+[node name="body_7" parent="body_6/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_6/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_6/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_3" parent="body_6/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_6/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape7" type="CollisionShape3D" parent="body_6"]
+transform = Transform3D(1, 0, 0, 0, 0.997577, -0.0695649, 0, 0.0695649, 0.997577, 0, 0.0194024, 0.0905991)
+shape = SubResource("BoxShape3D_yw03h")
+
+[node name="Hinge7" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0857126, 0.99632, 0, -0.99632, 0.0857126, 0, 0.0201814, 0.0580328)
+node_a = NodePath("../body_6")
+node_b = NodePath("../body_7")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_7" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.05
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_7" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="body_8" parent="body_7/fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="body_7/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_7/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_7/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_7/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_7/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_7/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_7/fisu_pala" index="7"]
+visible = false
+
+[node name="head" parent="body_7/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_7/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="body_7/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="body_7/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_7/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape8" type="CollisionShape3D" parent="body_7"]
+transform = Transform3D(1, 0, 0, 0, 0.989566, -0.14408, 0, 0.14408, 0.989566, 0, 0.0169181, 0.112864)
+shape = SubResource("BoxShape3D_57kv6")
+
+[node name="Hinge8" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.194953, 0.980813, 0, -0.980813, 0.194953, 0, 0.0150764, 0.0791629)
+node_a = NodePath("../body_7")
+node_b = NodePath("../body_8")
+angular_limit/enable = true
+angular_limit/upper = 1.309
+angular_limit/lower = -1.309
+
+[node name="body_8" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+mass = 0.05
+physics_material_override = ExtResource("2_7nxjr")
+can_sleep = false
+continuous_cd = true
+
+[node name="fisu_pala" parent="body_8" instance=ExtResource("2_qp756")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
+
+[node name="eyes" parent="body_8/fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="body_8/fisu_pala" index="2"]
+visible = false
+
+[node name="body_2" parent="body_8/fisu_pala" index="3"]
+visible = false
+
+[node name="body_3" parent="body_8/fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="body_8/fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="body_8/fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="body_8/fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="body_8/fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="body_8/fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="body_8/fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="body_8/fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="body_8/fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="body_8/fisu_pala" index="13"]
+visible = false
+
+[node name="Shape9" type="CollisionShape3D" parent="body_8"]
+transform = Transform3D(1, 0, 0, 0, 0.972178, -0.234243, 0, 0.234243, 0.972178, 0, 0.0124964, 0.148072)
+shape = SubResource("BoxShape3D_qhqxp")
 
 [node name="JumpDirectionMarker" parent="." instance=ExtResource("2_gty11")]
 unique_name_in_owner = true
+
+[editable path="head/fisu_pala"]
+[editable path="body_1/fisu_pala"]
+[editable path="body_2/fisu_pala"]
+[editable path="body_3/fisu_pala"]
+[editable path="body_4/fisu_pala"]
+[editable path="body_5/fisu_pala"]
+[editable path="body_6/fisu_pala"]
+[editable path="body_7/fisu_pala"]
+[editable path="body_8/fisu_pala"]

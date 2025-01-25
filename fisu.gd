@@ -6,7 +6,7 @@ extends RigidBody3D
 @export var turn_rate = 10.0
 @export var jump_camera_shake = 0.05
 
-@onready var body: RigidBody3D = get_node("%Body")
+@onready var body: RigidBody3D = get_node("%body_1")
 @onready var direction_marker: JumpDirectionMarker = get_node("%JumpDirectionMarker")
 
 var direction: Vector2 = Vector2.RIGHT

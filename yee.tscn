@@ -82,7 +82,6 @@ script = ExtResource("2_75oda")
 [node name="CameraBoom" type="SpringArm3D" parent="Fisu/Shaker/CameraPivot"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 collision_mask = 2
-spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Fisu/Shaker/CameraPivot/CameraBoom"]
 transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
