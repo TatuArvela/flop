@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu/fisu.gd" id="1_y411k"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fisu/fish_physics_material.tres" id="2_7nxjr"]
 [ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://fisu/jump_direction_marker.tscn" id="2_gty11"]
 [ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="2_qp756"]
+[ext_resource type="Script" uid="uid://lqyo8jxjwibd" path="res://fisu/bodypart.gd" id="4_q6i8d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
 size = Vector3(0.025, 0.067, 0.05)
@@ -33,11 +34,11 @@ size = Vector3(0.015, 0.04, 0.025)
 size = Vector3(0.015, 0.052, 0.044)
 
 [node name="Fisu" type="Node3D"]
+physics_interpolation_mode = 1
 script = ExtResource("1_y411k")
 
 [node name="head" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.138541)
 mass = 0.25
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
@@ -87,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 0.994286, -0.10675, 0, 0.10675, 0.994286, 0,
 shape = SubResource("BoxShape3D_qp756")
 
 [node name="Hinge1" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.057808, 0.998328, 0, -0.998328, 0.057808, 0, 0, -0.155)
+transform = Transform3D(1, 0, 0, 0, 0.057808, 0.998328, 0, -0.998328, 0.057808, 0, 0, -0.108541)
 node_a = NodePath("../head")
 node_b = NodePath("../body_1")
 angular_limit/enable = true
@@ -95,12 +96,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_1" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.75
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_1" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -146,7 +147,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999707, -0.0242228, 0, 0.0242228, 0.999707
 shape = SubResource("BoxShape3D_7nxjr")
 
 [node name="Hinge2" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00244348, 0.999997, 0, -0.999997, 0.00244348, 0, 0, -0.121401)
+transform = Transform3D(1, 0, 0, 0, 0.00244348, 0.999997, 0, -0.999997, 0.00244348, 0, 0, -0.0749423)
 node_a = NodePath("../body_1")
 node_b = NodePath("../body_2")
 angular_limit/enable = true
@@ -154,12 +155,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_2" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.1
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_2" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -208,7 +209,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99862, 0.0525103, 0, -0.0525103, 0.99862, 
 shape = SubResource("BoxShape3D_yp8ww")
 
 [node name="Hinge3" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.134021, 0.990978, 0, -0.990978, -0.134021, 0, 0, -0.0851143)
+transform = Transform3D(1, 0, 0, 0, -0.134021, 0.990978, 0, -0.990978, -0.134021, 0, 0, -0.0386556)
 node_a = NodePath("../body_2")
 node_b = NodePath("../body_3")
 angular_limit/enable = true
@@ -216,12 +217,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_3" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.1
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_3" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -267,7 +268,7 @@ transform = Transform3D(1, 0, 0, 0, 0.994388, 0.105795, 0, -0.105795, 0.994388, 
 shape = SubResource("BoxShape3D_tqxsl")
 
 [node name="Hinge4" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.00594072, -0.0452133)
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.00594072, 0.00124535)
 node_a = NodePath("../body_3")
 node_b = NodePath("../body_4")
 angular_limit/enable = true
@@ -275,12 +276,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_4" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.1
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_4" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -326,7 +327,7 @@ transform = Transform3D(1, 0, 0, 0, 0.998954, 0.0457291, 0, -0.0457291, 0.998954
 shape = SubResource("BoxShape3D_2sqyr")
 
 [node name="Hinge5" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0128578, -0.000656649)
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0128578, 0.045802)
 node_a = NodePath("../body_4")
 node_b = NodePath("../body_5")
 angular_limit/enable = true
@@ -334,12 +335,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_5" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.1
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_5" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -385,7 +386,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999539, 0.0303466, 0, -0.0303466, 0.999539
 shape = SubResource("BoxShape3D_rquku")
 
 [node name="Hinge6" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0201814, 0.0371336)
+transform = Transform3D(1, 0, 0, 0, -0.104094, 0.994567, 0, -0.994567, -0.104094, 0, 0.0201814, 0.0835923)
 node_a = NodePath("../body_5")
 node_b = NodePath("../body_6")
 angular_limit/enable = true
@@ -393,12 +394,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_6" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.1
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_6" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -447,7 +448,7 @@ transform = Transform3D(1, 0, 0, 0, 0.997577, -0.0695649, 0, 0.0695649, 0.997577
 shape = SubResource("BoxShape3D_yw03h")
 
 [node name="Hinge7" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0857126, 0.99632, 0, -0.99632, 0.0857126, 0, 0.0201814, 0.0580328)
+transform = Transform3D(1, 0, 0, 0, 0.0857126, 0.99632, 0, -0.99632, 0.0857126, 0, 0.0201814, 0.104491)
 node_a = NodePath("../body_6")
 node_b = NodePath("../body_7")
 angular_limit/enable = true
@@ -455,12 +456,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_7" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.05
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_7" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)
@@ -509,7 +510,7 @@ transform = Transform3D(1, 0, 0, 0, 0.989566, -0.14408, 0, 0.14408, 0.989566, 0,
 shape = SubResource("BoxShape3D_57kv6")
 
 [node name="Hinge8" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.194953, 0.980813, 0, -0.980813, 0.194953, 0, 0.0150764, 0.0791629)
+transform = Transform3D(1, 0, 0, 0, 0.194953, 0.980813, 0, -0.980813, 0.194953, 0, 0.0150764, 0.125622)
 node_a = NodePath("../body_7")
 node_b = NodePath("../body_8")
 angular_limit/enable = true
@@ -517,12 +518,12 @@ angular_limit/upper = 1.309
 angular_limit/lower = -1.309
 
 [node name="body_8" type="RigidBody3D" parent="."]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
 mass = 0.05
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false
 continuous_cd = true
+script = ExtResource("4_q6i8d")
 
 [node name="fisu_pala" parent="body_8" instance=ExtResource("2_qp756")]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, 0.03)

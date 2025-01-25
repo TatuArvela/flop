@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=8 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://conc.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
+[ext_resource type="PackedScene" uid="uid://de1b6p0loepvg" path="res://hazards/grabby_hand.tscn" id="3_q8ajn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 material = ExtResource("1_yos14")
@@ -75,3 +76,6 @@ shadow_enabled = true
 directional_shadow_split_1 = 0.01
 directional_shadow_split_2 = 0.02
 directional_shadow_split_3 = 0.05
+
+[node name="Hand" parent="." instance=ExtResource("3_q8ajn")]
+transform = Transform3D(-0.823008, 0, -0.56803, 0, 1, 0, 0.56803, 0, -0.823008, 0.826795, 0.1, -0.402088)

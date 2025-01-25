@@ -24,6 +24,17 @@ extends Node3D
 	get_node("Hinge8"),
 ]
 
+@onready var parts: Array[FisuBodypart] = [
+	get_node("body_1"),
+	get_node("body_2"),
+	get_node("body_3"),
+	get_node("body_4"),
+	get_node("body_5"),
+	get_node("body_6"),
+	get_node("body_7"),
+	get_node("body_8"),
+]
+
 var body_global_position: Vector3:
 	get:
 		return body.global_position
@@ -55,6 +66,8 @@ var health: int:
 			if i >= health && hinges[i] != null:
 				hinges[i].queue_free()
 				hinges[i] = null
+				parts[i].is_killed = true
+
 
 var is_dead: bool:
 	get:
