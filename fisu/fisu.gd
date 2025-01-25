@@ -10,6 +10,8 @@ extends Node3D
 @export var visual_offset = deg_to_rad(-45)
 @export var physics_offset = deg_to_rad(45)
 
+@export var blood_prefab: PackedScene
+
 @onready var body: RigidBody3D = get_node("body_1")
 @onready var direction_marker: JumpDirectionMarker = get_node("JumpDirectionMarker")
 
@@ -64,6 +66,12 @@ var health: int:
 		health = clamped_value
 		for i in hinges.size():
 			if i >= health && hinges[i] != null:
+				var emitter = blood_prefab.instantiate()
+				get_tree().current_scene.add_child(emitter)
+
+				emitter.global_position = body.global_position
+				emitter.global_rotation.y = body.global_rotation.y
+
 				hinges[i].queue_free()
 				hinges[i] = null
 				parts[i].is_killed = true

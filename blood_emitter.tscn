@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdoxj3qn7n2ch"]
+
+[ext_resource type="Script" uid="uid://dl6ccpgyihmwo" path="res://blood_emitter.gd" id="1_qrwbt"]
+
+[sub_resource type="Gradient" id="Gradient_d7w5y"]
+offsets = PackedFloat32Array(0, 0.218107, 1)
+colors = PackedColorArray(0.488553, 9.91368e-07, 9.62615e-08, 1, 0.52027, 6.01634e-07, 9.62615e-08, 1, 0.84956, 1.99743e-06, 3.85046e-07, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j317t"]
+gradient = SubResource("Gradient_d7w5y")
+fill = 1
+fill_from = Vector2(0.495726, 0.470085)
+fill_to = Vector2(1, 0.487179)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7w5y"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_j317t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d7w5y"]
+emission_shape_scale = Vector3(0.66, 0.25, 0.25)
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.25
+initial_velocity_max = 1.0
+gravity = Vector3(0, -3.92, 0)
+scale_min = 0.7
+scale_max = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_d7w5y"]
+size = Vector2(0.05, 0.05)
+orientation = 1
+
+[node name="BloodEmitter" type="Node3D"]
+script = ExtResource("1_qrwbt")
+
+[node name="emitter" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0825033, 0)
+material_override = SubResource("StandardMaterial3D_d7w5y")
+amount = 100
+explosiveness = 0.75
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_d7w5y")
+draw_pass_1 = SubResource("QuadMesh_d7w5y")

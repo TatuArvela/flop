@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=11 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
 [ext_resource type="PackedScene" uid="uid://de4xs2m1tc6et" path="res://hazards/grabby_handsies.tscn" id="3_yos14"]
 [ext_resource type="PackedScene" uid="uid://d04y3ma01o7vy" path="res://hazards/guillotine.tscn" id="4_yos14"]
+[ext_resource type="PackedScene" uid="uid://bdoxj3qn7n2ch" path="res://blood_emitter.tscn" id="5_egq66"]
+[ext_resource type="PackedScene" uid="uid://b7p8qlq6lpiev" path="res://hazards/buzzsaw.tscn" id="6_tialh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 material = ExtResource("1_yos14")
@@ -83,3 +85,9 @@ transform = Transform3D(-0.753781, 0, -0.657125, 0, 1, 0, 0.657125, 0, -0.753781
 
 [node name="Guillotine" parent="." instance=ExtResource("4_yos14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412129, 0.101857, -0.853154)
+
+[node name="BloodEmitter" parent="." instance=ExtResource("5_egq66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779452, 0.1, 0.272581)
+
+[node name="Buzzsaw" parent="." instance=ExtResource("6_tialh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25884, 0.101641, -0.838859)

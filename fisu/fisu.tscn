@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=16 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu/fisu.gd" id="1_y411k"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fisu/fish_physics_material.tres" id="2_7nxjr"]
 [ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://fisu/jump_direction_marker.tscn" id="2_gty11"]
 [ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="2_qp756"]
+[ext_resource type="PackedScene" uid="uid://bdoxj3qn7n2ch" path="res://blood_emitter.tscn" id="2_xalnf"]
 [ext_resource type="Script" uid="uid://lqyo8jxjwibd" path="res://fisu/bodypart.gd" id="4_q6i8d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
@@ -36,6 +37,7 @@ size = Vector3(0.015, 0.052, 0.044)
 [node name="Fisu" type="Node3D"]
 physics_interpolation_mode = 1
 script = ExtResource("1_y411k")
+blood_prefab = ExtResource("2_xalnf")
 
 [node name="head" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.138541)
