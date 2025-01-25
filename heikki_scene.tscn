@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rkbpj3aicgkj"]
+
+[ext_resource type="PackedScene" uid="uid://dw8ji0hg5ve2f" path="res://kalatehdas.tscn" id="1_0x1d3"]
+[ext_resource type="PackedScene" uid="uid://b4n0qxokxewf2" path="res://yee.tscn" id="2_7m12l"]
+
+[node name="Heikki_scene" type="Node3D"]
+
+[node name="kalatehdas" parent="." instance=ExtResource("1_0x1d3")]
+transform = Transform3D(0.497467, 0, 0, 0, 0.139238, 0, 0, 0, 0.497467, 35.6736, -0.670786, 8.31068)
+
+[node name="SceneRoot" parent="." instance=ExtResource("2_7m12l")]
