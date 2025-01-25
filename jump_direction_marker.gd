@@ -28,6 +28,8 @@ func stop_charge() -> float:
 
 func _ready() -> void:
 	animations.animation_finished.connect(anim_finished)
+	visible = false
+	shaker.scale = Vector3.ZERO
 
 func anim_finished(anim_name: String) -> void:
 	if anim_name == "fade_in":

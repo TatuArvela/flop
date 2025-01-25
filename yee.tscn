@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=8 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu.tscn" id="1_etga3"]
 [ext_resource type="Script" uid="uid://d0t0ngkwg1qt1" path="res://camera_follw.gd" id="2_75oda"]
+[ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_q8ajn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 size = Vector3(10, 0.2, 10)
@@ -64,16 +65,20 @@ shape = SubResource("BoxShape3D_etga3")
 [node name="Fisu" parent="." instance=ExtResource("1_etga3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212672, 0)
 
-[node name="CameraPivot" type="Node3D" parent="Fisu"]
+[node name="Shaker" type="Node3D" parent="Fisu" groups=["CameraShaker"]]
+script = ExtResource("2_q8ajn")
+shake_decay = 0.5
+
+[node name="CameraPivot" type="Node3D" parent="Fisu/Shaker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_75oda")
 
-[node name="CameraBoom" type="SpringArm3D" parent="Fisu/CameraPivot"]
+[node name="CameraBoom" type="SpringArm3D" parent="Fisu/Shaker/CameraPivot"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 collision_mask = 2
 spring_length = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="Fisu/CameraPivot/CameraBoom"]
+[node name="Camera3D" type="Camera3D" parent="Fisu/Shaker/CameraPivot/CameraBoom"]
 transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

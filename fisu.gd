@@ -4,8 +4,9 @@ extends RigidBody3D
 @export var jump_force = 2.5
 @export var direction_marker_y = 0.0
 @export var turn_rate = 10.0
+@export var jump_camera_shake = 0.05
 
-@onready var body: Node3D = get_node("%Body")
+@onready var body: RigidBody3D = get_node("%Body")
 @onready var direction_marker: JumpDirectionMarker = get_node("%JumpDirectionMarker")
 
 var direction: Vector2 = Vector2.RIGHT
@@ -17,13 +18,17 @@ var is_charging: bool:
 	get:
 		return direction_marker.is_charging
 
-const GROUNDED_CHECK_DISTANCE: float = 0.01
+const GROUNDED_CHECK_DISTANCE: float = 0.025
 
 func _physics_process(delta: float) -> void:
 	# HACK: might do wacky things near walls lmao
 	if self.test_move(global_transform, Vector3.DOWN * GROUNDED_CHECK_DISTANCE):
+		if not is_grounded:
+			var hit_strength = clamp(abs(body.linear_velocity.y) / 20.0, 0.01, 0.25)
+			var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
+			camera_shake.shake(hit_strength)
 		is_grounded = true
-	
+
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var is_direction_input_active = input_dir.length_squared() > 0
 
@@ -56,6 +61,8 @@ func _physics_process(delta: float) -> void:
 		var strength = lerp(min_strength, max_strength, strength_percentage)
 
 		direction_marker.shake(0.1)
+		var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
+		camera_shake.shake(jump_camera_shake * strength)
 
 		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
 		self.apply_impulse(jump_force_direction * jump_force * strength)

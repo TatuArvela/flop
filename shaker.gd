@@ -7,6 +7,9 @@ extends Node3D
 
 var rng = RandomNumberGenerator.new()
 
+func shake(amount: float) -> void:
+	shake_strength = amount
+
 func _process(delta: float) -> void:
 	if shake_strength <= 0:
 		position = Vector3.ZERO

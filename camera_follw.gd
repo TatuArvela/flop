@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var fisu: Fisu = get_parent()
+@onready var fisu: Fisu = get_parent().get_parent()
 
 @onready var camera_smoothing_speed_xz = 1.0
 @onready var camera_smoothing_speed_y = 0.01
