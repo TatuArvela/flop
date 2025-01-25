@@ -1,4 +1,5 @@
-extends RigidBody3D
+class_name Fisu
+extends Node3D
 
 @export var jump_direction_y = 2.5
 @export var jump_force = 2.5
@@ -9,19 +10,25 @@ extends RigidBody3D
 @export var visual_offset = deg_to_rad(-45)
 @export var physics_offset = deg_to_rad(45)
 
-@onready var body: RigidBody3D = get_parent().get_node("body_1")
-@onready var direction_marker: JumpDirectionMarker = get_parent().get_node("JumpDirectionMarker")
+@onready var body: RigidBody3D = get_node("body_1")
+@onready var direction_marker: JumpDirectionMarker = get_node("JumpDirectionMarker")
 
 @onready var hinges: Array[Joint3D] = [
-	get_parent().get_node("Hinge1"),
-	get_parent().get_node("Hinge2"),
-	get_parent().get_node("Hinge3"),
-	get_parent().get_node("Hinge4"),
-	get_parent().get_node("Hinge5"),
-	get_parent().get_node("Hinge6"),
-	get_parent().get_node("Hinge7"),
-	get_parent().get_node("Hinge8"),
+	get_node("Hinge1"),
+	get_node("Hinge2"),
+	get_node("Hinge3"),
+	get_node("Hinge4"),
+	get_node("Hinge5"),
+	get_node("Hinge6"),
+	get_node("Hinge7"),
+	get_node("Hinge8"),
 ]
+
+var body_global_position: Vector3:
+	get:
+		return body.global_position
+
+var controller: PlayerController
 
 var direction: Vector2 = Vector2.RIGHT
 var target_direction: Vector2 = Vector2.RIGHT
@@ -59,18 +66,18 @@ func _ready() -> void:
 	health = max_health
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_hurt"):
-		health -= 1
-	
+	if is_dead || controller == null:
+		return
+
 	# HACK: might do wacky things near walls lmao
-	if self.test_move(global_transform, Vector3.DOWN * GROUNDED_CHECK_DISTANCE):
+	if body.test_move(body.global_transform, Vector3.DOWN * GROUNDED_CHECK_DISTANCE):
 		if not is_grounded:
 			var hit_strength = clamp(abs(body.linear_velocity.y) / 20.0, 0.01, 0.25)
 			var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
 			camera_shake.shake(hit_strength)
 		is_grounded = true
 
-	var input_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	var input_dir = controller.input_dir
 	var is_direction_input_active = input_dir.length_squared() > 0
 
 	var direction_marker_should_be_visible = is_grounded && (is_direction_input_active || direction_marker.is_charging)
@@ -108,5 +115,5 @@ func _physics_process(delta: float) -> void:
 		var jump_direction = direction.rotated(physics_offset)
 
 		var jump_force_direction = Vector3(jump_direction.x, jump_direction_y, jump_direction.y)
-		self.apply_impulse(jump_force_direction * jump_force * strength)
+		body.apply_impulse(jump_force_direction * jump_force * strength)
 		is_grounded = false
