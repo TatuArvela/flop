@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwe6nf5n4pghg"]
+
+[ext_resource type="PackedScene" uid="uid://dp5ghfyblklii" path="res://icebox/icebox.fbx" id="1_81bei"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="2_tlbdb"]
+
+[node name="icebox" instance=ExtResource("1_81bei")]
+
+[node name="icecube" parent="." index="0"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="icebox" parent="." index="1"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_8-2_001" parent="." index="2"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_7-2_001" parent="." index="3"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_3-2_001" parent="." index="4"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_3-2_002" parent="." index="5"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_1-2_001" parent="." index="6"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_5-2_001" parent="." index="7"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="body_8-2_002" parent="." index="8"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="head-2_001" parent="." index="9"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="eyes-2_001" parent="." index="10"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="head-2_002" parent="." index="11"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="eyes-2_002" parent="." index="12"]
+material_override = ExtResource("2_tlbdb")
+
+[node name="fin_2-2_001" parent="." index="13"]
+material_override = ExtResource("2_tlbdb")

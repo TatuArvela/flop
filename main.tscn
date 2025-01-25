@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://digrug7hfrugd"]
+[gd_scene load_steps=8 format=3 uid="uid://digrug7hfrugd"]
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bgimnitvleo3t" path="res://conveyor_belt/conveyor_belt.tscn" id="2_h2yge"]
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cqu1wu4akaifc" path="res://conveyor_belt/belt_group_straight.tscn" id="4_lquwl"]
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 material = ExtResource("3_h2yge")
@@ -15,54 +21,21 @@ size = Vector3(50, 0.2, 50)
 
 [node name="Main" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.792471, -0.521265, 0.31666, 0, 0.519191, 0.854658, -0.60991, -0.677292, 0.411444, 0.279694, 2.94438, 0.759539)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.350983, 2.94438, -1.84512)
+light_energy = 0.302
 shadow_enabled = true
 directional_shadow_split_1 = 0.01
 directional_shadow_split_2 = 0.02
 directional_shadow_split_3 = 0.05
-
-[node name="Player" parent="." instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.122823, 0.799221, 0.95697)
-
-[node name="Conveyor Belt" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 0, 0.248018, 1)
-
-[node name="Conveyor Belt2" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.233834, 0)
-
-[node name="Conveyor Belt3" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="Conveyor Belt4" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.923879, -0.382683, 0, 0.382683, 0.923879, 0, 0, 0, 1, 1, 0.2, -1)
-
-[node name="Conveyor Belt5" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.923879, -0.382683, 0, 0.382683, 0.923879, 0, 0, 0, 1, 1.96098, 0.583977, -1)
-
-[node name="Conveyor Belt6" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.01454, 0.611518, -1)
-
-[node name="Conveyor Belt7" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.01454, 0.611518, 0.0250018)
-
-[node name="Conveyor Belt8" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.01454, 0.611518, 1.06622)
-
-[node name="Conveyor Belt9" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.01454, 0.453183, 2.11837)
-
-[node name="Conveyor Belt10" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.0128, 0.453183, 2.11837)
-
-[node name="Conveyor Belt11" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.02373, 0.453183, 2.11837)
-
-[node name="Conveyor Belt12" parent="." instance=ExtResource("2_h2yge")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.00283337, 0.402756, 2.02256)
+sky_mode = 1
 
 [node name="Lattia" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92394, -0.734633, 0.397955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+metadata/_edit_lock_ = true
 
 [node name="Mesh" type="MeshInstance3D" parent="Lattia"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00399446, -5.96046e-08, -0.00030899)
@@ -70,3 +43,12 @@ mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia"]
 shape = SubResource("BoxShape3D_lquwl")
+
+[node name="Player" parent="." instance=ExtResource("1_0xm2m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="Icebox" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="BeltGroupStraight" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -4.69243)
