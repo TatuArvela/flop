@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://rkbpj3aicgkj"]
+[gd_scene load_steps=5 format=3 uid="uid://rkbpj3aicgkj"]
 
 [ext_resource type="PackedScene" uid="uid://dw8ji0hg5ve2f" path="res://kalatehdas.tscn" id="1_0x1d3"]
 [ext_resource type="PackedScene" uid="uid://b4n0qxokxewf2" path="res://yee.tscn" id="2_7m12l"]
+[ext_resource type="PackedScene" uid="uid://by11ppeap2rc3" path="res://belt_1.fbx" id="3_b0n0d"]
+[ext_resource type="PackedScene" uid="uid://bj5yptjjnkuoq" path="res://belt_0.fbx" id="4_1lbnt"]
 
 [node name="Heikki_scene" type="Node3D"]
 
@@ -9,3 +11,9 @@
 transform = Transform3D(0.497467, 0, 0, 0, 0.139238, 0, 0, 0, 0.497467, 35.6736, -0.670786, 8.31068)
 
 [node name="SceneRoot" parent="." instance=ExtResource("2_7m12l")]
+
+[node name="belt_1" parent="." instance=ExtResource("3_b0n0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946499, 0.850108, 3.53971)
+
+[node name="belt_0" parent="." instance=ExtResource("4_1lbnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07083, 0.212099, 1.89017)
