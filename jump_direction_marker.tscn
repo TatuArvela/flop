@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b47r3in2sppv6"]
+[gd_scene load_steps=11 format=3 uid="uid://b47r3in2sppv6"]
 
 [ext_resource type="PackedScene" uid="uid://dxc3p7gpgpbdx" path="res://jump_strength_indicator.tscn" id="1_3qcq8"]
 [ext_resource type="Script" uid="uid://crcxec4gllnlh" path="res://jump_direction_marker.gd" id="1_agqjr"]
+[ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_j8hx4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37mey"]
+render_priority = 1
+no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0, 1, 0, 1)
 
@@ -19,7 +22,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ring:scale")
+tracks/0/path = NodePath("./Shaker:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,25 +34,25 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Arrows:position")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.35, 0, 0)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_37mey"]
 resource_name = "idle"
 length = 0.5
 loop_mode = 1
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ring:scale")
+tracks/0/path = NodePath("./Shaker:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,22 +61,70 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_j8hx4"]
+resource_name = "fade_in"
+length = 0.25
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Shaker:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Arrows:position")
-tracks/1/interp = 2
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lwgwj"]
+resource_name = "fade_out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./Shaker:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.35, 0, 0), Vector3(0.385, 0, 0), Vector3(0.35, 0, 0)]
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0.8, 0.8, 0.8), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3qcq8"]
 _data = {
 &"RESET": SubResource("Animation_3qcq8"),
+&"fade_in": SubResource("Animation_j8hx4"),
+&"fade_out": SubResource("Animation_lwgwj"),
 &"idle": SubResource("Animation_37mey")
 }
 
@@ -81,12 +132,16 @@ _data = {
 physics_interpolation_mode = 2
 script = ExtResource("1_agqjr")
 
-[node name="Arrows" parent="." instance=ExtResource("1_3qcq8")]
+[node name="Shaker" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_j8hx4")
+
+[node name="Arrows" parent="Shaker" instance=ExtResource("1_3qcq8")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
 arrow_size_increase = 0.2
 
-[node name="Ring" type="MeshInstance3D" parent="."]
+[node name="Ring" type="MeshInstance3D" parent="Shaker"]
 physics_interpolation_mode = 2
 material_override = SubResource("StandardMaterial3D_37mey")
 cast_shadow = 0

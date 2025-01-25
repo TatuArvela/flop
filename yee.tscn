@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=7 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu.tscn" id="1_etga3"]
+[ext_resource type="Script" uid="uid://d0t0ngkwg1qt1" path="res://camera_follw.gd" id="2_75oda"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 size = Vector3(10, 0.2, 10)
 subdivide_width = 2
 subdivide_depth = 4
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_etga3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_75oda"]
 size = Vector3(10, 0.2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75oda"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etga3"]
 
 [node name="SceneRoot" type="Node3D"]
 
@@ -18,13 +23,58 @@ size = Vector3(10, 0.2, 10)
 mesh = SubResource("BoxMesh_4274j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia"]
+shape = SubResource("BoxShape3D_75oda")
+
+[node name="Box" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.360156, -1.73169)
+
+[node name="Mesh" type="MeshInstance3D" parent="Box"]
+mesh = SubResource("BoxMesh_75oda")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_etga3")
+
+[node name="Box2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.418526, 0.00829959, -1.28239)
+
+[node name="Mesh" type="MeshInstance3D" parent="Box2"]
+mesh = SubResource("BoxMesh_75oda")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2"]
+shape = SubResource("BoxShape3D_etga3")
+
+[node name="Box3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0610874, -0.206327, -2.04392)
+
+[node name="Mesh" type="MeshInstance3D" parent="Box3"]
+mesh = SubResource("BoxMesh_75oda")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box3"]
+shape = SubResource("BoxShape3D_etga3")
+
+[node name="Box4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4549, 0.512074, 0.0378065)
+
+[node name="Mesh" type="MeshInstance3D" parent="Box4"]
+mesh = SubResource("BoxMesh_75oda")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box4"]
 shape = SubResource("BoxShape3D_etga3")
 
 [node name="Fisu" parent="." instance=ExtResource("1_etga3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212672, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.509042, 0.621249, -0.595757, 0, 0.692143, 0.72176, 0.860742, -0.367406, 0.35233, -1.442, 1.471, 0.505)
+[node name="CameraPivot" type="Node3D" parent="Fisu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_75oda")
+
+[node name="CameraBoom" type="SpringArm3D" parent="Fisu/CameraPivot"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+collision_mask = 2
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Fisu/CameraPivot/CameraBoom"]
+transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.792471, -0.521265, 0.31666, 0, 0.519191, 0.854658, -0.60991, -0.677292, 0.411444, 0.402517, 2.94438, 0.748134)

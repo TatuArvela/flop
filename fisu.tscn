@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=16 format=3 uid="uid://cxcfsh1y3h63f"]
 
+[ext_resource type="Script" uid="uid://bxrw26fn14eg4" path="res://fisu_root.gd" id="1_tg84s"]
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu.gd" id="1_y411k"]
 [ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://jump_direction_marker.tscn" id="2_gty11"]
 
@@ -42,6 +43,7 @@ size = Vector3(0.1, 0.1, 0.01)
 size = Vector3(0.017, 0.035, 0.06)
 
 [node name="Fisu" type="Node3D"]
+script = ExtResource("1_tg84s")
 
 [node name="Pää" type="RigidBody3D" parent="."]
 physics_interpolation_mode = 1

@@ -27,12 +27,13 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var is_direction_input_active = input_dir.length_squared() > 0
 
-	direction_marker.visible = is_grounded && (is_direction_input_active || direction_marker.is_charging)
-	direction_marker.global_position.x = body.global_position.x
-	direction_marker.global_position.z = body.global_position.z
+	var direction_marker_should_be_visible = is_grounded && (is_direction_input_active || direction_marker.is_charging)
+	if not direction_marker.visible and direction_marker_should_be_visible:
+		direction_marker.fade_in()
+	elif direction_marker.visible and not direction_marker_should_be_visible:
+		direction_marker.fade_out()
 
-	var modified_distance_y = max(0, body.global_position.y) * 0.1
-	direction_marker.global_position.y = direction_marker_y + modified_distance_y
+	direction_marker.global_position = body.global_position
 
 	if is_direction_input_active:
 		target_direction = input_dir.normalized()
@@ -53,6 +54,8 @@ func _physics_process(delta: float) -> void:
 		var min_strength = 0.5
 		var max_strength = 1.0
 		var strength = lerp(min_strength, max_strength, strength_percentage)
+
+		direction_marker.shake(0.1)
 
 		var jump_force_direction = Vector3(direction.x, jump_direction_y, direction.y)
 		self.apply_impulse(jump_force_direction * jump_force * strength)
