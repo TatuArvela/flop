@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7cy5hk8s56g0"]
+
+[ext_resource type="PackedScene" uid="uid://csq4qi7ccu6ok" path="res://conveyor/medium/liukuhihna_keski.fbx" id="1_y2tll"]
+[ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor/conveyor_surface.tres" id="2_gvqgp"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_h12lg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_guqd5"]
+render_priority = 0
+shader = ExtResource("2_gvqgp")
+shader_parameter/FloatParameter = 2.0
+
+[node name="liukuhihna_keski" instance=ExtResource("1_y2tll")]
+
+[node name="liukuhihna_keski" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_guqd5")
+surface_material_override/1 = ExtResource("3_h12lg")

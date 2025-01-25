@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://digrug7hfrugd"]
+[gd_scene load_steps=11 format=3 uid="uid://digrug7hfrugd"]
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cqu1wu4akaifc" path="res://conveyor_belt/belt_group_straight.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bld2afe0uyimy" path="res://conveyor/medium/conveyor_medium.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bqncu8x6gqo6u" path="res://conveyor/long/conveyor_long.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dobv7dt6j8yby" path="res://conveyor/short/conveyor_short.tscn" id="6_7mycd"]
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 ambient_light_source = 3
@@ -51,9 +53,11 @@ metadata/_edit_lock_ = true
 [node name="Mesh" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00399446, -5.96046e-08, -0.00030899)
 mesh = SubResource("BoxMesh_1bvp3")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_lquwl")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_0xm2m")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.055, 0.5, -0.0753886)
@@ -61,5 +65,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.055
 [node name="Icebox" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.0808, 0, -0.0570118)
 
-[node name="BeltGroupStraight" parent="." instance=ExtResource("4_lquwl")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.0808, 0, -4.69243)
+[node name="ConveyorLong" parent="." instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.996, -0.0999954, 0.941004)
+
+[node name="ConveyorMedium" parent="." instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9761, -0.0999951, 2.06291)
+
+[node name="ConveyorShort" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4736, -0.0999947, 3.18926)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1jnq5frn3mjj"]
+
+[ext_resource type="PackedScene" uid="uid://bj4yt3aylv3h7" path="res://conveyor/short/liukuhihna_lyhyt.fbx" id="1_vbohg"]
+[ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor/conveyor_surface.tres" id="2_al6a2"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_uy2wl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iac8v"]
+render_priority = 0
+shader = ExtResource("2_al6a2")
+shader_parameter/FloatParameter = 1.0
+
+[node name="liukuhihna_lyhyt" instance=ExtResource("1_vbohg")]
+
+[node name="liukuhihna_lyhyt" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_iac8v")
+surface_material_override/1 = ExtResource("3_uy2wl")

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctcgi7rdwhpi0"
-path="res://.godot/imported/conveyor_belt.fbx-3e58daec1601f4cfa78149436dc27aee.scn"
+uid="uid://bj4yt3aylv3h7"
+path="res://.godot/imported/liukuhihna_lyhyt.fbx-da729f5dedb171959b83642031adeec0.scn"
 
 [deps]
 
-source_file="res://conveyor_belt/conveyor_belt.fbx"
-dest_files=["res://.godot/imported/conveyor_belt.fbx-3e58daec1601f4cfa78149436dc27aee.scn"]
+source_file="res://conveyor/short/liukuhihna_lyhyt.fbx"
+dest_files=["res://.godot/imported/liukuhihna_lyhyt.fbx-da729f5dedb171959b83642031adeec0.scn"]
 
 [params]
 

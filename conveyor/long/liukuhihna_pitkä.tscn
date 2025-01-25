@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs8ncbdivhgi7"]
+
+[ext_resource type="PackedScene" uid="uid://bgltbrtbehtw2" path="res://conveyor/long/liukuhihna_pitkä.fbx" id="1_jg58d"]
+[ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor/conveyor_surface.tres" id="2_04fmi"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_wn76u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0afrc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_04fmi")
+shader_parameter/FloatParameter = 3.0
+
+[node name="liukuhihna_pitkä" instance=ExtResource("1_jg58d")]
+
+[node name="liukuhihna_pitkä" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0afrc")
+surface_material_override/1 = ExtResource("3_wn76u")

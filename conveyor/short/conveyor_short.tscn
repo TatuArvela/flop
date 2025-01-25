@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dobv7dt6j8yby"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://c37mwx6vgoskb" path="res://conveyor/conveyor_physics.tres" id="1_pqjyv"]
+[ext_resource type="Script" uid="uid://bufi31rdp6epu" path="res://conveyor/conveyor.gd" id="2_agbf5"]
+[ext_resource type="PackedScene" uid="uid://b1jnq5frn3mjj" path="res://conveyor/short/liukuhihna_lyhyt.tscn" id="3_676ry"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rskod"]
+size = Vector3(1, 0.2, 1)
+
+[node name="ConveyorShort" type="StaticBody3D"]
+physics_material_override = ExtResource("1_pqjyv")
+script = ExtResource("2_agbf5")
+
+[node name="liukuhihna_lyhyt" parent="." instance=ExtResource("3_676ry")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_rskod")
+
+[node name="Start" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="End" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

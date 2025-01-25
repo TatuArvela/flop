@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cga2kifrgmple"
-path.s3tc="res://.godot/imported/belt.png-c37e44cc023a5c103efb2fcbe6961eb1.s3tc.ctex"
+path.s3tc="res://.godot/imported/belt.png-0f7799b7eb1dc514e96e59352f2e8354.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://conveyor_belt/belt.png"
-dest_files=["res://.godot/imported/belt.png-c37e44cc023a5c103efb2fcbe6961eb1.s3tc.ctex"]
+source_file="res://conveyor/belt.png"
+dest_files=["res://.godot/imported/belt.png-0f7799b7eb1dc514e96e59352f2e8354.s3tc.ctex"]
 
 [params]
 
