@@ -1,18 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgimnitvleo3t"]
+[gd_scene load_steps=4 format=3 uid="uid://bgimnitvleo3t"]
 
-[ext_resource type="Script" uid="uid://chpt8ajvoycr4" path="res://push_area.gd" id="1_a4ohy"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4ohy"]
+friction = 100.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
-size = Vector3(4, 1, 10)
+size = Vector3(4, 0.2, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
-size = Vector3(4, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
 size = Vector3(4, 0.2, 10)
 
 [node name="Conveyor Belt" type="StaticBody3D"]
-collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_a4ohy")
+constant_linear_velocity = Vector3(0, 0, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -21,12 +20,3 @@ shape = SubResource("BoxShape3D_1bvp3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_lquwl")
-
-[node name="Push Area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-script = ExtResource("1_a4ohy")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Push Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_7mycd")
