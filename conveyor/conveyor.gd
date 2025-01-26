@@ -42,11 +42,11 @@ func _process(_delta):
 	
 	if (strutStart && strutEnd):
 		strutStart.height = start.global_position.y
-		strutStart.position.y = -start.global_position.y
+		strutStart.position.y = 0
 		strutStart.rotation.z = -start.global_rotation.z
 		strutEnd.height = end.global_position.y
 		strutEnd.position.x = end.position.x - 0.1
-		strutEnd.position.y = -end.global_position.y
+		strutEnd.position.y = 0
 		strutEnd.rotation.z = -end.global_rotation.z
 	
 	if (end && start):

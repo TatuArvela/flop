@@ -14,8 +14,11 @@ func _process(_delta):
 		strutBase.hide()
 	
 	var girderScale := Vector3.ZERO
-	var girderHeight = height / 0.8
+	var girderYScale = height / 0.8
 	girderScale.x = 1
-	girderScale.y = girderHeight
+	girderScale.y = girderYScale
 	girderScale.z = 1
 	strutGirder.scale = girderScale
+	
+	strutBase.position.y = -height
+	strutGirder.position.y = -height
