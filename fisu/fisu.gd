@@ -7,6 +7,10 @@ extends Node3D
 @export var jump_force = 2.5
 @export var direction_marker_y = 0.0
 @export var turn_rate = 7.5
+
+@export_range(-180, 180, 0.5, "radians_as_degrees") var direction_indicator_visual_offset_angle = deg_to_rad(-45)
+@export_range(-180, 180, 0.5, "radians_as_degrees") var direction_indicator_physics_offset_angle = deg_to_rad(45)
+
 @export var turn_only_on_input: bool = false
 
 var _min_jump_strength: float = 0.5
@@ -31,9 +35,6 @@ var _max_jump_strength: float = 1.0
 @export_group("Camera shake")
 @export var jump_camera_shake = 0.025
 @export var hit_camera_shake_scale = 0.01
-
-@export_range(-180, 180, 0.5, "radians_as_degrees") var direction_indicator_visual_offset_angle = deg_to_rad(-45)
-@export_range(-180, 180, 0.5, "radians_as_degrees") var direction_indicator_physics_offset_angle = deg_to_rad(45)
 
 @export_group("Prewire")
 @export var blood_prefab: PackedScene

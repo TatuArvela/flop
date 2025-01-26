@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=23 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu/fisu.gd" id="1_y411k"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fisu/fish_physics_material.tres" id="2_7nxjr"]
@@ -8,7 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://brk46ig10ofes" path="res://hazards/jizz_emitter.tscn" id="3_jxxep"]
 [ext_resource type="Script" uid="uid://lqyo8jxjwibd" path="res://fisu/bodypart.gd" id="4_q6i8d"]
 [ext_resource type="PackedScene" uid="uid://buiyqltv4xg52" path="res://hazards/idle_bubble_emitter.tscn" id="6_mi50l"]
-[ext_resource type="Script" uid="uid://stjy5l4ko3se" path="res://hazards/idle_bubble_emitter.gd" id="7_8go8r"]
+[ext_resource type="AudioStream" uid="uid://did1ciioauuq4" path="res://sfx/445109__breviceps__mud-splat.wav" id="9_8go8r"]
+[ext_resource type="Script" uid="uid://b6iyfo6irgcaq" path="res://sfx.gd" id="10_ssygf"]
+[ext_resource type="AudioStream" uid="uid://dydyk3n6fk25h" path="res://sfx/495117__nebulasnails__wet-splat-2.mp3" id="11_jgu5j"]
+[ext_resource type="AudioStream" uid="uid://de4sk8g8tr3vq" path="res://sfx/495118__nebulasnails__wet-splat-1.mp3" id="12_t3sob"]
+[ext_resource type="AudioStream" uid="uid://cadgfqv3tvxkb" path="res://sfx/528834__magnuswaker__meaty-splosh.wav" id="13_t3sob"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
 size = Vector3(0.025, 0.067, 0.05)
@@ -109,7 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013571, -0.0118829)
 [node name="BubblesEmitter" parent="head/BubbleEmitterMarker" instance=ExtResource("6_mi50l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013571, -0.150424)
 top_level = true
-script = ExtResource("7_8go8r")
 
 [node name="Hinge1" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.057808, 0.998328, 0, -0.998328, 0.057808, 0, 0, -0.108541)
@@ -596,6 +599,26 @@ transform = Transform3D(1, 0, 0, 0, 0.972178, -0.234243, 0, 0.234243, 0.972178, 
 shape = SubResource("BoxShape3D_qhqxp")
 
 [node name="JumpDirectionMarker" parent="." instance=ExtResource("2_gty11")]
+
+[node name="Splörts" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8go8r")
+max_polyphony = 4
+bus = &"Player SFX"
+script = ExtResource("10_ssygf")
+pitch_min = 0.5
+pitch_max = 1.5
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_jgu5j")
+max_polyphony = 4
+bus = &"Player SFX"
+script = ExtResource("10_ssygf")
+pitch_min = 0.5
+pitch_max = 1.5
+sfx = Array[AudioStream]([ExtResource("11_jgu5j"), ExtResource("12_t3sob"), ExtResource("13_t3sob")])
+
+[connection signal="jumped" from="." to="Jump" method="start_play"]
+[connection signal="landed" from="." to="Splörts" method="start_play"]
 
 [editable path="head/fisu_pala"]
 [editable path="body_1/fisu_pala"]

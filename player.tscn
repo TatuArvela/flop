@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwhn84gvyppax"]
+[gd_scene load_steps=6 format=3 uid="uid://bwhn84gvyppax"]
 
 [ext_resource type="Script" uid="uid://cdjsvdjtptqn6" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu/fisu.tscn" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://d0t0ngkwg1qt1" path="res://camera_follw.gd" id="3_sweqy"]
+[ext_resource type="AudioStream" uid="uid://crigwghlcjqhq" path="res://sfx/muzak-blob_03.ogg" id="5_sweqy"]
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("body")]
 script = ExtResource("1_hqtel")
@@ -34,3 +35,8 @@ spring_length = 0.75
 
 [node name="Camera3D" type="Camera3D" parent="CameraShaker/CameraPivot/CameraBoom"]
 transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sweqy")
+autoplay = true
+bus = &"Muzak"

@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://buiyqltv4xg52"]
+[gd_scene load_steps=10 format=3 uid="uid://buiyqltv4xg52"]
 
+[ext_resource type="Script" uid="uid://stjy5l4ko3se" path="res://hazards/idle_bubble_emitter.gd" id="1_7k5fq"]
 [ext_resource type="Material" uid="uid://dcntyuh2dbfq" path="res://bubble_particle.tres" id="2_7k5fq"]
+[ext_resource type="AudioStream" uid="uid://ccjhtpamf1n3y" path="res://sfx/506545__matrixxx__pop-02.wav" id="2_jiwm1"]
+[ext_resource type="AudioStream" uid="uid://07ilsrek1chb" path="res://sfx/527522__narjara__ppop.wav" id="3_amm6x"]
+[ext_resource type="AudioStream" uid="uid://dpim55jo6p3kk" path="res://sfx/757612__qubodup__pop-sound.wav" id="4_j3mqi"]
 
 [sub_resource type="Curve" id="Curve_7k5fq"]
 _data = [Vector2(0, 1), 0.0, -0.0791844, 0, 0, Vector2(1, 0), 0.347155, 0.0, 0, 0]
@@ -26,6 +30,10 @@ size = Vector2(0.05, 0.05)
 orientation = 1
 
 [node name="BubblesEmitter" type="Node3D"]
+script = ExtResource("1_7k5fq")
+sfx = Array[AudioStream]([ExtResource("2_jiwm1"), ExtResource("3_amm6x"), ExtResource("4_j3mqi")])
+min_delay = 1.5
+max_delay = 3.5
 
 [node name="emitter" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0287533, 0)
@@ -35,3 +43,10 @@ lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_p5rwm")
 draw_pass_1 = SubResource("QuadMesh_ldeed")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+bus = &"Ambient"
+
+[node name="SfxTimer" type="Timer" parent="."]
+one_shot = true
