@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=14 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d04y3ma01o7vy" path="res://hazards/guillotine.tscn" id="4_yos14"]
 [ext_resource type="PackedScene" uid="uid://bdoxj3qn7n2ch" path="res://blood_emitter.tscn" id="5_egq66"]
 [ext_resource type="PackedScene" uid="uid://b7p8qlq6lpiev" path="res://hazards/buzzsaw.tscn" id="6_tialh"]
+[ext_resource type="Shader" uid="uid://hsgkq3qovpub" path="res://post_processing.gdshader" id="7_8p5qb"]
+[ext_resource type="Script" uid="uid://dv0in633hqnys" path="res://post_processing.gd" id="8_481ge"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 material = ExtResource("1_yos14")
@@ -19,6 +21,10 @@ size = Vector3(10, 0.2, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_75oda"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_etga3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_481ge"]
+shader = ExtResource("7_8p5qb")
+shader_parameter/darken = 0.0
 
 [node name="SceneRoot" type="Node3D"]
 
@@ -91,3 +97,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779452, 0.1, 0.272581)
 
 [node name="Buzzsaw" parent="." instance=ExtResource("6_tialh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25884, 0.098932, -0.838859)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" groups=["PostProcessing"]]
+material = SubResource("ShaderMaterial_481ge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_481ge")

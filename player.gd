@@ -7,7 +7,7 @@ extends Node3D
 
 var input_dir: Vector2 = Vector2.ZERO
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if body != null && !body.is_queued_for_deletion():
 		body.controller = self
 
@@ -22,6 +22,12 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("debug_hurt"):
 		body.health -= 1
+
+	var post_processing: PostProcessing = get_tree().get_first_node_in_group("PostProcessing")
+	if post_processing != null:
+		var target_darken = 0.9 if body.is_dead else 0.0
+		var rate = 0.5 if body.is_dead else 1.0
+		post_processing.darken = move_toward(post_processing.darken, target_darken, rate * delta)
 
 func _physics_process(_delta: float) -> void:
 	input_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
