@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp61ygc0h2hxb"]
+[gd_scene load_steps=12 format=3 uid="uid://dp61ygc0h2hxb"]
 
 [ext_resource type="Script" uid="uid://bbx0gdqdwvut4" path="res://hazards/horizontal_cutter.gd" id="1_qksko"]
 [ext_resource type="PackedScene" uid="uid://bora31mv2k73v" path="res://hazards/FishFileeMaker.fbx" id="2_bkco3"]
 [ext_resource type="Script" uid="uid://dmwvxy0etulo0" path="res://hazards/hurtbox.gd" id="2_qksko"]
+[ext_resource type="AudioStream" uid="uid://bpyy7p2waniw6" path="res://sfx/fast-simple-chop-1.ogg" id="4_bxxfn"]
+[ext_resource type="Script" uid="uid://bc84ulaxru61g" path="res://sfx_3d.gd" id="5_w5kv3"]
 
 [sub_resource type="Animation" id="Animation_fixeq"]
 length = 0.001
@@ -35,7 +37,7 @@ tracks/1/keys = {
 resource_name = "spin"
 length = 2.5
 loop_mode = 1
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,6 +62,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.242, -0.236, -0.236, 0.242]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_bxxfn")
+}],
+"times": PackedFloat32Array(0.04)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbqbd"]
 _data = {
@@ -128,5 +145,14 @@ instant_damage = true
 transform = Transform3D(1, -1.31937e-14, 0, -1.31937e-14, 1, 0, 0, 0, 1, 0.0321804, -0.000242323, 0.176625)
 shape = SubResource("BoxShape3D_tqsjl")
 debug_color = Color(0.941176, 0.180392, 0.419608, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = 8.498
+max_db = 3.484
+max_distance = 5.0
+bus = &"Ambient SFX"
+script = ExtResource("5_w5kv3")
+pitch_min = 0.9
+pitch_max = 1.2
 
 [editable path="SawOrigin/FishFileeMaker"]

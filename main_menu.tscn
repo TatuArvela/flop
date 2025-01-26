@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://tij2iw8ducun"]
 
 [ext_resource type="FontFile" uid="uid://c64eaas20duxo" path="res://UI/Naturaly.otf" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://ch6h4c04xo4xn" path="res://main_menu.gd" id="2_8qtwp"]
+[ext_resource type="Script" path="res://main_menu.gd" id="2_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://d0y0j3qqfd615" path="res://UI/logoidk.png" id="2_jix8l"]
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://dap5y6yh0352i" path="res://UI/tussu.png" id="4_nlkkf"]
@@ -1092,7 +1092,7 @@ parameters/Blend2/blend_amount = 0.5
 transform = Transform3D(-1.5, 0, 0, 0, 1.5, 7.84136e-05, 0, -7.84136e-05, 1.5, 0.459527, -4.53825, 0.201528)
 
 [node name="Skeleton3D" parent="handussi/Empty/Armature_001" index="0"]
-bones/0/position = Vector3(-0.0192514, -0.0237772, 0.00865686)
+bones/0/position = Vector3(-0.0192514, -0.0237772, 0.00911991)
 bones/0/rotation = Quaternion(0.00728864, 0.0734544, -0.0592506, 0.99551)
 bones/1/position = Vector3(-4.91968e-10, 0.0101504, -1.10498e-09)
 bones/1/rotation = Quaternion(0.000104435, -0.0012709, -0.0745316, 0.997218)
@@ -1101,7 +1101,7 @@ bones/2/position = Vector3(0.00091967, 0.0115641, 0.00211396)
 bones/2/rotation = Quaternion(0.0378643, -0.0276815, 0.00565695, 0.998883)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(1.73282e-09, 0.00530978, -1.4027e-09)
-bones/3/rotation = Quaternion(-0.00958306, 0.0393037, -0.431806, 0.901059)
+bones/3/rotation = Quaternion(-0.0191965, 0.0470757, -0.430986, 0.900925)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.62848e-10, 0.00464754, 9.64061e-10)
 bones/4/rotation = Quaternion(-0.0138502, -0.00962348, -0.550489, 0.834672)
@@ -1118,7 +1118,7 @@ bones/9/position = Vector3(0.00106347, 0.0123566, 2.46131e-05)
 bones/9/rotation = Quaternion(0.0255863, -0.0229038, 0.0552634, 0.997881)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(1.5538e-09, 0.0055008, -4.02825e-10)
-bones/10/rotation = Quaternion(-0.0317173, 0.0185906, -0.560658, 0.827231)
+bones/10/rotation = Quaternion(-0.0399018, 0.0290839, -0.560384, 0.82676)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-1.04161e-09, 0.00440429, 1.17576e-10)
 bones/11/rotation = Quaternion(0.0160025, 0.0309371, -0.449374, 0.892665)
@@ -1152,7 +1152,7 @@ bones/23/position = Vector3(0.000372286, 0.0112856, -0.00230973)
 bones/23/rotation = Quaternion(-0.0336165, 0.0264679, -0.0437488, 0.998126)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(1.41805e-09, 0.00495958, 1.7613e-10)
-bones/24/rotation = Quaternion(0.0915623, -0.0908769, -0.335894, 0.933024)
+bones/24/rotation = Quaternion(0.0780983, -0.0826113, -0.337761, 0.934341)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(-2.59378e-10, 0.00441218, -5.9829e-10)
 bones/25/rotation = Quaternion(0.040323, 0.0355409, -0.618641, 0.783833)
@@ -1182,7 +1182,7 @@ bones/34/rotation = Quaternion(-6.36516e-07, -6.35512e-07, -5.19875e-07, 1)
 bones/34/scale = Vector3(1, 1, 1)
 
 [node name="tussi" parent="handussi/Empty" index="1"]
-transform = Transform3D(-0.801262, -0.173799, 0.572514, 0.261156, -0.962509, 0.0733097, 0.538309, 0.208256, 0.81661, 0.00323816, 0.00178064, 0.00311384)
+transform = Transform3D(-0.797619, -0.187231, 0.573365, 0.227873, -0.97369, -0.000956937, 0.558459, 0.129891, 0.819299, 0.00327873, 0.00177143, 0.0033095)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/PlayButton" to="CanvasLayer/MainMenu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/DontButton" to="CanvasLayer/MainMenu" method="_on_dont_button_pressed"]
