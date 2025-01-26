@@ -14,8 +14,6 @@ body_prefab = ExtResource("1_i3pqv")
 body = NodePath("Fisu")
 
 [node name="Fisu" parent="." instance=ExtResource("1_i3pqv")]
-jump_direction_y = 2.0
-jump_force = 2.0
 turn_rate = 5.0
 turn_only_on_input = true
 
