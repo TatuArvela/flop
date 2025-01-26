@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp61ygc0h2hxb"]
+
+[ext_resource type="Script" uid="uid://bbx0gdqdwvut4" path="res://hazards/horizontal_cutter.gd" id="1_qksko"]
+[ext_resource type="PackedScene" uid="uid://bora31mv2k73v" path="res://hazards/FishFileeMaker.fbx" id="2_bkco3"]
+[ext_resource type="Script" uid="uid://dmwvxy0etulo0" path="res://hazards/hurtbox.gd" id="2_qksko"]
+
+[sub_resource type="Animation" id="Animation_fixeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SawOrigin/FishFileeMaker/Bottom_001/Blade_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_pos")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.242]
+}
+
+[sub_resource type="Animation" id="Animation_uyfyq"]
+resource_name = "spin"
+length = 2.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SawOrigin/FishFileeMaker/Bottom_001/Blade_001:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.2, 2.5),
+"transitions": PackedFloat32Array(0.5, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.174533, 0), Vector3(0, 0.0436332, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_pos")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 2.5),
+"transitions": PackedFloat32Array(2, 1, 1, 1),
+"update": 0,
+"values": [0.242, -0.236, -0.236, 0.242]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbqbd"]
+_data = {
+&"RESET": SubResource("Animation_fixeq"),
+&"spin": SubResource("Animation_uyfyq")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_or84v"]
+size = Vector3(0.496806, 0.0860125, 0.0238623)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jiocf"]
+size = Vector3(0.0182983, 0.459939, 0.0284912)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqsjl"]
+size = Vector3(0.100739, 0.0295455, 0.383705)
+
+[node name="Cutter" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050338, 0, -0.0218848)
+script = ExtResource("1_qksko")
+height_offset = -0.1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.291794, 0.434176, -2.35878e-09)
+light_color = Color(1, 0, 0, 1)
+light_cull_mask = 4294967293
+spot_range = 0.612871
+spot_angle = 42.5862
+
+[node name="SawSpinner" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fbqbd")
+}
+autoplay = "spin"
+
+[node name="SawOrigin" type="Node3D" parent="."]
+
+[node name="FishFileeMaker" parent="SawOrigin" instance=ExtResource("2_bkco3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2, 0, 7.45058e-09)
+
+[node name="Blade_001" parent="SawOrigin/FishFileeMaker/Bottom_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, -0.1, 0.242)
+
+[node name="Saha" type="StaticBody3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001" index="0"]
+transform = Transform3D(4.997e-11, 1.07353e-07, -1, -1, 0.00078535, 3.42979e-11, 0.00078535, 1, 1.07353e-07, -0.0489158, 0.156678, -0.0489874)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001/Saha"]
+transform = Transform3D(-4.37114e-08, 1.27409e-17, -1, 0, 1, 6.5905e-15, 1, 0, -4.37114e-08, -0.0383216, 0.0465719, -0.217712)
+shape = SubResource("BoxShape3D_or84v")
+
+[node name="Tolppa" type="StaticBody3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00153043, -0.0527271, -0.0416036)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001/Tolppa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421503, 0.028424, 0.00203858)
+shape = SubResource("BoxShape3D_jiocf")
+
+[node name="Hurtbox" type="Area3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001" index="2"]
+transform = Transform3D(-1.07353e-07, 8.73728e-08, 1, -0.000785394, 1, -8.74571e-08, -1, -0.000785394, -1.07284e-07, 0.0706493, 0.198362, -0.00104205)
+script = ExtResource("2_qksko")
+instant_damage = true
+
+[node name="Shape" type="CollisionShape3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001/Hurtbox"]
+transform = Transform3D(1, -1.31937e-14, 0, -1.31937e-14, 1, 0, 0, 0, 1, 0.0321804, -0.000242323, 0.176625)
+shape = SubResource("BoxShape3D_tqsjl")
+debug_color = Color(0.941176, 0.180392, 0.419608, 1)
+
+[editable path="SawOrigin/FishFileeMaker"]

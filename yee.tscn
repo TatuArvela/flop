@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=15 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b7p8qlq6lpiev" path="res://hazards/buzzsaw.tscn" id="6_tialh"]
 [ext_resource type="Shader" uid="uid://hsgkq3qovpub" path="res://post_processing.gdshader" id="7_8p5qb"]
 [ext_resource type="Script" uid="uid://dv0in633hqnys" path="res://post_processing.gd" id="8_481ge"]
+[ext_resource type="PackedScene" uid="uid://dp61ygc0h2hxb" path="res://hazards/horizontal_cutter.tscn" id="9_0hv06"]
 [ext_resource type="PackedScene" uid="uid://d1745nrjl04j4" path="res://hazards/vertical_cutter.tscn" id="9_v3x6f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
@@ -108,3 +109,6 @@ script = ExtResource("8_481ge")
 
 [node name="Cutter" parent="." instance=ExtResource("9_v3x6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29184, 0.101693, 0.42585)
+
+[node name="Cutter2" parent="." instance=ExtResource("9_0hv06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18714, 0.102002, 1.43996)

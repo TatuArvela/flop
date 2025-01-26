@@ -117,6 +117,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_4jnwo")
 }
 autoplay = "loop"
+speed_scale = 3.0
 
 [node name="SawSpinner" type="AnimationPlayer" parent="."]
 libraries = {
@@ -128,7 +129,7 @@ autoplay = "spin"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.5, 0)
 
 [node name="Shaker" type="Node3D" parent="SawOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00282667, -0.00927107, -0.00988691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00957164, 0.00976307, 0.00896131)
 script = ExtResource("2_uyfyq")
 shake_strength = 0.01
 shake_decay = 0.0

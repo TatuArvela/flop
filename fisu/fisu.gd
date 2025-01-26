@@ -11,6 +11,7 @@ extends Node3D
 @export var physics_offset = deg_to_rad(45)
 
 @export var blood_prefab: PackedScene
+@export var bubbles_prefab: PackedScene
 
 @onready var body: RigidBody3D = get_node("body_1")
 @onready var direction_marker: JumpDirectionMarker = get_node("JumpDirectionMarker")
@@ -132,6 +133,11 @@ func _physics_process(delta: float) -> void:
 		var min_strength = 0.5
 		var max_strength = 1.0
 		var strength = lerp(min_strength, max_strength, strength_percentage)
+
+		var emitter = bubbles_prefab.instantiate()
+		get_tree().current_scene.add_child(emitter)
+		emitter.global_position = body.global_position
+		emitter.global_rotation.y = body.global_rotation.y
 
 		direction_marker.shake(0.1)
 		var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")

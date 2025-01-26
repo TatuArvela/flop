@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxcfsh1y3h63f"]
+[gd_scene load_steps=19 format=3 uid="uid://cxcfsh1y3h63f"]
 
 [ext_resource type="Script" uid="uid://vxvtvfsyaa74" path="res://fisu/fisu.gd" id="1_y411k"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7yqlnjicnqly" path="res://fisu/fish_physics_material.tres" id="2_7nxjr"]
 [ext_resource type="PackedScene" uid="uid://b47r3in2sppv6" path="res://fisu/jump_direction_marker.tscn" id="2_gty11"]
 [ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="2_qp756"]
 [ext_resource type="PackedScene" uid="uid://bdoxj3qn7n2ch" path="res://blood_emitter.tscn" id="2_xalnf"]
+[ext_resource type="PackedScene" uid="uid://brk46ig10ofes" path="res://hazards/jizz_emitter.tscn" id="3_jxxep"]
 [ext_resource type="Script" uid="uid://lqyo8jxjwibd" path="res://fisu/bodypart.gd" id="4_q6i8d"]
+[ext_resource type="PackedScene" uid="uid://buiyqltv4xg52" path="res://hazards/idle_bubble_emitter.tscn" id="6_mi50l"]
+[ext_resource type="Script" uid="uid://stjy5l4ko3se" path="res://hazards/idle_bubble_emitter.gd" id="7_8go8r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qp756"]
 size = Vector3(0.025, 0.067, 0.05)
@@ -38,6 +41,7 @@ size = Vector3(0.015, 0.052, 0.044)
 physics_interpolation_mode = 1
 script = ExtResource("1_y411k")
 blood_prefab = ExtResource("2_xalnf")
+bubbles_prefab = ExtResource("3_jxxep")
 
 [node name="head" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.138541)
@@ -88,6 +92,14 @@ visible = false
 [node name="Shape" type="CollisionShape3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 0.994286, -0.10675, 0, 0.10675, 0.994286, 0, 0.00347811, 0.00472304)
 shape = SubResource("BoxShape3D_qp756")
+
+[node name="BubbleEmitterMarker" type="Marker3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013571, -0.0118829)
+
+[node name="BubblesEmitter" parent="head/BubbleEmitterMarker" instance=ExtResource("6_mi50l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013571, -0.150424)
+top_level = true
+script = ExtResource("7_8go8r")
 
 [node name="Hinge1" type="HingeJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.057808, 0.998328, 0, -0.998328, 0.057808, 0, 0, -0.108541)

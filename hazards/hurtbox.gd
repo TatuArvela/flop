@@ -60,7 +60,7 @@ func hurt_target(fisu: Fisu) -> void:
 		return
 
 	var direction = global_position.direction_to(fisu.body_global_position)
-	fisu.body.apply_impulse(direction * 3.0)
+	fisu.body.apply_impulse(direction * 2.0)
 
 	fisu.health -= 1
 	var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
