@@ -23,4 +23,4 @@ func _process(_delta):
 	
 	strutBase.position.y = -height - 0.1
 	strutGirder.position.y = -height
-	strutGirderColliders.position.y = -height
+	strutGirderColliders.position.y = -height - 20
