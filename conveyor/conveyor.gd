@@ -12,12 +12,11 @@ extends Node3D
 @onready var mediumEnd: Marker3D = get_node('MediumEnd')
 @onready var shortEnd: Marker3D = get_node('ShortEnd')
 
+@onready var strutStart: Node3D = get_node('StrutStart')
+@onready var strutEnd: Node3D = get_node('StrutEnd')
 
 enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
 @export var conveyorSize: ConveyorSize = ConveyorSize.SHORT
-
-@export var startHeight: int = 0
-@export var endHeight: int = 0
 
 func _process(_delta):
 	conveyorLong.hide()
@@ -40,6 +39,15 @@ func _process(_delta):
 		end = shortEnd
 	shownSurface.show()
 	end.show()
+	
+	if (strutStart && strutEnd):
+		strutStart.height = start.global_position.y
+		strutStart.position.y = -start.global_position.y
+		strutStart.rotation.z = -start.global_rotation.z
+		strutEnd.height = end.global_position.y
+		strutEnd.position.x = end.position.x - 0.1
+		strutEnd.position.y = -end.global_position.y
+		strutEnd.rotation.z = -end.global_rotation.z
 	
 	if (end && start):
 		var newRotation := Vector3.ZERO
