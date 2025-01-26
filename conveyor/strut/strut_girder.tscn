@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://q44jm7u872bx"]
+[gd_scene load_steps=5 format=4 uid="uid://q44jm7u872bx"]
 
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="1_pf01u"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qdhgd"]
-size = Vector3(0.1, 0.8, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjyjh"]
 resource_name = "gradient"
@@ -46,15 +43,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7f4c8")
 
-[node name="StrutGirder" type="StaticBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999995, -0.00266756, 0.00160636, 0.0026699, 0.999995, -0.0014558, -0.00160247, 0.00146007, 0.999998, 0, 0.4, 0.43)
-shape = SubResource("BoxShape3D_qdhgd")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999995, -0.00266756, 0.00160636, 0.0026699, 0.999995, -0.0014558, -0.00160247, 0.00146007, 0.999998, -0.001, 0.401, -0.43)
-shape = SubResource("BoxShape3D_qdhgd")
+[node name="StrutGirder" type="Node3D"]
 
 [node name="teline_tolppa" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 67, 0, -100, -2.92866e-06, 0, -0.26, 0)

@@ -6,7 +6,7 @@ extends Node3D
 @export var conveyorLength: int = 1
 @export var conveyorSpeed: float = 1.0
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if modelNode:
 		var surfaceMaterial = modelNode.get_surface_override_material(0)
 		if surfaceMaterial is ShaderMaterial:	

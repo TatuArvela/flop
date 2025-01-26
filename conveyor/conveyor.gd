@@ -21,14 +21,19 @@ enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
 @export var conveyorSpeed: float = 0.5
 
 func _process(_delta):
-	conveyorLong.hide()
 	conveyorLong.process_mode = Node.PROCESS_MODE_DISABLED
+	conveyorLong.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	conveyorLong.hide()
 	longEnd.hide()
-	conveyorMedium.hide()
+
 	conveyorMedium.process_mode = Node.PROCESS_MODE_DISABLED
+	conveyorMedium.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	conveyorMedium.hide()
 	mediumEnd.hide()
-	conveyorShort.hide()
+
 	conveyorShort.process_mode = Node.PROCESS_MODE_DISABLED
+	conveyorMedium.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	conveyorShort.hide()
 	shortEnd.hide()
 	
 	var shownSurface: ConveyorSurface
@@ -44,6 +49,7 @@ func _process(_delta):
 		end = shortEnd
 	shownSurface.show()
 	shownSurface.process_mode = Node.PROCESS_MODE_ALWAYS
+	shownSurface.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	end.show()
 	
 	if (strutStart && strutEnd):
@@ -57,7 +63,6 @@ func _process(_delta):
 	
 	if (end && start):
 		var newRotation := Vector3.ZERO
-		var direction = start.position.direction_to(end.position)
 		conveyorSurface.rotation = newRotation
 	
 	shownSurface.speed = conveyorSpeed

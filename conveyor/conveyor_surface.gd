@@ -14,7 +14,7 @@ func _ready():
 	var velocity = start.global_position.direction_to(end.global_position)
 	set_constant_linear_velocity(velocity * speed)
 	
-func _process(delta):
+func _process(_delta):
 	if (modelNode):
 		modelNode.conveyorSpeed = speed
 		modelNode.conveyorLength = length

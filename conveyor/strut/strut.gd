@@ -3,7 +3,8 @@ class_name Strut
 extends Node3D
 
 @onready var strutBase: StaticBody3D = get_node('StrutBase')
-@onready var strutGirder: StaticBody3D = get_node('StrutGirder')
+@onready var strutGirder: Node3D = get_node('StrutGirder')
+@onready var strutGirderColliders: StaticBody3D = get_node('StrutGirderColliders')
 
 @export var height: float = 0
 
@@ -20,5 +21,6 @@ func _process(_delta):
 	girderScale.z = 1
 	strutGirder.scale = girderScale
 	
-	strutBase.position.y = -height
+	strutBase.position.y = -height - 0.1
 	strutGirder.position.y = -height
+	strutGirderColliders.position.y = -height
