@@ -1,9 +1,9 @@
 [gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://ckuoh7g0uph66"]
 
-[ext_resource type="Texture2D" uid="uid://cga2kifrgmple" path="res://conveyor/belt.png" id="1_v31dc"]
+[ext_resource type="Texture2D" uid="uid://cga2kifrgmple" path="res://conveyor/belt.png" id="1_5tc0p"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_llnxb"]
-texture = ExtResource("1_v31dc")
+texture = ExtResource("1_5tc0p")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_v31dc"]
 default_input_values = [1, Vector2(1, 3), 2, Vector2(0, 0)]
@@ -101,7 +101,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-646.911, -217.388)
 nodes/fragment/0/position = Vector2(1440, -80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_36muu")
 nodes/fragment/3/position = Vector2(-2220, -200)

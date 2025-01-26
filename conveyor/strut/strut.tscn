@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://q44jm7u872bx"]
+
+[ext_resource type="PackedScene" uid="uid://e5bgpujjcneg" path="res://conveyor/strut/teline.tscn" id="1_r01hl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdhgd"]
+size = Vector3(0.2, 1, 1)
+
+[node name="Strut" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999995, -0.00266756, 0.00160636, 0.0026699, 0.999995, -0.0014558, -0.00160247, 0.00146007, 0.999998, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_qdhgd")
+
+[node name="teline" parent="." instance=ExtResource("1_r01hl")]
+transform = Transform3D(1, -1.22034e-05, 1.24685e-05, 1.22034e-05, 1, -4.80669e-07, -1.24685e-05, 4.80669e-07, 1, 0, 0, 0)

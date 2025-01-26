@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://e5bgpujjcneg"]
+
+[ext_resource type="PackedScene" uid="uid://b1aa6kso05cnh" path="res://conveyor/strut/teline.fbx" id="1_jmvcl"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="2_vt7f4"]
+
+[node name="teline" instance=ExtResource("1_jmvcl")]
+
+[node name="teline" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_vt7f4")
+
+[node name="teline_tolppa" parent="." index="1"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 67, 0, -100, -2.92866e-06, 0, -0.369807, 0)
+surface_material_override/0 = ExtResource("2_vt7f4")
