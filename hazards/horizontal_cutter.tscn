@@ -77,7 +77,6 @@ size = Vector3(0.0182983, 0.459939, 0.0284912)
 size = Vector3(0.100739, 0.0295455, 0.383705)
 
 [node name="Cutter" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050338, 0, -0.0218848)
 script = ExtResource("1_qksko")
 height_offset = -0.1
 
@@ -85,11 +84,11 @@ height_offset = -0.1
 wait_time = 0.1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.291794, 0.434176, -2.35878e-09)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.241333, 0.434176, -0.287216)
 light_color = Color(1, 0, 0, 1)
 light_cull_mask = 4294967293
 spot_range = 0.612871
-spot_angle = 42.5862
+spot_angle = 26.3032
 
 [node name="SawSpinner" type="AnimationPlayer" parent="."]
 libraries = {
@@ -104,6 +103,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.2, 
 
 [node name="Blade_001" parent="SawOrigin/FishFileeMaker/Bottom_001" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, -0.1, 0.242)
+layers = 2
 
 [node name="Saha" type="StaticBody3D" parent="SawOrigin/FishFileeMaker/Bottom_001/Blade_001" index="0"]
 transform = Transform3D(4.997e-11, 1.07353e-07, -1, -1, 0.00078535, 3.42979e-11, 0.00078535, 1, 1.07353e-07, -0.0489158, 0.156678, -0.0489874)

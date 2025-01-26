@@ -7,14 +7,15 @@ extends Node3D
 @export var turn_rate = 10.0
 @export var jump_camera_shake = 0.05
 
-@export var visual_offset = deg_to_rad(-45)
-@export var physics_offset = deg_to_rad(45)
+@export_range(-180, 180, 0.5, "radians_as_degrees") var visual_offset = deg_to_rad(-45)
+@export_range(-180, 180, 0.5, "radians_as_degrees") var physics_offset = deg_to_rad(45)
 
 @export var blood_prefab: PackedScene
 @export var bubbles_prefab: PackedScene
 
 @onready var body: RigidBody3D = get_node("body_1")
 @onready var direction_marker: JumpDirectionMarker = get_node("JumpDirectionMarker")
+@onready var idle_bubble_emitter: IdleBubbleEmitter = get_node("head/BubbleEmitterMarker/BubblesEmitter")
 
 @onready var hinges: Array[Joint3D] = [
 	get_node("Hinge1"),
@@ -93,6 +94,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead || controller == null:
+		# NOTE: we might end up here on first frame or sth
+		if idle_bubble_emitter != null && !idle_bubble_emitter.is_queued_for_deletion():
+			idle_bubble_emitter.stop_emitting()
 		return
 
 	# HACK: might do wacky things near walls lmao
@@ -102,6 +106,8 @@ func _physics_process(delta: float) -> void:
 			var camera_shake: Shaker = get_tree().get_first_node_in_group("CameraShaker")
 			camera_shake.shake(hit_strength)
 		is_grounded = true
+		if idle_bubble_emitter != null && !idle_bubble_emitter.is_queued_for_deletion():
+			idle_bubble_emitter.start_emitting()
 
 	var input_dir = controller.input_dir
 	var is_direction_input_active = input_dir.length_squared() > 0
@@ -148,3 +154,5 @@ func _physics_process(delta: float) -> void:
 		var jump_force_direction = Vector3(jump_direction.x, jump_direction_y, jump_direction.y)
 		body.apply_impulse(jump_force_direction * jump_force * strength)
 		is_grounded = false
+		if idle_bubble_emitter != null && !idle_bubble_emitter.is_queued_for_deletion():
+			idle_bubble_emitter.stop_emitting()

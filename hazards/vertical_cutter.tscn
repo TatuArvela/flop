@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.291
 light_color = Color(1, 0, 0, 1)
 light_cull_mask = 4294967293
 spot_range = 0.612871
-spot_angle = 42.5862
+spot_angle = 25.06
 
 [node name="SawSpinner" type="AnimationPlayer" parent="."]
 libraries = {
@@ -105,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267583, 0)
 layers = 2
 
 [node name="Blade" parent="SawOrigin/FishCutter_01/Bottom/sphere" index="0"]
-transform = Transform3D(-1, -0.000785394, -1.50996e-07, -0.000785394, 1, -8.74571e-08, 1.51064e-07, -8.73385e-08, -1, -0.000575773, -0.000657201, -0.00145302)
+transform = Transform3D(-1, -0.000785395, -2.53518e-06, -0.000785395, 1, -8.74571e-08, 2.53525e-06, -8.5466e-08, -1, -0.000575773, -0.000657201, -0.00145302)
 layers = 2
 
 [node name="Hurtbox" type="Area3D" parent="SawOrigin/FishCutter_01/Bottom/sphere/Blade" index="0"]
