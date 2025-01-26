@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_04fmi")
-shader_parameter/FloatParameter = 3.0
+shader_parameter/FloatParameter = 4.0
 
 [node name="liukuhihna_pitkä" instance=ExtResource("1_jg58d")]
 

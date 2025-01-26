@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://lj4qwd416d0k"]
+
+[ext_resource type="Script" uid="uid://bfwfeincsw6gh" path="res://conveyor/conveyor.gd" id="1_0w264"]
+[ext_resource type="PackedScene" uid="uid://bqncu8x6gqo6u" path="res://conveyor/long/conveyor_long.tscn" id="2_1318w"]
+[ext_resource type="PackedScene" uid="uid://bld2afe0uyimy" path="res://conveyor/medium/conveyor_medium.tscn" id="3_vkvkj"]
+[ext_resource type="PackedScene" uid="uid://dobv7dt6j8yby" path="res://conveyor/short/conveyor_short.tscn" id="4_g2c7n"]
+
+[node name="Conveyor" type="Node3D"]
+script = ExtResource("1_0w264")
+conveyorAngle = null
+
+[node name="ConveyorSurface" type="Node3D" parent="."]
+
+[node name="ConveyorLong" parent="ConveyorSurface" instance=ExtResource("2_1318w")]
+metadata/_edit_lock_ = true
+
+[node name="ConveyorMedium" parent="ConveyorSurface" instance=ExtResource("3_vkvkj")]
+metadata/_edit_lock_ = true
+
+[node name="ConveyorShort" parent="ConveyorSurface" instance=ExtResource("4_g2c7n")]
+metadata/_edit_lock_ = true

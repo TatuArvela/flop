@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://digrug7hfrugd"]
+[gd_scene load_steps=9 format=3 uid="uid://digrug7hfrugd"]
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bld2afe0uyimy" path="res://conveyor/medium/conveyor_medium.tscn" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bqncu8x6gqo6u" path="res://conveyor/long/conveyor_long.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dobv7dt6j8yby" path="res://conveyor/short/conveyor_short.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://lj4qwd416d0k" path="res://conveyor/conveyor.tscn" id="7_272bh"]
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 ambient_light_source = 3
@@ -65,11 +63,17 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.055
 [node name="Icebox" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.0808, 0, -0.0570118)
 
-[node name="ConveyorLong" parent="." instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.996, -0.0999954, 0.941004)
+[node name="Conveyor" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.1, -2.496)
+conveyorSize = 4
+conveyorAngle = 0
 
-[node name="ConveyorMedium" parent="." instance=ExtResource("5_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9761, -0.0999951, 2.06291)
+[node name="Conveyor2" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.1, -3.842)
+conveyorSize = 2
+conveyorAngle = 0
 
-[node name="ConveyorShort" parent="." instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4736, -0.0999947, 3.18926)
+[node name="Conveyor3" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.1, -5.187)
+conveyorSize = 1
+conveyorAngle = 0
