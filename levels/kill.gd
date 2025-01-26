@@ -9,6 +9,8 @@ func kill(body :Node3D) -> void:
 	if (body as FisuBodypart).is_killed:
 		return
 
-	player.body.health -= 999
+	do_kill.call_deferred()
 
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+func do_kill() -> void:
+	player.body.health -= 999
+	#get_tree().change_scene_to_file("res://main_menu.tscn")

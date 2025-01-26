@@ -50,16 +50,16 @@ func reset_player() -> void:
 	body.controller = self
 	body.damaged.connect($apuva.start_play)
 
-	move_to_spawn(body)
-
 	add_child(body)
+
+	move_to_spawn(body)
 
 	respawned.emit()
 
-func move_to_spawn(body: Node3D) -> void:
+func move_to_spawn(b: Node3D) -> void:
 	var spawnpoint: Node3D = get_tree().get_first_node_in_group("Spawnpoint");
 	if spawnpoint:
-		body.global_position = spawnpoint.global_position
+		b.global_position = spawnpoint.global_position
 
 func _physics_process(_delta: float) -> void:
 	input_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")

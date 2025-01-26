@@ -460,6 +460,7 @@ script = ExtResource("15_flpl0")
 prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
 
 [node name="Timer" type="Timer" parent="MeshInstance3D2/Marker3D"]
+wait_time = 7.5
 autostart = true
 
 [node name="Marker3D2" type="Marker3D" parent="MeshInstance3D2"]
@@ -468,6 +469,7 @@ script = ExtResource("15_flpl0")
 prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
 
 [node name="Timer" type="Timer" parent="MeshInstance3D2/Marker3D2"]
+wait_time = 7.5
 autostart = true
 
 [node name="Conveyor19" parent="." instance=ExtResource("5_hu3u3")]
