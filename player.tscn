@@ -39,3 +39,4 @@ transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_sweqy")
 autoplay = true
+bus = &"Muzak"
