@@ -16,9 +16,9 @@ func _process(_delta):
 	var girderScale := Vector3.ZERO
 	var girderYScale = height / 0.8
 	girderScale.x = 1
-	girderScale.y = girderYScale
+	girderScale.y = clamp(girderYScale, 0.01, girderYScale)
 	girderScale.z = 1
-	strutGirder.scale = clamp(girderScale, 0.01, girderScale)
+	strutGirder.scale = girderScale
 	
 	strutBase.position.y = -height
 	strutGirder.position.y = -height

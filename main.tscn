@@ -66,7 +66,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 6.90493, 0, -0.0570118)
 
 [node name="Conveyor" parent="." instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68906, 1.23067, -2.60963)
-conveyorSize = 4
+conveyorSize = 2
 
 [node name="Conveyor2" parent="." instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 6.21704, 1.38663, -3.842)

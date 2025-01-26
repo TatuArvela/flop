@@ -22,10 +22,13 @@ enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
 
 func _process(_delta):
 	conveyorLong.hide()
+	conveyorLong.process_mode = Node.PROCESS_MODE_DISABLED
 	longEnd.hide()
 	conveyorMedium.hide()
+	conveyorMedium.process_mode = Node.PROCESS_MODE_DISABLED
 	mediumEnd.hide()
 	conveyorShort.hide()
+	conveyorShort.process_mode = Node.PROCESS_MODE_DISABLED
 	shortEnd.hide()
 	
 	var shownSurface: ConveyorSurface
@@ -40,6 +43,7 @@ func _process(_delta):
 		shownSurface = conveyorShort
 		end = shortEnd
 	shownSurface.show()
+	shownSurface.process_mode = Node.PROCESS_MODE_ALWAYS
 	end.show()
 	
 	if (strutStart && strutEnd):
