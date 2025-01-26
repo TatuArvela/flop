@@ -18,6 +18,8 @@ extends Node3D
 enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
 @export var conveyorSize: ConveyorSize = ConveyorSize.SHORT
 
+@export var conveyorSpeed: float = 0.5
+
 func _process(_delta):
 	conveyorLong.hide()
 	longEnd.hide()
@@ -26,7 +28,7 @@ func _process(_delta):
 	conveyorShort.hide()
 	shortEnd.hide()
 	
-	var shownSurface
+	var shownSurface: ConveyorSurface
 	var end
 	if (conveyorSize == ConveyorSize.LONG):
 		shownSurface = conveyorLong
@@ -53,3 +55,5 @@ func _process(_delta):
 		var newRotation := Vector3.ZERO
 		var direction = start.position.direction_to(end.position)
 		conveyorSurface.rotation = newRotation
+	
+	shownSurface.speed = conveyorSpeed

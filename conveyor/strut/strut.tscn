@@ -9,7 +9,8 @@ script = ExtResource("1_m7hab")
 height = 0.5
 
 [node name="StrutGirder" parent="." instance=ExtResource("2_tvsur")]
-transform = Transform3D(1, 0, 0, 0, 0.625, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.625, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="StrutBase" parent="." instance=ExtResource("3_8qo7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false

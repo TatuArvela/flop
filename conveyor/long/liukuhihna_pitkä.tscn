@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs8ncbdivhgi7"]
+[gd_scene load_steps=6 format=3 uid="uid://cs8ncbdivhgi7"]
 
 [ext_resource type="PackedScene" uid="uid://bgltbrtbehtw2" path="res://conveyor/long/liukuhihna_pitkä.fbx" id="1_jg58d"]
 [ext_resource type="Shader" uid="uid://ckuoh7g0uph66" path="res://conveyor/conveyor_surface.tres" id="2_04fmi"]
+[ext_resource type="Script" uid="uid://2ehbh78xldar" path="res://conveyor/conveyor_model.gd" id="2_wn76u"]
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_wn76u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0afrc"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_04fmi")
-shader_parameter/FloatParameter = 4.0
+shader_parameter/ConveyorSpeed = 1.0
+shader_parameter/ConveyorLength = 4
 
-[node name="liukuhihna_pitkä" instance=ExtResource("1_jg58d")]
+[node name="liukuhihna_pitkä" node_paths=PackedStringArray("modelNode") instance=ExtResource("1_jg58d")]
+script = ExtResource("2_wn76u")
+modelNode = NodePath("liukuhihna_pitkä")
+conveyorLength = 4
 
 [node name="liukuhihna_pitkä" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_0afrc")

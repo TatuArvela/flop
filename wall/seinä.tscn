@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5jw0uajtwvv"]
+
+[ext_resource type="PackedScene" uid="uid://d3gtp6hxrvcv" path="res://wall/seinä.fbx" id="1_88pqc"]
+[ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="2_ngnso"]
+
+[node name="seinä" instance=ExtResource("1_88pqc")]
+
+[node name="seinä" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ngnso")

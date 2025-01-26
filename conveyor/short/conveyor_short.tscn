@@ -7,12 +7,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_rskod"]
 size = Vector3(1, 0.2, 1)
 
-[node name="ConveyorSurface" type="StaticBody3D"]
+[node name="ConveyorSurface" type="StaticBody3D" node_paths=PackedStringArray("modelNode")]
 physics_material_override = ExtResource("1_pqjyv")
+constant_linear_velocity = Vector3(0.5, 0, 0)
 script = ExtResource("2_676ry")
+modelNode = NodePath("liukuhihna_lyhyt")
 
 [node name="liukuhihna_lyhyt" parent="." instance=ExtResource("3_676ry")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+conveyorSpeed = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1, 0)

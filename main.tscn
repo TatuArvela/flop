@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://digrug7hfrugd"]
+[gd_scene load_steps=10 format=3 uid="uid://digrug7hfrugd"]
 
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cw1bxa0pvao6p" path="res://wall/wall.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://lj4qwd416d0k" path="res://conveyor/conveyor.tscn" id="7_272bh"]
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
@@ -12,16 +13,16 @@ ambient_light_energy = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
 flip_faces = true
-size = Vector3(50, 50, 50)
+size = Vector3(24, 24, 24)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 material = ExtResource("3_h2yge")
-size = Vector3(50, 0.2, 50)
+size = Vector3(24, 0.2, 24)
 subdivide_width = 2
 subdivide_depth = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
-size = Vector3(50, 0.2, 50)
+size = Vector3(24, 0.2, 24)
 
 [node name="Main" type="Node3D"]
 
@@ -39,7 +40,7 @@ sky_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="World Boundaries" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_lquwl")
 metadata/_edit_lock_ = true
@@ -58,18 +59,21 @@ shape = SubResource("BoxShape3D_lquwl")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_0xm2m")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.055, 0.5, -0.0753886)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.16043, 1.54494, -2.52376)
 
 [node name="Icebox" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.0808, 0, -0.0570118)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 6.90493, 0, -0.0570118)
 
 [node name="Conveyor" parent="." instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.23067, -2.496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68906, 1.23067, -2.60963)
 conveyorSize = 4
 
 [node name="Conveyor2" parent="." instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.25191, -3.842)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 6.21704, 1.38663, -3.842)
 conveyorSize = 2
 
 [node name="Conveyor3" parent="." instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.28235, -5.187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39685, 1.28235, -5.187)
+
+[node name="Wall" parent="Conveyor3" instance=ExtResource("5_lquwl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.49826, 0.103781, -0.528555)

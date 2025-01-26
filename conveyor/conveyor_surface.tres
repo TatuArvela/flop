@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://ckuoh7g0uph66"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://ckuoh7g0uph66"]
 
 [ext_resource type="Texture2D" uid="uid://cga2kifrgmple" path="res://conveyor/belt.png" id="1_5tc0p"]
 
@@ -13,17 +13,26 @@ function = 1
 default_input_values = [0, 1.0, 1, 0.0, 2, 0.0]
 op_type = 0
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_os1ev"]
-parameter_name = "FloatParameter"
-default_value_enabled = true
-default_value = 1.0
-
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_v31dc"]
 default_input_values = [0, 0.0, 1, 2.8]
-operator = 2
+operator = 3
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5tc0p"]
 default_input_values = [0, 0.0, 1, 4.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5tc0p"]
+parameter_name = "ConveyorSpeed"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_3a2kb"]
+parameter_name = "ConveyorLength"
+default_value_enabled = true
+default_value = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_6eqeb"]
+default_input_values = [0, 0.0, 1, 2.1]
 operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_36muu"]
@@ -34,7 +43,7 @@ default_input_values = [0, 0.0, 1, 1.0]
 operator = 4
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_31a12"]
-operator = 3
+operator = 2
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_optnv"]
 output_port_for_preview = 0
@@ -47,7 +56,8 @@ op_type = 0
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform float FloatParameter = 1.0;
+uniform float ConveyorSpeed = 1.0;
+uniform int ConveyorLength = 1;
 uniform sampler2D tex_frg_10;
 
 
@@ -57,17 +67,25 @@ void fragment() {
 	float n_out3p0 = TIME;
 
 
-// FloatParameter:13
-	float n_out13p0 = FloatParameter;
+// FloatParameter:16
+	float n_out16p0 = ConveyorSpeed;
+
+
+// IntParameter:17
+	int n_out17p0 = ConveyorLength;
+
+
+// FloatOp:18
+	float n_in18p1 = 2.10000;
+	float n_out18p0 = float(n_out17p0) * n_in18p1;
 
 
 // FloatOp:14
-	float n_in14p1 = 2.80000;
-	float n_out14p0 = n_out13p0 * n_in14p1;
+	float n_out14p0 = n_out16p0 / n_out18p0;
 
 
 // FloatOp:5
-	float n_out5p0 = n_out3p0 / n_out14p0;
+	float n_out5p0 = n_out3p0 * n_out14p0;
 
 
 // FloatOp:4
@@ -87,7 +105,7 @@ void fragment() {
 
 // FloatOp:15
 	float n_in15p1 = 4.00000;
-	float n_out15p0 = n_out13p0 * n_in15p1;
+	float n_out15p0 = float(n_out17p0) * n_in15p1;
 
 
 // VectorCompose:12
@@ -110,6 +128,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-830.193, -126.643)
 nodes/fragment/0/position = Vector2(1560, -80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_36muu")
 nodes/fragment/3/position = Vector2(-2220, -200)
@@ -127,10 +146,14 @@ nodes/fragment/11/node = SubResource("VisualShaderNodeUVFunc_v31dc")
 nodes/fragment/11/position = Vector2(600, -60)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVectorCompose_gd72l")
 nodes/fragment/12/position = Vector2(-180, 460)
-nodes/fragment/13/node = SubResource("VisualShaderNodeFloatParameter_os1ev")
-nodes/fragment/13/position = Vector2(-2700, 660)
 nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_v31dc")
-nodes/fragment/14/position = Vector2(-2040, 340)
+nodes/fragment/14/position = Vector2(-2160, 160)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatOp_5tc0p")
 nodes/fragment/15/position = Vector2(-1380, 600)
-nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 5, 0, 4, 0, 9, 0, 7, 2, 10, 0, 0, 0, 4, 0, 9, 1, 7, 0, 11, 0, 11, 0, 10, 0, 13, 0, 14, 0, 14, 0, 5, 1, 13, 0, 15, 0, 15, 0, 12, 1, 12, 0, 11, 1)
+nodes/fragment/16/node = SubResource("VisualShaderNodeFloatParameter_5tc0p")
+nodes/fragment/16/position = Vector2(-3520, -80)
+nodes/fragment/17/node = SubResource("VisualShaderNodeIntParameter_3a2kb")
+nodes/fragment/17/position = Vector2(-3580, 820)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatOp_6eqeb")
+nodes/fragment/18/position = Vector2(-2660, 440)
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 5, 0, 4, 0, 9, 0, 7, 2, 10, 0, 0, 0, 4, 0, 9, 1, 7, 0, 11, 0, 11, 0, 10, 0, 15, 0, 12, 1, 12, 0, 11, 1, 17, 0, 15, 0, 14, 0, 5, 1, 16, 0, 14, 0, 17, 0, 18, 0, 18, 0, 14, 1)
