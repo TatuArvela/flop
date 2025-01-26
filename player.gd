@@ -45,6 +45,7 @@ func reset_player() -> void:
 	
 	body = body_prefab.instantiate()
 	body.controller = self
+	body.damaged.connect($apuva.start_play)
 	add_child(body)
 
 	respawned.emit()

@@ -99,6 +99,8 @@ var health: int:
 		if health == 0:
 			direction_marker.visible = false
 
+		var did_hurt: bool = false
+
 		for i in hinges.size():
 			if i >= health && hinges[i] != null:
 				emit_blood()
@@ -107,6 +109,11 @@ var health: int:
 				hinges[i] = null
 				parts[i].is_killed = true
 
+				did_hurt = true
+
+		if did_hurt:
+			damaged.emit()
+
 
 var is_dead: bool:
 	get:
@@ -114,6 +121,7 @@ var is_dead: bool:
 
 signal jumped
 signal landed
+signal damaged
 
 func _ready() -> void:
 	target_direction = Vector2.UP

@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7p8qlq6lpiev"]
+[gd_scene load_steps=18 format=3 uid="uid://b7p8qlq6lpiev"]
 
 [ext_resource type="Script" uid="uid://dmwvxy0etulo0" path="res://hazards/hurtbox.gd" id="2_omr5p"]
 [ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_uyfyq"]
 [ext_resource type="PackedScene" uid="uid://cvgvbexgtdeo7" path="res://hazards/BuzzSaw.fbx" id="3_65pff"]
+[ext_resource type="Script" uid="uid://bc84ulaxru61g" path="res://sfx_3d.gd" id="4_omr5p"]
+[ext_resource type="AudioStream" uid="uid://do10kx5ebnqes" path="res://sfx/198982__kolczok__circ_saw-04.wav" id="4_uyfyq"]
 
 [sub_resource type="Animation" id="Animation_p4nrr"]
 length = 0.001
@@ -21,21 +23,36 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_omr5p"]
 resource_name = "loop"
-length = 5.0
-loop_mode = 2
+length = 7.0
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("SawOrigin:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.5, 3.9, 4.4, 5.2, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.3, 0.5, 0), Vector3(-0.3, 0.1, 0), Vector3(0.3, 0.1, 0), Vector3(0.3, 0.5, 0)]
+"values": [Vector3(-0.3, 0.5, 0), Vector3(-0.3, 0.1, 0), Vector3(-0.3, 0.1, 0), Vector3(0.3, 0.1, 0), Vector3(0.3, 0.1, 0), Vector3(0.3, 0.5, 0), Vector3(-0.3, 0.5, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_uyfyq")
+}],
+"times": PackedFloat32Array(1)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4jnwo"]
 _data = {
@@ -117,7 +134,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_4jnwo")
 }
 autoplay = "loop"
-speed_scale = 3.0
 
 [node name="SawSpinner" type="AnimationPlayer" parent="."]
 libraries = {
@@ -129,7 +145,7 @@ autoplay = "spin"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.5, 0)
 
 [node name="Shaker" type="Node3D" parent="SawOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00957164, 0.00976307, 0.00896131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00396463, -0.00699506, -0.0075703)
 script = ExtResource("2_uyfyq")
 shake_strength = 0.01
 shake_decay = 0.0
@@ -187,5 +203,14 @@ mesh = SubResource("PrismMesh_omr5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Balk2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00451171, 0)
 shape = SubResource("BoxShape3D_fixeq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -2.0
+max_distance = 2.0
+bus = &"Ambient SFX"
+script = ExtResource("4_omr5p")
+pitch_min = 0.8
+pitch_max = 1.1
+sfx = Array[AudioStream]([ExtResource("4_uyfyq")])
 
 [editable path="SawOrigin/Shaker/BuzzSaw"]

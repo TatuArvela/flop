@@ -150,10 +150,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00446329, 0.0469249, 0)
 shape = SubResource("BoxShape3D_jiocf")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+volume_db = -7.956
 max_distance = 3.0
 bus = &"SFX"
 script = ExtResource("4_jiocf")
 pitch_min = 0.9
 pitch_max = 1.15
+sfx = Array[AudioStream]([ExtResource("3_jiocf")])
 
 [editable path="SawOrigin/FishCutter_01"]

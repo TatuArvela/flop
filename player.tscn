@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwhn84gvyppax"]
+[gd_scene load_steps=8 format=3 uid="uid://bwhn84gvyppax"]
 
 [ext_resource type="Script" uid="uid://cdjsvdjtptqn6" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="PackedScene" uid="uid://cxcfsh1y3h63f" path="res://fisu/fisu.tscn" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://bawitjm1nijc6" path="res://shaker.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://d0t0ngkwg1qt1" path="res://camera_follw.gd" id="3_sweqy"]
 [ext_resource type="AudioStream" uid="uid://crigwghlcjqhq" path="res://sfx/muzak-blob_03.ogg" id="5_sweqy"]
+[ext_resource type="AudioStream" uid="uid://bmbdn8ag3x0gk" path="res://sfx/dmg-1.wav" id="6_2hs0m"]
+[ext_resource type="Script" uid="uid://b6iyfo6irgcaq" path="res://sfx.gd" id="7_1jxqw"]
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("body")]
 script = ExtResource("1_hqtel")
@@ -28,6 +30,10 @@ player = NodePath("../..")
 camera_smoothing_speed_xz = 2.5
 camera_smoothing_speed_y = 0.5
 
+[node name="AudioListener3D" type="AudioListener3D" parent="CameraShaker/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0, -0.37)
+current = true
+
 [node name="CameraBoom" type="SpringArm3D" parent="CameraShaker/CameraPivot"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 collision_mask = 2
@@ -40,3 +46,24 @@ transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)
 stream = ExtResource("5_sweqy")
 autoplay = true
 bus = &"Muzak"
+
+[node name="apuva" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2hs0m")
+bus = &"Player SFX"
+script = ExtResource("7_1jxqw")
+pitch_min = 0.5
+pitch_max = 1.2
+
+[connection signal="damaged" from="Fisu" to="Fisu/Splörts" method="start_play"]
+[connection signal="damaged" from="Fisu" to="apuva" method="start_play"]
+
+[editable path="Fisu"]
+[editable path="Fisu/head/fisu_pala"]
+[editable path="Fisu/body_1/fisu_pala"]
+[editable path="Fisu/body_2/fisu_pala"]
+[editable path="Fisu/body_3/fisu_pala"]
+[editable path="Fisu/body_4/fisu_pala"]
+[editable path="Fisu/body_5/fisu_pala"]
+[editable path="Fisu/body_6/fisu_pala"]
+[editable path="Fisu/body_7/fisu_pala"]
+[editable path="Fisu/body_8/fisu_pala"]

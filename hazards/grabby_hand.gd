@@ -1,6 +1,7 @@
 extends TrapTrigger
 
 @onready var animations: AnimationPlayer = get_node("AnimationPlayer")
+@onready var wtf: AudioStreamPlayer3D = get_node("wtf")
 
 func _on_setup() -> void:
 	is_idle = false
@@ -16,6 +17,8 @@ func _on_player_left() -> void:
 
 func _on_player_entered() -> void:
 	is_idle = false
+	if !wtf.playing:
+		wtf.play()
 
 func anim_finished(anim: String) -> void:
 	if anim == "enter":

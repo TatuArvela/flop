@@ -154,5 +154,6 @@ bus = &"Ambient SFX"
 script = ExtResource("5_w5kv3")
 pitch_min = 0.9
 pitch_max = 1.2
+sfx = Array[AudioStream]([ExtResource("4_bxxfn")])
 
 [editable path="SawOrigin/FishFileeMaker"]
