@@ -11,13 +11,17 @@ body_prefab = ExtResource("1_i3pqv")
 body = NodePath("Fisu")
 
 [node name="Fisu" parent="." instance=ExtResource("1_i3pqv")]
+jump_direction_y = 2.0
+jump_force = 2.0
+turn_rate = 5.0
+turn_only_on_input = true
 
 [node name="CameraShaker" type="Node3D" parent="." groups=["CameraShaker"]]
 script = ExtResource("2_hqtel")
 shake_decay = 0.5
 
 [node name="CameraPivot" type="Node3D" parent="CameraShaker" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.15, 0.3)
 script = ExtResource("3_sweqy")
 player = NodePath("../..")
 camera_smoothing_speed_xz = 2.5
@@ -26,7 +30,7 @@ camera_smoothing_speed_y = 0.5
 [node name="CameraBoom" type="SpringArm3D" parent="CameraShaker/CameraPivot"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 collision_mask = 2
-spring_length = 1.5
+spring_length = 0.75
 
 [node name="Camera3D" type="Camera3D" parent="CameraShaker/CameraPivot/CameraBoom"]
 transform = Transform3D(1, 0, 0, 2.98023e-08, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0)

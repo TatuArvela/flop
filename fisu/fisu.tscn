@@ -43,6 +43,16 @@ script = ExtResource("1_y411k")
 blood_prefab = ExtResource("2_xalnf")
 bubbles_prefab = ExtResource("3_jxxep")
 
+[node name="JumpCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+ignore_time_scale = true
+
+[node name="ControlLinger" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+ignore_time_scale = true
+
 [node name="head" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.138541)
 mass = 0.25

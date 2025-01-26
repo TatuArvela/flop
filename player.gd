@@ -11,6 +11,9 @@ var input_dir: Vector2 = Vector2.ZERO
 
 var was_dead = false
 
+signal just_died
+signal respawned
+
 func _process(delta: float) -> void:
 	if body != null && !body.is_queued_for_deletion():
 		body.controller = self
@@ -23,6 +26,7 @@ func _process(delta: float) -> void:
 
 	if !was_dead && body.is_dead:
 		was_dead = true
+		just_died.emit()
 		get_tree().create_timer(death_delay).timeout.connect(reset_player)
 
 	if !body.is_dead:
@@ -42,6 +46,8 @@ func reset_player() -> void:
 	body = body_prefab.instantiate()
 	body.controller = self
 	add_child(body)
+
+	respawned.emit()
 
 func _physics_process(_delta: float) -> void:
 	input_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
