@@ -104,3 +104,4 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_3ug6x")
 }
+speed_scale = 0.75
