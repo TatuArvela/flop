@@ -128,7 +128,7 @@ autoplay = "spin"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.5, 0)
 
 [node name="Shaker" type="Node3D" parent="SawOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00392496, -0.00905394, 0.00687438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00282667, -0.00927107, -0.00988691)
 script = ExtResource("2_uyfyq")
 shake_strength = 0.01
 shake_decay = 0.0
