@@ -14,6 +14,9 @@ var was_dead = false
 signal just_died
 signal respawned
 
+func _ready() -> void:
+	move_to_spawn(body)
+
 func _process(delta: float) -> void:
 	if body != null && !body.is_queued_for_deletion():
 		body.controller = self
@@ -46,9 +49,17 @@ func reset_player() -> void:
 	body = body_prefab.instantiate()
 	body.controller = self
 	body.damaged.connect($apuva.start_play)
+
+	move_to_spawn(body)
+
 	add_child(body)
 
 	respawned.emit()
+
+func move_to_spawn(body: Node3D) -> void:
+	var spawnpoint: Node3D = get_tree().get_first_node_in_group("Spawnpoint");
+	if spawnpoint:
+		body.global_position = spawnpoint.global_position
 
 func _physics_process(_delta: float) -> void:
 	input_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")

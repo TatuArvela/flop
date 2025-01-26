@@ -1,0 +1,222 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bq021sl7dv7fo"
+path="res://.godot/imported/kasvattamo.fbx-1c96b3e80b93943efbdfd3e388da14d8.scn"
+
+[deps]
+
+source_file="res://3D_Assets/kasvattamo.fbx"
+dest_files=["res://.godot/imported/kasvattamo.fbx-1c96b3e80b93943efbdfd3e388da14d8.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.1
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"gradient": {
+"use_external/enabled": true,
+"use_external/path": "uid://bustb3pl6feiy"
+}
+},
+"meshes": {
+"Cube_016": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": ""
+}
+},
+"nodes": {
+"PATH:Armature": {
+"import/skip_import": true
+},
+"PATH:Armature_001": {
+"import/skip_import": true
+},
+"PATH:Armature_001/Skeleton3D": {
+"import/skip_import": true
+},
+"PATH:Armature_001/Skeleton3D/Cube_001": {
+"import/skip_import": true
+},
+"PATH:Cylinder_001": {
+"import/skip_import": true
+},
+"PATH:body_1": {
+"import/skip_import": true
+},
+"PATH:body_1-2": {
+"import/skip_import": true
+},
+"PATH:body_1-2_001": {
+"import/skip_import": true
+},
+"PATH:body_2": {
+"import/skip_import": true
+},
+"PATH:body_2-2": {
+"import/skip_import": true
+},
+"PATH:body_3": {
+"import/skip_import": true
+},
+"PATH:body_3-2": {
+"import/skip_import": true
+},
+"PATH:body_3-2_001": {
+"import/skip_import": true
+},
+"PATH:body_3-2_002": {
+"import/skip_import": true
+},
+"PATH:body_4": {
+"import/skip_import": true
+},
+"PATH:body_4-2": {
+"import/skip_import": true
+},
+"PATH:body_5": {
+"import/skip_import": true
+},
+"PATH:body_5-2": {
+"import/skip_import": true
+},
+"PATH:body_5-2_001": {
+"import/skip_import": true
+},
+"PATH:body_6": {
+"import/skip_import": true
+},
+"PATH:body_6-2": {
+"import/skip_import": true
+},
+"PATH:body_7": {
+"import/skip_import": true
+},
+"PATH:body_7-2": {
+"import/skip_import": true
+},
+"PATH:body_7-2_001": {
+"import/skip_import": true
+},
+"PATH:body_8": {
+"import/skip_import": true
+},
+"PATH:body_8-2": {
+"import/skip_import": true
+},
+"PATH:body_8-2_001": {
+"import/skip_import": true
+},
+"PATH:body_8-2_002": {
+"import/skip_import": true
+},
+"PATH:eyes": {
+"import/skip_import": true
+},
+"PATH:eyes-2": {
+"import/skip_import": true
+},
+"PATH:eyes-2_001": {
+"import/skip_import": true
+},
+"PATH:eyes-2_002": {
+"import/skip_import": true
+},
+"PATH:fin_1": {
+"import/skip_import": true
+},
+"PATH:fin_1-2": {
+"import/skip_import": true
+},
+"PATH:fin_2": {
+"import/skip_import": true
+},
+"PATH:fin_2-2": {
+"import/skip_import": true
+},
+"PATH:fin_2-2_001": {
+"import/skip_import": true
+},
+"PATH:fin_3": {
+"import/skip_import": true
+},
+"PATH:fin_3-2": {
+"import/skip_import": true
+},
+"PATH:fin_4": {
+"import/skip_import": true
+},
+"PATH:fin_4-2": {
+"import/skip_import": true
+},
+"PATH:head": {
+"import/skip_import": true
+},
+"PATH:head-2": {
+"import/skip_import": true
+},
+"PATH:head-2_001": {
+"import/skip_import": true
+},
+"PATH:head-2_002": {
+"import/skip_import": true
+},
+"PATH:icebox": {
+"import/skip_import": true
+},
+"PATH:icecube": {
+"import/skip_import": true
+},
+"PATH:liukuhihna_keski": {
+"import/skip_import": true
+},
+"PATH:liukuhihna_lyhyt": {
+"import/skip_import": true
+},
+"PATH:liukuhihna_pitkä": {
+"import/skip_import": true
+},
+"PATH:seinä": {
+"import/skip_import": true
+},
+"PATH:taulu": {
+"import/skip_import": true
+},
+"PATH:teline": {
+"import/skip_import": true
+},
+"PATH:teline_tolppa": {
+"import/skip_import": true
+},
+"PATH:tussi": {
+"import/skip_import": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
