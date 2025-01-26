@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4n0qxokxewf2"]
+[gd_scene load_steps=17 format=3 uid="uid://b4n0qxokxewf2"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_yos14"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="2_75oda"]
@@ -9,8 +9,7 @@
 [ext_resource type="Script" uid="uid://dv0in633hqnys" path="res://post_processing.gd" id="8_481ge"]
 [ext_resource type="PackedScene" uid="uid://dp61ygc0h2hxb" path="res://hazards/horizontal_cutter.tscn" id="9_0hv06"]
 [ext_resource type="PackedScene" uid="uid://d1745nrjl04j4" path="res://hazards/vertical_cutter.tscn" id="9_v3x6f"]
-[ext_resource type="PackedScene" uid="uid://bq021sl7dv7fo" path="res://3D_Assets/kasvattamo.fbx" id="10_0hv06"]
-[ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="11_q84n0"]
+[ext_resource type="PackedScene" uid="uid://dn1w3kjeiteqw" path="res://levels/alku.tscn" id="10_0hv06"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4274j"]
 material = ExtResource("1_yos14")
@@ -118,17 +117,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29184, 0.101693, 0.42585)
 [node name="Cutter2" parent="." instance=ExtResource("9_0hv06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18714, 0.102002, 1.43996)
 
-[node name="Kasvattamo" type="Node3D" parent="."]
+[node name="Kasvattamo" parent="." instance=ExtResource("10_0hv06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62303, 0, 2.84302)
-
-[node name="kasvattamo" parent="Kasvattamo" instance=ExtResource("10_0hv06")]
-transform = Transform3D(-0.983866, 0, -0.178905, 0, 1, 0, 0.178905, 0, -0.983866, 1.83326, 0.355, -0.179189)
-
-[node name="Icebox" parent="Kasvattamo" instance=ExtResource("11_q84n0")]
-transform = Transform3D(-0.00889638, 0, 0.0996035, 0, 0.1, 0, -0.0996035, 0, -0.00889638, 0.885811, 0.199496, -0.00686479)
-
-[node name="Spawnpoint" type="Marker3D" parent="Kasvattamo/Icebox" groups=["Spawnpoint"]]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 4.68852, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q84n0")

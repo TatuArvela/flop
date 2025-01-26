@@ -18,3 +18,6 @@ func _process(_delta):
 	if (modelNode):
 		modelNode.conveyorSpeed = speed
 		modelNode.conveyorLength = length
+
+	var velocity = start.global_position.direction_to(end.global_position)
+	set_constant_linear_velocity(velocity * speed)
