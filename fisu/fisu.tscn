@@ -124,6 +124,8 @@ angular_limit/lower = -1.309
 
 [node name="body_1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00145865)
+collision_layer = 5
+collision_mask = 5
 mass = 0.75
 physics_material_override = ExtResource("2_7nxjr")
 can_sleep = false

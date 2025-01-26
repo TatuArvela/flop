@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cue2cygqlnh3t"]
+
+[ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="1_56jhy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjwlc"]
+size = Vector3(0.1, 0.1, 0.02)
+
+[node name="Fish" type="RigidBody3D"]
+
+[node name="fisu_pala" parent="." instance=ExtResource("1_56jhy")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0926067, 0, 0)
+
+[node name="body_8" parent="fisu_pala" index="0"]
+visible = false
+
+[node name="eyes" parent="fisu_pala" index="1"]
+visible = false
+
+[node name="body_1" parent="fisu_pala" index="2"]
+visible = false
+
+[node name="body_3" parent="fisu_pala" index="4"]
+visible = false
+
+[node name="body_4" parent="fisu_pala" index="5"]
+visible = false
+
+[node name="body_5" parent="fisu_pala" index="6"]
+visible = false
+
+[node name="body_6" parent="fisu_pala" index="7"]
+visible = false
+
+[node name="body_7" parent="fisu_pala" index="8"]
+visible = false
+
+[node name="head" parent="fisu_pala" index="9"]
+visible = false
+
+[node name="fin_1" parent="fisu_pala" index="10"]
+visible = false
+
+[node name="fin_2" parent="fisu_pala" index="11"]
+visible = false
+
+[node name="fin_3" parent="fisu_pala" index="12"]
+visible = false
+
+[node name="fin_4" parent="fisu_pala" index="13"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rjwlc")
+
+[editable path="fisu_pala"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dn1w3kjeiteqw"]
+[gd_scene load_steps=47 format=3 uid="uid://dn1w3kjeiteqw"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_7vgy4"]
 [ext_resource type="Script" uid="uid://brrap058lklkl" path="res://levels/box_with_collider.gd" id="1_66kue"]
@@ -12,8 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://d1745nrjl04j4" path="res://hazards/vertical_cutter.tscn" id="11_invck"]
 [ext_resource type="PackedScene" uid="uid://bora31mv2k73v" path="res://hazards/FishFileeMaker.fbx" id="12_6m5da"]
 [ext_resource type="PackedScene" uid="uid://dp61ygc0h2hxb" path="res://hazards/horizontal_cutter.tscn" id="13_3ugyd"]
-[ext_resource type="PackedScene" uid="uid://cg75ugmcdo3c" path="res://hazards/Guilliotine.fbx" id="13_8i002"]
 [ext_resource type="PackedScene" uid="uid://cw1bxa0pvao6p" path="res://wall/wall.tscn" id="14_8i002"]
+[ext_resource type="PackedScene" uid="uid://d04y3ma01o7vy" path="res://hazards/guillotine.tscn" id="14_flpl0"]
+[ext_resource type="Script" uid="uid://da078ygg6cwuf" path="res://levels/spawner.gd" id="15_flpl0"]
+[ext_resource type="PackedScene" uid="uid://csmcyb1hg3srt" path="res://parts/1.tscn" id="16_vgvwl"]
+[ext_resource type="PackedScene" uid="uid://cf1fuftshi1dk" path="res://parts/2.tscn" id="17_6nr8e"]
+[ext_resource type="PackedScene" uid="uid://cue2cygqlnh3t" path="res://parts/3.tscn" id="18_p3iih"]
+[ext_resource type="PackedScene" uid="uid://daoxrxp72rtia" path="res://parts/4.tscn" id="19_xn7jh"]
+[ext_resource type="PackedScene" uid="uid://cerui7qtgruy7" path="res://parts/5.tscn" id="20_cn0mr"]
+[ext_resource type="PackedScene" uid="uid://c47we7ebsr3bl" path="res://parts/6.tscn" id="21_m7fp5"]
+[ext_resource type="PackedScene" uid="uid://n82m6ltxa8ve" path="res://parts/7.tscn" id="22_kgy28"]
+[ext_resource type="PackedScene" uid="uid://cl3emwp5qyald" path="res://parts/8.tscn" id="23_00jok"]
+[ext_resource type="PackedScene" uid="uid://brtq6nteeu34j" path="res://parts/9.tscn" id="24_tyfwd"]
+[ext_resource type="Script" uid="uid://dlmb4m0hv7ktw" path="res://levels/kill.gd" id="25_6jalk"]
+[ext_resource type="Shader" uid="uid://hsgkq3qovpub" path="res://post_processing.gdshader" id="26_6ervk"]
+[ext_resource type="Script" uid="uid://dv0in633hqnys" path="res://post_processing.gd" id="27_2tu1b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q84n0"]
 material = ExtResource("1_7vgy4")
@@ -82,6 +95,18 @@ size = Vector3(0.5, 4, 4)
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i002"]
+albedo_color = Color(0.499747, 0.499747, 0.499747, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_flpl0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tyfwd"]
+size = Vector3(18.4, 1, 11.9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cmd8"]
+shader = ExtResource("26_6ervk")
+shader_parameter/darken = 0.0
 
 [node name="Kasvattamo" type="Node3D"]
 
@@ -355,12 +380,6 @@ transform = Transform3D(-6.99382e-08, 0, -1.6, 0, 1.6, 0, 1.6, 0, -6.99382e-08, 
 [node name="Cutter7" parent="." instance=ExtResource("11_invck")]
 transform = Transform3D(-6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 3.72232, 1.1, -10.1678)
 
-[node name="Guilliotine" parent="." instance=ExtResource("13_8i002")]
-transform = Transform3D(3.63429, 0, 0, 0, 3.63429, 0, 0, 0, 3.63429, 12.6497, 2.69385, -10.1595)
-
-[node name="Guilliotine2" parent="." instance=ExtResource("13_8i002")]
-transform = Transform3D(3.63429, 0, 0, 0, 3.63429, 0, 0, 0, 3.63429, 12.6497, 2.69385, -7.95949)
-
 [node name="Cutter8" parent="." instance=ExtResource("11_invck")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.4744, 2.2124, -7.08384)
 
@@ -394,3 +413,114 @@ directional_shadow_split_2 = 0.02
 directional_shadow_split_3 = 0.05
 sky_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="Guillotine" parent="." instance=ExtResource("14_flpl0")]
+transform = Transform3D(3.675, 0, 0, 0, 3.675, 0, 0, 0, 3.675, 12.6467, 2.67467, -7.6933)
+
+[node name="Guillotine2" parent="." instance=ExtResource("14_flpl0")]
+transform = Transform3D(3.675, 0, 0, 0, 3.675, 0, 0, 0, 3.675, 12.6467, 2.67467, -10.3933)
+
+[node name="Marker3D3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105343, 1.00934, -4.25231)
+script = ExtResource("15_flpl0")
+prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
+
+[node name="Timer" type="Timer" parent="Marker3D3"]
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.1924, 3.38491, -6.5938)
+material_override = SubResource("StandardMaterial3D_8i002")
+mesh = SubResource("QuadMesh_flpl0")
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.214267, -0.232768, 0.208666)
+script = ExtResource("15_flpl0")
+prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
+
+[node name="Timer" type="Timer" parent="MeshInstance3D/Marker3D"]
+autostart = true
+
+[node name="Marker3D2" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.195887, -0.232768, 0.308666)
+script = ExtResource("15_flpl0")
+prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
+
+[node name="Timer" type="Timer" parent="MeshInstance3D/Marker3D2"]
+autostart = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.1924, 3.38491, -11.7117)
+material_override = SubResource("StandardMaterial3D_8i002")
+mesh = SubResource("QuadMesh_flpl0")
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.214267, -0.232768, 0.208666)
+script = ExtResource("15_flpl0")
+prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
+
+[node name="Timer" type="Timer" parent="MeshInstance3D2/Marker3D"]
+autostart = true
+
+[node name="Marker3D2" type="Marker3D" parent="MeshInstance3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.195887, -0.232768, 0.308666)
+script = ExtResource("15_flpl0")
+prefabs = Array[PackedScene]([ExtResource("16_vgvwl"), ExtResource("17_6nr8e"), ExtResource("18_p3iih"), ExtResource("19_xn7jh"), ExtResource("20_cn0mr"), ExtResource("21_m7fp5"), ExtResource("22_kgy28"), ExtResource("23_00jok"), ExtResource("24_tyfwd")])
+
+[node name="Timer" type="Timer" parent="MeshInstance3D2/Marker3D2"]
+autostart = true
+
+[node name="Conveyor19" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.1559, 2.39988, -11.6552)
+conveyorSize = 2
+
+[node name="kasvattamo2" parent="." instance=ExtResource("2_5ct1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6215, 2.19813, -11.9123)
+
+[node name="kasvattamo3" parent="." instance=ExtResource("2_5ct1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5162, 2.29813, -11.4673)
+
+[node name="kasvattamo4" parent="." instance=ExtResource("2_5ct1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6427, 2.14671, -6.83487)
+
+[node name="kasvattamo5" parent="." instance=ExtResource("2_5ct1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5374, 2.24671, -6.38987)
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("player")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("25_6jalk")
+player = NodePath("../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62473, -0.243849, -8.35)
+shape = SubResource("BoxShape3D_tyfwd")
+
+[node name="Area3D2" type="Area3D" parent="." node_paths=PackedStringArray("player")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("25_6jalk")
+player = NodePath("../Player")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.565, -0.243849, -0.889008)
+shape = SubResource("BoxShape3D_tyfwd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" groups=["PostProcessing"]]
+material = SubResource("ShaderMaterial_7cmd8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_2tu1b")
+
+[connection signal="timeout" from="Marker3D3/Timer" to="Marker3D3" method="spawn"]
+[connection signal="timeout" from="MeshInstance3D/Marker3D/Timer" to="MeshInstance3D/Marker3D" method="spawn"]
+[connection signal="timeout" from="MeshInstance3D/Marker3D2/Timer" to="MeshInstance3D/Marker3D2" method="spawn"]
+[connection signal="timeout" from="MeshInstance3D2/Marker3D/Timer" to="MeshInstance3D2/Marker3D" method="spawn"]
+[connection signal="timeout" from="MeshInstance3D2/Marker3D2/Timer" to="MeshInstance3D2/Marker3D2" method="spawn"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="kill"]
+[connection signal="body_entered" from="Area3D2" to="Area3D2" method="kill"]
