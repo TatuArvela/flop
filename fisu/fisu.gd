@@ -64,6 +64,10 @@ var health: int:
 	set(value):
 		var clamped_value = clamp(value, 0, max_health)
 		health = clamped_value
+
+		if health == 0:
+			direction_marker.visible = false
+
 		for i in hinges.size():
 			if i >= health && hinges[i] != null:
 				var emitter = blood_prefab.instantiate()
