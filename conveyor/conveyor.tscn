@@ -7,15 +7,29 @@
 
 [node name="Conveyor" type="Node3D"]
 script = ExtResource("1_0w264")
-conveyorAngle = null
 
 [node name="ConveyorSurface" type="Node3D" parent="."]
 
 [node name="ConveyorLong" parent="ConveyorSurface" instance=ExtResource("2_1318w")]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="ConveyorMedium" parent="ConveyorSurface" instance=ExtResource("3_vkvkj")]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="ConveyorShort" parent="ConveyorSurface" instance=ExtResource("4_g2c7n")]
 metadata/_edit_lock_ = true
+
+[node name="Start" type="Marker3D" parent="."]
+
+[node name="LongEnd" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+visible = false
+
+[node name="MediumEnd" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+
+[node name="ShortEnd" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

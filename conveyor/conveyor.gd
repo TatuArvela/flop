@@ -7,27 +7,41 @@ extends Node3D
 @onready var conveyorMedium: StaticBody3D = conveyorSurface.get_node('ConveyorMedium')
 @onready var conveyorShort: StaticBody3D = conveyorSurface.get_node('ConveyorShort')
 
-enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
-@export var conveyorSize: ConveyorSize
+@onready var start: Marker3D = get_node('Start')
+@onready var longEnd: Marker3D = get_node('LongEnd')
+@onready var mediumEnd: Marker3D = get_node('MediumEnd')
+@onready var shortEnd: Marker3D = get_node('ShortEnd')
 
-@export var conveyorAngle: int = 0
+
+enum ConveyorSize {LONG = 4, MEDIUM = 2, SHORT = 1}
+@export var conveyorSize: ConveyorSize = ConveyorSize.SHORT
+
+@export var startHeight: int = 0
+@export var endHeight: int = 0
 
 func _process(_delta):
-	var newRotation := Vector3.ZERO
-	newRotation.z = conveyorAngle
-	conveyorSurface.rotation = newRotation
+	conveyorLong.hide()
+	longEnd.hide()
+	conveyorMedium.hide()
+	mediumEnd.hide()
+	conveyorShort.hide()
+	shortEnd.hide()
 	
+	var shownSurface
+	var end
 	if (conveyorSize == ConveyorSize.LONG):
-		conveyorLong.show()
-	else:
-		conveyorLong.hide()
-
+		shownSurface = conveyorLong
+		end = longEnd
 	if (conveyorSize == ConveyorSize.MEDIUM):
-		conveyorMedium.show()
-	else:
-		conveyorMedium.hide()
-
+		shownSurface = conveyorMedium
+		end = mediumEnd
 	if (conveyorSize == ConveyorSize.SHORT):
-		conveyorShort.show()
-	else:
-		conveyorShort.hide()
+		shownSurface = conveyorShort
+		end = shortEnd
+	shownSurface.show()
+	end.show()
+	
+	if (end && start):
+		var newRotation := Vector3.ZERO
+		var direction = start.position.direction_to(end.position)
+		conveyorSurface.rotation = newRotation
