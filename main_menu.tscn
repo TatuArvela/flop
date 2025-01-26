@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=4 uid="uid://tij2iw8ducun"]
 
 [ext_resource type="FontFile" uid="uid://c64eaas20duxo" path="res://UI/Naturaly.otf" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://ch6h4c04xo4xn" path="res://main_menu.gd" id="2_8qtwp"]
+[ext_resource type="Script" path="res://main_menu.gd" id="2_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://d0y0j3qqfd615" path="res://UI/logoidk.png" id="2_jix8l"]
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://dap5y6yh0352i" path="res://UI/tussu.png" id="4_nlkkf"]
@@ -981,6 +981,21 @@ subdivide_depth = 4
 [sub_resource type="BoxShape3D" id="BoxShape3D_w44g7"]
 size = Vector3(50, 0.2, 50)
 
+[sub_resource type="Animation" id="Animation_iotk1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00847212, 1.15945, 0.0199715)]
+}
+
 [sub_resource type="Animation" id="Animation_j5v2v"]
 resource_name = "giljotiini"
 length = 3.0
@@ -996,21 +1011,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.00847212, 1.15945, 0.0199715), Vector3(0.00847206, 1.32287, 0.0199714), Vector3(0.00847208, 0.331031, 0.0199714)]
-}
-
-[sub_resource type="Animation" id="Animation_iotk1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("body/blade:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.00847212, 1.15945, 0.0199715)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w44g7"]
@@ -1144,7 +1144,7 @@ parameters/Blend2/blend_amount = 0.5
 transform = Transform3D(-1.5, 0, 0, 0, 1.5, 7.84136e-05, 0, -7.84136e-05, 1.5, 0.764478, -4.05662, 0.201528)
 
 [node name="Skeleton3D" parent="handussi/Empty/Armature_001" index="0"]
-bones/0/position = Vector3(-0.0192514, -0.0237772, 0.0109029)
+bones/0/position = Vector3(-0.0192514, -0.0237772, 0.0106341)
 bones/0/rotation = Quaternion(0.00728864, 0.0734544, -0.0592506, 0.99551)
 bones/1/position = Vector3(-4.91968e-10, 0.0101504, -1.10498e-09)
 bones/1/rotation = Quaternion(0.000104435, -0.0012709, -0.0745316, 0.997218)
@@ -1153,7 +1153,7 @@ bones/2/position = Vector3(0.00091967, 0.0115641, 0.00211396)
 bones/2/rotation = Quaternion(0.0378643, -0.0276815, 0.00565695, 0.998883)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(1.73282e-09, 0.00530978, -1.4027e-09)
-bones/3/rotation = Quaternion(0.00827274, 0.0248334, -0.432987, 0.90102)
+bones/3/rotation = Quaternion(-0.0214777, 0.048918, -0.430773, 0.900878)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.62848e-10, 0.00464754, 9.64061e-10)
 bones/4/rotation = Quaternion(-0.0138502, -0.00962348, -0.550489, 0.834672)
@@ -1170,7 +1170,7 @@ bones/9/position = Vector3(0.00106347, 0.0123566, 2.46131e-05)
 bones/9/rotation = Quaternion(0.0255863, -0.0229038, 0.0552634, 0.997881)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(1.5538e-09, 0.0055008, -4.02825e-10)
-bones/10/rotation = Quaternion(-0.0164976, -0.000896654, -0.560676, 0.82787)
+bones/10/rotation = Quaternion(-0.0418418, 0.0315726, -0.560292, 0.826635)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-1.04161e-09, 0.00440429, 1.17576e-10)
 bones/11/rotation = Quaternion(0.0160025, 0.0309371, -0.449374, 0.892665)
@@ -1188,13 +1188,13 @@ bones/16/position = Vector3(0.00027511, 0.0110406, 0.00357093)
 bones/16/rotation = Quaternion(0.0910061, 0.0157626, 0.0149834, 0.995613)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-1.85163e-10, 0.00554949, 2.60261e-09)
-bones/17/rotation = Quaternion(0.0996494, -0.0410915, -0.367393, 0.923799)
+bones/17/rotation = Quaternion(0.0729452, -0.0243874, -0.36771, 0.926754)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(7.07003e-10, 0.00402961, -1.29501e-09)
 bones/18/rotation = Quaternion(-0.0435855, -0.0175061, -0.46274, 0.885249)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(6.30546e-11, 0.00369495, -1.91839e-09)
-bones/19/rotation = Quaternion(-0.0348044, -0.0451731, -0.0533186, 0.996948)
+bones/19/rotation = Quaternion(-0.0277573, -0.0503676, -0.146519, 0.987535)
 bones/20/position = Vector3(-8.57335e-10, 0.00316563, -1.81519e-09)
 bones/20/rotation = Quaternion(-4.05207e-08, -4.82775e-09, 1.01041e-08, 1)
 bones/21/position = Vector3(-5.83234e-11, 0.00316561, 1.52451e-10)
@@ -1204,7 +1204,7 @@ bones/23/position = Vector3(0.000372286, 0.0112856, -0.00230973)
 bones/23/rotation = Quaternion(-0.0336165, 0.0264679, -0.0437488, 0.998126)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(1.41805e-09, 0.00495958, 1.7613e-10)
-bones/24/rotation = Quaternion(0.116506, -0.106124, -0.331949, 0.93004)
+bones/24/rotation = Quaternion(0.0748955, -0.0806414, -0.338179, 0.934624)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(-2.59378e-10, 0.00441218, -5.9829e-10)
 bones/25/rotation = Quaternion(0.040323, 0.0355409, -0.618641, 0.783833)
@@ -1218,7 +1218,7 @@ bones/27/scale = Vector3(1, 1, 1)
 bones/28/position = Vector3(4.86573e-11, 0.00227702, 8.09537e-12)
 bones/28/rotation = Quaternion(1.02318e-09, -2.55721e-10, -1.20531e-10, 1)
 bones/30/position = Vector3(0.000562403, 0.00888507, 0.00452224)
-bones/30/rotation = Quaternion(0.092793, -0.0499979, -0.23843, 0.965423)
+bones/30/rotation = Quaternion(0.125218, -0.0569602, -0.237478, 0.961603)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/position = Vector3(-0.000141584, 0.00369768, -3.0999e-05)
 bones/31/rotation = Quaternion(-0.183013, 0.108273, -0.284468, 0.934805)
@@ -1234,7 +1234,7 @@ bones/34/rotation = Quaternion(-6.36516e-07, -6.35512e-07, -5.19875e-07, 1)
 bones/34/scale = Vector3(1, 1, 1)
 
 [node name="tussi" parent="handussi/Empty" index="1"]
-transform = Transform3D(-0.843142, -0.175707, 0.508169, 0.220759, -0.974891, 0.0291956, 0.490279, 0.136799, 0.860762, 0.00306126, 0.00182083, 0.00438004)
+transform = Transform3D(-0.830489, -0.180781, 0.526881, 0.213155, -0.977018, 0.00075474, 0.514636, 0.112935, 0.849938, 0.00309869, 0.00181233, 0.00424974)
 
 [node name="BubblesEmitter" parent="." instance=ExtResource("9_dy7ct")]
 transform = Transform3D(24.9763, 0, 1.08918, 0, 25, 0, -1.08918, 0, 24.9763, -2.47081, -2.42792, -1.24364)

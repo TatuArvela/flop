@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn1w3kjeiteqw"]
+[gd_scene load_steps=30 format=3 uid="uid://dn1w3kjeiteqw"]
 
 [ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="1_7vgy4"]
 [ext_resource type="Script" uid="uid://brrap058lklkl" path="res://levels/box_with_collider.gd" id="1_66kue"]
@@ -6,26 +6,90 @@
 [ext_resource type="PackedScene" uid="uid://ctfkmostf8id" path="res://icebox/icebox.tscn" id="3_66kue"]
 [ext_resource type="PackedScene" uid="uid://lj4qwd416d0k" path="res://conveyor/conveyor.tscn" id="5_hu3u3"]
 [ext_resource type="PackedScene" uid="uid://bwhn84gvyppax" path="res://player.tscn" id="6_hu3u3"]
+[ext_resource type="PackedScene" uid="uid://de1b6p0loepvg" path="res://hazards/grabby_hand.tscn" id="7_nk2xb"]
+[ext_resource type="PackedScene" uid="uid://de4xs2m1tc6et" path="res://hazards/grabby_handsies.tscn" id="8_0yqv1"]
+[ext_resource type="PackedScene" uid="uid://b7p8qlq6lpiev" path="res://hazards/buzzsaw.tscn" id="9_0yqv1"]
+[ext_resource type="PackedScene" uid="uid://d1745nrjl04j4" path="res://hazards/vertical_cutter.tscn" id="11_invck"]
+[ext_resource type="PackedScene" uid="uid://bora31mv2k73v" path="res://hazards/FishFileeMaker.fbx" id="12_6m5da"]
+[ext_resource type="PackedScene" uid="uid://dp61ygc0h2hxb" path="res://hazards/horizontal_cutter.tscn" id="13_3ugyd"]
+[ext_resource type="PackedScene" uid="uid://cg75ugmcdo3c" path="res://hazards/Guilliotine.fbx" id="13_8i002"]
+[ext_resource type="PackedScene" uid="uid://cw1bxa0pvao6p" path="res://wall/wall.tscn" id="14_8i002"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q84n0"]
 material = ExtResource("1_7vgy4")
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 subdivide_width = 2
 subdivide_depth = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q84n0"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nk2xb"]
+load_path = "res://.godot/imported/laattaa.jpg-a807f1b869b29e97707c2583b7cc032c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yqv1"]
+albedo_texture = SubResource("CompressedTexture2D_nk2xb")
+uv1_scale = Vector3(1.666, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qo7cb"]
+material = SubResource("StandardMaterial3D_0yqv1")
+size = Vector3(10, 1, 10)
+subdivide_width = 2
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nk2xb"]
 size = Vector3(10, 1, 10)
 
-[sub_resource type="Environment" id="Environment_hu3u3"]
-ambient_light_color = Color(0.390369, 0.390369, 0.390369, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0yqv1"]
+load_path = "res://.godot/imported/laattaa.jpg-a807f1b869b29e97707c2583b7cc032c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo7cb"]
+albedo_texture = SubResource("CompressedTexture2D_0yqv1")
+uv1_scale = Vector3(1.666, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_invck"]
+material = SubResource("StandardMaterial3D_qo7cb")
+size = Vector3(2, 1, 0.5)
+subdivide_width = 2
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0yqv1"]
+size = Vector3(2, 1, 0.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qo7cb"]
+load_path = "res://.godot/imported/laattaa.jpg-a807f1b869b29e97707c2583b7cc032c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_invck"]
+albedo_texture = SubResource("CompressedTexture2D_qo7cb")
+uv1_scale = Vector3(1.666, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6m5da"]
+material = SubResource("StandardMaterial3D_invck")
+size = Vector3(0.5, 4, 4)
+subdivide_width = 2
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qo7cb"]
+size = Vector3(0.5, 4, 4)
+
+[sub_resource type="Environment" id="Environment_8i002"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
 [node name="Kasvattamo" type="Node3D"]
 
 [node name="Lattia" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -0.5, -10.4)
 script = ExtResource("1_66kue")
-width = 10.0
-depth = 10.0
+width = 20.0
+depth = 20.0
 
 [node name="Mesh" type="MeshInstance3D" parent="Lattia"]
 mesh = SubResource("BoxMesh_q84n0")
@@ -33,29 +97,300 @@ mesh = SubResource("BoxMesh_q84n0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia"]
 shape = SubResource("BoxShape3D_q84n0")
 
+[node name="Lattia6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -1.5, -1.7)
+script = ExtResource("1_66kue")
+width = 20.0
+depth = 20.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia6"]
+mesh = SubResource("BoxMesh_q84n0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia6"]
+shape = SubResource("BoxShape3D_q84n0")
+
+[node name="Lattia7" type="StaticBody3D" parent="."]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 15.7, 0.5, -10.4)
+script = ExtResource("1_66kue")
+width = 20.0
+depth = 20.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia7"]
+mesh = SubResource("BoxMesh_q84n0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia7"]
+shape = SubResource("BoxShape3D_q84n0")
+
+[node name="Lattia9" type="StaticBody3D" parent="."]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, -2.1, 0.5, -10.4)
+script = ExtResource("1_66kue")
+width = 20.0
+depth = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia9"]
+shape = SubResource("BoxShape3D_q84n0")
+
+[node name="Lattia8" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.3027e-15, 4.37114e-08, -1, 1, 2.98023e-08, 0, 2.98023e-08, -1, -4.37114e-08, 5.9, 0.5, -13.5)
+script = ExtResource("1_66kue")
+width = 20.0
+depth = 20.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia8"]
+mesh = SubResource("BoxMesh_q84n0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia8"]
+shape = SubResource("BoxShape3D_q84n0")
+
+[node name="Lattia10" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.3027e-15, 4.37114e-08, -1, 1, 2.98023e-08, 0, 2.98023e-08, -1, -4.37114e-08, 5.9, 0.5, -0.0999994)
+script = ExtResource("1_66kue")
+width = 20.0
+depth = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia10"]
+shape = SubResource("BoxShape3D_q84n0")
+
+[node name="Lattia2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47089, 0.4, -12.2)
+script = ExtResource("1_66kue")
+width = 10.0
+depth = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia2"]
+mesh = SubResource("BoxMesh_qo7cb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia2"]
+shape = SubResource("BoxShape3D_nk2xb")
+
+[node name="Lattia3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538845, 0.312235, -3.67541)
+script = ExtResource("1_66kue")
+width = 2.0
+depth = 0.5
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia3"]
+mesh = SubResource("BoxMesh_invck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia3"]
+shape = SubResource("BoxShape3D_0yqv1")
+
+[node name="Lattia4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8454, 0.71224, -9.17541)
+script = ExtResource("1_66kue")
+width = 0.5
+height = 4.0
+depth = 4.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia4"]
+mesh = SubResource("BoxMesh_6m5da")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia4"]
+shape = SubResource("BoxShape3D_qo7cb")
+
+[node name="Lattia5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4454, 0.71224, -9.17541)
+script = ExtResource("1_66kue")
+width = 0.5
+height = 4.0
+depth = 4.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Lattia5"]
+mesh = SubResource("BoxMesh_6m5da")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lattia5"]
+shape = SubResource("BoxShape3D_qo7cb")
+
 [node name="kasvattamo" parent="." instance=ExtResource("2_5ct1o")]
-transform = Transform3D(0.368854, 0, -0.929487, 0, 1, 0, 0.929487, 0, 0.368854, 0.491984, 0.0077011, -2.59466)
+transform = Transform3D(0.368854, 0, -0.929487, 0, 1, 0, 0.929487, 0, 0.368854, 0.491984, 0.0077011, -2.76146)
 
 [node name="Icebox" parent="." instance=ExtResource("3_66kue")]
-transform = Transform3D(-0.00889638, 0, 0.0996035, 0, 0.1, 0, -0.0996035, 0, -0.00889638, 0.983092, 0.0671126, -1.53909)
+transform = Transform3D(-0.0115653, 0, 0.129485, 0, 0.13, 0, -0.129485, 0, -0.0115653, 0.940599, 0.0671126, -1.5837)
 
 [node name="Spawnpoint" type="Marker3D" parent="Icebox" groups=["Spawnpoint"]]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 4.68852, 0)
 
+[node name="Icebox2" parent="." instance=ExtResource("3_66kue")]
+transform = Transform3D(-0.125467, 0, -0.0340299, 0, 0.13, 0, 0.0340299, 0, -0.125467, 7.91707, 1.01952, -11.8847)
+
+[node name="Icebox3" parent="." instance=ExtResource("3_66kue")]
+transform = Transform3D(0.0231818, 0, -0.127917, 0, 0.13, 0, 0.127917, 0, 0.0231818, 8.11568, 1.01952, -11.4141)
+
+[node name="Icebox4" parent="." instance=ExtResource("3_66kue")]
+transform = Transform3D(0.028536, 0, 0.12683, 0, 0.13, 0, -0.12683, 0, 0.028536, 7.69878, 1.01952, -11.3009)
+
 [node name="Conveyor" parent="." instance=ExtResource("5_hu3u3")]
-transform = Transform3D(-0.993322, -0.115371, 8.59658e-08, -0.115371, 0.993322, -1.5894e-08, -8.35581e-08, -2.57058e-08, -1, 3.15294, 0.249637, -1.73361)
+transform = Transform3D(-0.998806, -0.0488497, -8.74228e-08, -0.0488497, 0.998806, 0, 8.73184e-08, 4.27058e-09, -1, 3.15294, 0.232177, -1.73361)
 conveyorSize = 2
 conveyorSpeed = 0.1
 
 [node name="Player" parent="." instance=ExtResource("6_hu3u3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36363, 0.36408, -1.33111)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.792471, -0.521265, 0.31666, 0, 0.519191, 0.854658, -0.60991, -0.677292, 0.411444, 0.402517, 2.94438, 0.748134)
+[node name="Conveyor2" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.14699, 0.238814, -1.73283)
+conveyorSize = 4
+conveyorSpeed = 0.05
+
+[node name="Hand" parent="." instance=ExtResource("7_nk2xb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.96393, 0.478578, -1.90562)
+
+[node name="Hand2" parent="." instance=ExtResource("7_nk2xb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.95442, 0.478578, -1.87642)
+
+[node name="Hand3" parent="." instance=ExtResource("7_nk2xb")]
+transform = Transform3D(-0.449989, 0, 0.893034, 0, 1, 0, -0.893034, 0, -0.449989, 6.02194, 0.478578, -1.54765)
+
+[node name="Handsies" parent="." instance=ExtResource("8_0yqv1")]
+transform = Transform3D(-0.483359, 0, -0.875422, 0, 1, 0, 0.875422, 0, -0.483359, 6.44207, 0.480196, -1.82042)
+
+[node name="Handsies2" parent="." instance=ExtResource("8_0yqv1")]
+transform = Transform3D(0.0180108, 0, 0.999838, 0, 1, 0, -0.999838, 0, 0.0180108, 4.69133, 0.480196, -1.58379)
+
+[node name="Conveyor4" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.225869, 0.974158, 9.87306e-09, 0.974158, 0.225869, -4.25818e-08, 7.65858, 1.50712, -6.16358)
+conveyorSize = 4
+conveyorSpeed = 0.2
+
+[node name="Conveyor3" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.14741, 0.439168, -1.74129)
+conveyorSpeed = 0.1
+
+[node name="Conveyor5" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.66788, 1.51036, -7.12686)
+conveyorSpeed = 0.1
+
+[node name="Conveyor6" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-0.975955, -0.217973, -8.53207e-08, -0.217973, 0.975955, -1.90558e-08, 8.74228e-08, 0, -1, 12.1275, 2.42787, -6.60842)
+conveyorSize = 4
+conveyorSpeed = 0.1
+
+[node name="Conveyor7" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.1069, 2.44428, -6.62137)
+conveyorSpeed = 0.1
+
+[node name="Conveyor8" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6363, 2.42001, -7.13097)
+conveyorSize = 4
+conveyorSpeed = 0.15
+
+[node name="Conveyor9" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.1394, 2.40288, -11.6441)
+conveyorSpeed = 0.1
+
+[node name="Conveyor10" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-0.954984, -0.296658, -8.34873e-08, -0.296658, 0.954984, -2.59347e-08, 8.74228e-08, 0, -1, 12.1912, 2.36027, -11.6376)
+conveyorSize = 4
+
+[node name="Conveyor11" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.92009, 1.10712, -9.01407)
+conveyorSize = 2
+conveyorSpeed = 0.2
+
+[node name="Conveyor12" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41832, 1.10712, -9.53832)
+conveyorSpeed = 0.1
+
+[node name="Conveyor13" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(0.999109, -0.0422248, 0, 0.0422248, 0.999109, 0, 0, 0, 1, 2.44203, 0.955735, -9.53222)
+conveyorSize = 4
+conveyorSpeed = 0.25
+
+[node name="Conveyor14" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47481, 0.94108, -9.53624)
+conveyorSpeed = 0.2
+
+[node name="Conveyor15" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, -4.39489e-16, 1, 0.117035, 0.993128, 5.11575e-09, -0.993128, 0.117035, -4.3411e-08, 1.98816, 0.48576, -5.05924)
+conveyorSize = 4
+
+[node name="Conveyor16" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, -0.531488, 0.653096, -4.52904)
+conveyorSize = 2
+
+[node name="Conveyor17" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.99192, 0.47652, -4.0357)
+
+[node name="Conveyor18" parent="." instance=ExtResource("5_hu3u3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.118, 2.44786, -6.60455)
+conveyorSize = 2
+conveyorSpeed = 1.0
+
+[node name="Handsies3" parent="." instance=ExtResource("8_0yqv1")]
+transform = Transform3D(-0.0208385, 0, 1.49986, 0, 1.5, 0, -1.49986, 0, -0.0208385, 12.6251, 2.68459, -6.59036)
+
+[node name="Buzzsaw" parent="." instance=ExtResource("9_0yqv1")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 12.6302, 2.57772, -8.26842)
+
+[node name="Buzzsaw2" parent="." instance=ExtResource("9_0yqv1")]
+transform = Transform3D(-1.3, 0, -1.1365e-07, 0, 1.3, 0, 1.1365e-07, 0, -1.3, 12.6302, 2.57772, -8.96842)
+
+[node name="Buzzsaw5" parent="." instance=ExtResource("9_0yqv1")]
+transform = Transform3D(1.3, 0, 2.273e-07, 0, 1.3, 0, -2.273e-07, 0, 1.3, 12.6302, 2.57772, -10.5684)
+
+[node name="Cutter" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20457, 0.912173, -2.84806)
+
+[node name="Cutter2" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20457, 1.4243, -5.14806)
+
+[node name="Cutter3" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.12814, 1.09971, -3.74806)
+
+[node name="FishFileeMaker" parent="." instance=ExtResource("12_6m5da")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.34882, 0.780109, -9.999)
+
+[node name="Cutter4" parent="." instance=ExtResource("13_3ugyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40567, 1.25296, -9.01236)
+
+[node name="Cutter5" parent="." instance=ExtResource("13_3ugyd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.3, 1.23701, -10.0439)
+
+[node name="Handsies4" parent="." instance=ExtResource("8_0yqv1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5699, 1.28157, -9.7275)
+
+[node name="Cutter6" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(-6.99382e-08, 0, -1.6, 0, 1.6, 0, 1.6, 0, -6.99382e-08, 4.09547, 1.1, -9.01963)
+
+[node name="Cutter7" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(-6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 3.72232, 1.1, -10.1678)
+
+[node name="Guilliotine" parent="." instance=ExtResource("13_8i002")]
+transform = Transform3D(3.63429, 0, 0, 0, 3.63429, 0, 0, 0, 3.63429, 12.6497, 2.69385, -10.1595)
+
+[node name="Guilliotine2" parent="." instance=ExtResource("13_8i002")]
+transform = Transform3D(3.63429, 0, 0, 0, 3.63429, 0, 0, 0, 3.63429, 12.6497, 2.69385, -7.95949)
+
+[node name="Cutter8" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.4744, 2.2124, -7.08384)
+
+[node name="Cutter9" parent="." instance=ExtResource("11_invck")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.47443, 1.99163, -7.08384)
+
+[node name="Buzzsaw3" parent="." instance=ExtResource("9_0yqv1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.252, 2.17368, -6.62195)
+
+[node name="Wall" parent="." instance=ExtResource("14_8i002")]
+transform = Transform3D(1, 0, 0, 0, 0.976417, -0.215894, 0, 0.215894, 0.976417, 8.24207, 0.7592, -2.6789)
+
+[node name="Wall2" parent="." instance=ExtResource("14_8i002")]
+transform = Transform3D(1, 0, 0, 0, 0.967502, -0.252863, 0, 0.252863, 0.967502, 8.24403, 1.01469, -3.66696)
+
+[node name="Wall3" parent="." instance=ExtResource("14_8i002")]
+transform = Transform3D(1, 0, 0, 0, 0.976417, -0.215894, 0, 0.215894, 0.976417, 8.24207, 1.24343, -4.65027)
+
+[node name="Wall4" parent="." instance=ExtResource("14_8i002")]
+transform = Transform3D(1, 0, 0, 0, 0.987134, -0.159898, 0, 0.159898, 0.987134, 8.20686, 1.44561, -5.61014)
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8i002")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.350983, 2.94438, -1.84512)
+light_energy = 0.302
 shadow_enabled = true
 directional_shadow_split_1 = 0.01
 directional_shadow_split_2 = 0.02
 directional_shadow_split_3 = 0.05
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hu3u3")
+sky_mode = 1
+metadata/_edit_lock_ = true

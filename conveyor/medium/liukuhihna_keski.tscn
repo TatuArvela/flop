@@ -6,9 +6,10 @@
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_h12lg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_guqd5"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_gvqgp")
-shader_parameter/ConveyorSpeed = 0.5
+shader_parameter/ConveyorSpeed = 1.0
 shader_parameter/ConveyorLength = 2
 
 [node name="liukuhihna_keski" node_paths=PackedStringArray("modelNode") instance=ExtResource("1_y2tll")]
