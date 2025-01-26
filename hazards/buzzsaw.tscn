@@ -43,6 +43,21 @@ _data = {
 &"loop": SubResource("Animation_omr5p")
 }
 
+[sub_resource type="Animation" id="Animation_fixeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SawOrigin/Shaker/BuzzSaw/BuzzSaw/Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_uyfyq"]
 resource_name = "spin"
 loop_mode = 1
@@ -57,21 +72,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 3.14159), Vector3(0, 0, 6.28319)]
-}
-
-[sub_resource type="Animation" id="Animation_fixeq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SawOrigin/Shaker/BuzzSaw/BuzzSaw/Saw:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbqbd"]
@@ -128,7 +128,7 @@ autoplay = "spin"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.5, 0)
 
 [node name="Shaker" type="Node3D" parent="SawOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622335, -0.0027906, 0.00661915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00392496, -0.00905394, 0.00687438)
 script = ExtResource("2_uyfyq")
 shake_strength = 0.01
 shake_decay = 0.0

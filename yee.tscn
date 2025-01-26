@@ -90,4 +90,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412129, 0.101857, -0.85315
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779452, 0.1, 0.272581)
 
 [node name="Buzzsaw" parent="." instance=ExtResource("6_tialh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25884, 0.101641, -0.838859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25884, 0.098932, -0.838859)
