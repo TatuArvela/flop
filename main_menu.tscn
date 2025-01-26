@@ -1,13 +1,18 @@
-[gd_scene load_steps=23 format=4 uid="uid://tij2iw8ducun"]
+[gd_scene load_steps=33 format=4 uid="uid://tij2iw8ducun"]
 
 [ext_resource type="FontFile" uid="uid://c64eaas20duxo" path="res://UI/Naturaly.otf" id="1_06t4h"]
-[ext_resource type="Script" path="res://main_menu.gd" id="2_8qtwp"]
+[ext_resource type="Script" uid="uid://ch6h4c04xo4xn" path="res://main_menu.gd" id="2_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://d0y0j3qqfd615" path="res://UI/logoidk.png" id="2_jix8l"]
 [ext_resource type="Material" uid="uid://bustb3pl6feiy" path="res://gradient_palette_material.tres" id="3_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://dap5y6yh0352i" path="res://UI/tussu.png" id="4_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://dmcrdfvvaxwem" path="res://music/menumusic.mp3" id="5_glbon"]
 [ext_resource type="PackedScene" uid="uid://c8hwo6rcwswg0" path="res://3D_Assets/taulu_handu.fbx" id="6_nlkkf"]
 [ext_resource type="PackedScene" uid="uid://baondeuqk3exf" path="res://3D_Assets/handussi.fbx" id="7_qe12f"]
+[ext_resource type="PackedScene" uid="uid://cqg175lfq0ken" path="res://hazards/idle_bubble_emitter_menu.tscn" id="9_dy7ct"]
+[ext_resource type="PackedScene" uid="uid://bxitcr27a6fi2" path="res://3D_Assets/fish_buket.fbx" id="10_0k4wn"]
+[ext_resource type="Material" uid="uid://e0hpvqmgd71a" path="res://laattaa.tres" id="11_j5v2v"]
+[ext_resource type="PackedScene" uid="uid://cg75ugmcdo3c" path="res://hazards/Guilliotine.fbx" id="12_j5v2v"]
+[ext_resource type="PackedScene" uid="uid://3s63lt01o6v1" path="res://fisu/fisu_pala.fbx" id="13_iotk1"]
 
 [sub_resource type="Image" id="Image_06t4h"]
 data = {
@@ -967,6 +972,53 @@ nodes/Blend2/position = Vector2(280, 80)
 nodes/output/position = Vector2(460, 120)
 node_connections = [&"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"output", 0, &"Blend2"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_iotk1"]
+material = ExtResource("11_j5v2v")
+size = Vector3(50, 0.2, 50)
+subdivide_width = 2
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w44g7"]
+size = Vector3(50, 0.2, 50)
+
+[sub_resource type="Animation" id="Animation_j5v2v"]
+resource_name = "giljotiini"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.06667, 2.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00847212, 1.15945, 0.0199715), Vector3(0.00847206, 1.32287, 0.0199714), Vector3(0.00847208, 0.331031, 0.0199714)]
+}
+
+[sub_resource type="Animation" id="Animation_iotk1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00847212, 1.15945, 0.0199715)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w44g7"]
+_data = {
+&"RESET": SubResource("Animation_iotk1"),
+&"giljotiini": SubResource("Animation_j5v2v")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1054,13 +1106,13 @@ text = "Don't play"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9059)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.0109239, -0.30376, 0.952686, 0.442528, 0.852895, 0.277017, -0.896688, 0.424616, 0.125106, 5.19255, 1.29907, 2.02953)
+transform = Transform3D(-0.0109239, -0.30376, 0.952686, 0.442528, 0.852895, 0.277017, -0.896688, 0.424616, 0.125105, 8.3423, 1.29907, 0.838374)
 light_color = Color(1, 0.686275, 0.470588, 1)
 light_energy = 4.598
 spot_range = 4096.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.665709, 0.197135, -0.719701, -0.0276199, 0.957303, 0.287765, 0.7457, 0.211446, -0.631841, -5.09861, 1.06996, -3.14358)
+transform = Transform3D(-0.289777, 0.267846, -0.918851, -0.0276199, 0.957303, 0.287765, 0.956695, 0.108766, -0.270007, -13.0292, 0.105148, -4.40436)
 light_color = Color(0.12549, 0.788235, 1, 1)
 light_energy = 4.598
 spot_range = 4096.0
@@ -1069,7 +1121,7 @@ spot_range = 4096.0
 transform = Transform3D(0.999374, -0.0343237, 0.00861323, 0.0338759, 0.99829, 0.0476359, -0.0102335, -0.0473143, 0.998828, 0.127401, 0.121664, 7.39687)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(202.728, 0, 0, 0, 57.7025, 0, 0, 0, 7.13472, -7.21352, 2.67875, -5.68931)
+transform = Transform3D(294.426, 0, 0, 0, 57.7025, 0, 0, 0, 7.13472, 62.061, 0.7698, -9.08508)
 material_override = ExtResource("3_fu7sn")
 mesh = SubResource("BoxMesh_jix8l")
 
@@ -1089,10 +1141,10 @@ anim_player = NodePath("../handussi/AnimationPlayer")
 parameters/Blend2/blend_amount = 0.5
 
 [node name="handussi" parent="." instance=ExtResource("7_qe12f")]
-transform = Transform3D(-1.5, 0, 0, 0, 1.5, 7.84136e-05, 0, -7.84136e-05, 1.5, 0.459527, -4.53825, 0.201528)
+transform = Transform3D(-1.5, 0, 0, 0, 1.5, 7.84136e-05, 0, -7.84136e-05, 1.5, 0.764478, -4.05662, 0.201528)
 
 [node name="Skeleton3D" parent="handussi/Empty/Armature_001" index="0"]
-bones/0/position = Vector3(-0.0192514, -0.0237772, 0.0109352)
+bones/0/position = Vector3(-0.0192514, -0.0237772, 0.0109029)
 bones/0/rotation = Quaternion(0.00728864, 0.0734544, -0.0592506, 0.99551)
 bones/1/position = Vector3(-4.91968e-10, 0.0101504, -1.10498e-09)
 bones/1/rotation = Quaternion(0.000104435, -0.0012709, -0.0745316, 0.997218)
@@ -1101,7 +1153,7 @@ bones/2/position = Vector3(0.00091967, 0.0115641, 0.00211396)
 bones/2/rotation = Quaternion(0.0378643, -0.0276815, 0.00565695, 0.998883)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(1.73282e-09, 0.00530978, -1.4027e-09)
-bones/3/rotation = Quaternion(-0.000113124, 0.0316349, -0.432487, 0.901085)
+bones/3/rotation = Quaternion(0.00827274, 0.0248334, -0.432987, 0.90102)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.62848e-10, 0.00464754, 9.64061e-10)
 bones/4/rotation = Quaternion(-0.0138502, -0.00962348, -0.550489, 0.834672)
@@ -1118,7 +1170,7 @@ bones/9/position = Vector3(0.00106347, 0.0123566, 2.46131e-05)
 bones/9/rotation = Quaternion(0.0255863, -0.0229038, 0.0552634, 0.997881)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(1.5538e-09, 0.0055008, -4.02825e-10)
-bones/10/rotation = Quaternion(-0.018234, 0.00132493, -0.560706, 0.827813)
+bones/10/rotation = Quaternion(-0.0164976, -0.000896654, -0.560676, 0.82787)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-1.04161e-09, 0.00440429, 1.17576e-10)
 bones/11/rotation = Quaternion(0.0160025, 0.0309371, -0.449374, 0.892665)
@@ -1136,13 +1188,13 @@ bones/16/position = Vector3(0.00027511, 0.0110406, 0.00357093)
 bones/16/rotation = Quaternion(0.0910061, 0.0157626, 0.0149834, 0.995613)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-1.85163e-10, 0.00554949, 2.60261e-09)
-bones/17/rotation = Quaternion(0.102842, -0.0430966, -0.367308, 0.923391)
+bones/17/rotation = Quaternion(0.0996494, -0.0410915, -0.367393, 0.923799)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(7.07003e-10, 0.00402961, -1.29501e-09)
 bones/18/rotation = Quaternion(-0.0435855, -0.0175061, -0.46274, 0.885249)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(6.30546e-11, 0.00369495, -1.91839e-09)
-bones/19/rotation = Quaternion(-0.0318146, -0.0475514, -0.094112, 0.993916)
+bones/19/rotation = Quaternion(-0.0348044, -0.0451731, -0.0533186, 0.996948)
 bones/20/position = Vector3(-8.57335e-10, 0.00316563, -1.81519e-09)
 bones/20/rotation = Quaternion(-4.05207e-08, -4.82775e-09, 1.01041e-08, 1)
 bones/21/position = Vector3(-5.83234e-11, 0.00316561, 1.52451e-10)
@@ -1152,7 +1204,7 @@ bones/23/position = Vector3(0.000372286, 0.0112856, -0.00230973)
 bones/23/rotation = Quaternion(-0.0336165, 0.0264679, -0.0437488, 0.998126)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(1.41805e-09, 0.00495958, 1.7613e-10)
-bones/24/rotation = Quaternion(0.111562, -0.103109, -0.332781, 0.930687)
+bones/24/rotation = Quaternion(0.116506, -0.106124, -0.331949, 0.93004)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(-2.59378e-10, 0.00441218, -5.9829e-10)
 bones/25/rotation = Quaternion(0.040323, 0.0355409, -0.618641, 0.783833)
@@ -1166,7 +1218,7 @@ bones/27/scale = Vector3(1, 1, 1)
 bones/28/position = Vector3(4.86573e-11, 0.00227702, 8.09537e-12)
 bones/28/rotation = Quaternion(1.02318e-09, -2.55721e-10, -1.20531e-10, 1)
 bones/30/position = Vector3(0.000562403, 0.00888507, 0.00452224)
-bones/30/rotation = Quaternion(0.109351, -0.053549, -0.23797, 0.96361)
+bones/30/rotation = Quaternion(0.092793, -0.0499979, -0.23843, 0.965423)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/position = Vector3(-0.000141584, 0.00369768, -3.0999e-05)
 bones/31/rotation = Quaternion(-0.183013, 0.108273, -0.284468, 0.934805)
@@ -1182,9 +1234,52 @@ bones/34/rotation = Quaternion(-6.36516e-07, -6.35512e-07, -5.19875e-07, 1)
 bones/34/scale = Vector3(1, 1, 1)
 
 [node name="tussi" parent="handussi/Empty" index="1"]
-transform = Transform3D(-0.843186, -0.175225, 0.508263, 0.220357, -0.974975, 0.0294371, 0.490386, 0.13682, 0.860698, 0.00304503, 0.00182452, 0.00438763)
+transform = Transform3D(-0.843142, -0.175707, 0.508169, 0.220759, -0.974891, 0.0291956, 0.490279, 0.136799, 0.860762, 0.00306126, 0.00182083, 0.00438004)
+
+[node name="BubblesEmitter" parent="." instance=ExtResource("9_dy7ct")]
+transform = Transform3D(24.9763, 0, 1.08918, 0, 25, 0, -1.08918, 0, 24.9763, -2.47081, -2.42792, -1.24364)
+script = null
+
+[node name="BubblesEmitter2" parent="." instance=ExtResource("9_dy7ct")]
+transform = Transform3D(24.8678, 0, -2.56765, 0, 25, 0, 2.56765, 0, 24.8678, 3.69293, -1.66691, -4.16275)
+script = null
+
+[node name="fish_buket" parent="." instance=ExtResource("10_0k4wn")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -4.39976, -2.0151, -2.78059)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261945, -1.96747, -0.854355)
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00399446, -5.96046e-08, -0.00030899)
+mesh = SubResource("BoxMesh_iotk1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_w44g7")
+metadata/_edit_lock_ = true
+
+[node name="Guilliotine" parent="." instance=ExtResource("12_j5v2v")]
+transform = Transform3D(2.36058, 0, -1.8514, 0, 3, 0, 1.8514, 0, 2.36058, 3.08423, -1.12877, -2.14303)
+
+[node name="body" parent="Guilliotine" index="0"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0.12867, -0.250016, -0.263394)
+
+[node name="blade" parent="Guilliotine/body" index="0"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0.00847212, 1.15945, 0.0199715)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guilliotine"]
+libraries = {
+&"": SubResource("AnimationLibrary_w44g7")
+}
+autoplay = "giljotiini"
+
+[node name="fisu_pala" parent="." instance=ExtResource("13_iotk1")]
+transform = Transform3D(0.355354, 0.259697, -0.0937095, 0.00516808, 0.146455, 0.425469, 0.276038, -0.337058, 0.11267, 3.28536, -1.78745, -0.494828)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/PlayButton" to="CanvasLayer/MainMenu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/DontButton" to="CanvasLayer/MainMenu" method="_on_dont_button_pressed"]
 
 [editable path="handussi"]
+[editable path="Guilliotine"]
+[editable path="fisu_pala"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqg175lfq0ken"]
+
+[ext_resource type="Script" uid="uid://stjy5l4ko3se" path="res://hazards/idle_bubble_emitter.gd" id="1_ufis8"]
+[ext_resource type="AudioStream" uid="uid://ccjhtpamf1n3y" path="res://sfx/506545__matrixxx__pop-02.wav" id="2_avdpa"]
+[ext_resource type="AudioStream" uid="uid://07ilsrek1chb" path="res://sfx/527522__narjara__ppop.wav" id="3_gv7oa"]
+[ext_resource type="AudioStream" uid="uid://dpim55jo6p3kk" path="res://sfx/757612__qubodup__pop-sound.wav" id="4_fcci3"]
+
+[sub_resource type="Gradient" id="Gradient_hwagh"]
+offsets = PackedFloat32Array(0, 0.63121, 0.92488, 1)
+colors = PackedColorArray(0.18, 0.9, 0.42, 0, 0.9, 0.9, 0.9, 0.486275, 0.7372, 0.97, 0.86912, 1, 0.585, 0.9, 0.69, 0.0196078)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ufis8"]
+gradient = SubResource("Gradient_hwagh")
+fill = 1
+fill_from = Vector2(0.495726, 0.470085)
+fill_to = Vector2(1, 0.487179)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avdpa"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_ufis8")
+
+[sub_resource type="Curve" id="Curve_gv7oa"]
+_data = [Vector2(0, 1), 0.0, -0.0791844, 0, 0, Vector2(1, 0), 0.347155, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fcci3"]
+curve = SubResource("Curve_gv7oa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_14ph1"]
+emission_shape_scale = Vector3(1, 0.25, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.15
+gravity = Vector3(0, 0, 0)
+damping_max = 0.05
+scale_min = 5.0
+scale_max = 20.0
+alpha_curve = SubResource("CurveTexture_fcci3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dn0ra"]
+size = Vector2(0.05, 0.05)
+
+[node name="BubblesEmitter" type="Node3D"]
+script = ExtResource("1_ufis8")
+sfx = Array[AudioStream]([ExtResource("2_avdpa"), ExtResource("3_gv7oa"), ExtResource("4_fcci3")])
+min_delay = 1.5
+max_delay = 3.5
+
+[node name="emitter" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0287533, 0)
+material_override = SubResource("StandardMaterial3D_avdpa")
+amount = 20
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_14ph1")
+draw_pass_1 = SubResource("QuadMesh_dn0ra")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+bus = &"Ambient"
+
+[node name="SfxTimer" type="Timer" parent="."]
+one_shot = true
